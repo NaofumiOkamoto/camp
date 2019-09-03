@@ -12,6 +12,9 @@
   <body>
     <%= render 'layouts/admin_nav' %>
     <%= render '/flash_message' %> <!--フラッシュメッセージ -->
+    <% if user_signed_in? %>
+      <%= current_user.email %>ログイン中
+    <% end %>
     <div class="container">
     <%= yield %>
     </div>

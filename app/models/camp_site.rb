@@ -15,7 +15,11 @@
 
 class CampSite < ApplicationRecord
   validates :name, presence: true
+
+# Action Mailer（画像）
   has_one_attached :camp_image
+
+# 地域、都道府県のアクティブハッシュ
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   delegate :prefecture_name, to: :prefecture

@@ -10,6 +10,13 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  nickname               :string
+#  prefecture_id          :integer
+#  style_id               :integer
+#  introduction           :text
+#  check_in               :string           default("非チェックイン")
+#  isdeleted              :boolean          default(FALSE)
 #
 
 class User < ApplicationRecord
@@ -17,4 +24,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+# Action Mailer（画像）
+  has_one_attached :user_image
+
+# 都道府県のアクティブハッシュ
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+  delegate :prefecture_name, to: :prefecture
+  belongs_to_active_hash :style
+  delegate :style_name, to: :style
+
 end
+

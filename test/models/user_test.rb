@@ -10,6 +10,13 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  nickname               :string
+#  prefecture_id          :integer
+#  style_id               :integer
+#  introduction           :text
+#  check_in               :string           default("非チェックイン")
+#  isdeleted              :boolean          default(FALSE)
 #
 
 require 'test_helper'
