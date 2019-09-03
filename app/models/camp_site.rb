@@ -14,10 +14,13 @@
 #
 
 class CampSite < ApplicationRecord
+  validates :name, presence: true
+  has_one_attached :camp_image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   delegate :prefecture_name, to: :prefecture
   delegate :area, to: :prefecture
   belongs_to_active_hash :category
-  delegate :category, to: :category
+  delegate :category_name, to: :category
+
 end

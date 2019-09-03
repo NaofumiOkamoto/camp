@@ -13,17 +13,26 @@ class AdminCampSitesController < ApplicationController
   end
 
   def index
+    @search = CampSite.ransack(params[:q]) #検索オブジェクト
+    @search_camp_sites = @search.result #検索結果
     @camp_sites = CampSite.all
   end
 
   def show
+    @admin_camp_site = CampSite.find(params[:id])
   end
 
   def edit
+    @admin_camp_site = CampSite.find(params[:id])
   end
 
   def update
-
+    @admin_camp_site = CampSite.find(params[:id])
+    if @admin_camp_site.update(camp_site_params)
+      redirect_to admin_camp_sites_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -43,8 +52,13 @@ class AdminCampSitesController < ApplicationController
     :area_id,
     :prefecture_id,
     :address,
-    :category,
-    :introduction
+    :category_id,
+    :introduction,
+    :camp_image
     )
+  end
+
+  def search_params
+    params.require(:q).permit(:name_cont)
   end
 end

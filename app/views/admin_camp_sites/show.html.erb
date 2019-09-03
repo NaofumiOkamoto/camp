@@ -1,2 +1,16 @@
-<h1>AdminCampSites#show</h1>
-<p>Find me in app/views/admin_camp_sites/show.html.erb</p>
+<h1>キャンプ場詳細</h1>
+
+<table>
+  <tr><td><%= @admin_camp_site.id %></td></tr>
+  <tr><td><%= @admin_camp_site.name %></td></tr>
+  <tr><td><%= @admin_camp_site.area %></td></tr>
+  <tr><td><%= @admin_camp_site.prefecture_name %></td></tr>
+  <tr><td><%= @admin_camp_site.address %></td></tr>
+  <tr><td><%= @admin_camp_site.category_name %></td></tr>
+  <tr><td><%= @admin_camp_site.introduction %></td></tr>
+    <% if @admin_camp_site.camp_image.attached? %>
+      <tr><td><%= image_tag @admin_camp_site.camp_image, class: "camp-site-image" %></td></tr>
+    <% end %>
+</table>
+    <p><%= link_to '編集', edit_admin_camp_site_path(@admin_camp_site) %></p>
+    <p><%= link_to '削除', admin_camp_site_path(@admin_camp_site), method: :delete %></p>

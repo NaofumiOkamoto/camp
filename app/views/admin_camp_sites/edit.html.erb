@@ -1,2 +1,22 @@
-<h1>AdminCampSites#edit</h1>
-<p>Find me in app/views/admin_camp_sites/edit.html.erb</p>
+<h1>キャンプ場編集</h1>
+
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>項目</td>
+        <td>入力内容</td>
+      </tr>
+    </thead>
+        <%= form_with model: @admin_camp_site, url: "/admin_camp_sites/#{@admin_camp_site.id}", local: true do |f| %>
+        <tr><td>キャンプ場名</td><th><%= f.text_field :name %></th></tr>
+        <tr><td>地域</td><th><%= f.collection_select :area_id, Prefecture.all, :id, :area %></th></tr>
+        <tr><td>県</td><th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name %></th></tr>
+        <tr><td>その他住所</td><th><%= f.text_area :address %></th></tr>
+        <tr><td>キャンプ場種類</td><th><%= f.collection_select :category_id, Category.all, :id, :category_name  %></th></tr>
+        <tr><td>紹介文</td><th><%= f.text_area :introduction %></th></tr>
+        <tr><td>画像</td><th><%= f.file_field :camp_image %></th></tr>
+        <tr><td></td><th><%= f.submit class: 'btn btn-primary' %></th></tr>
+      <% end %>
+  </table>
+</div>
