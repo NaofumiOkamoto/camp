@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about', to: 'homes#about'
   resources :maps, only: [:index]
+  resources :admin_users, only: [:index, :show, :destroy]
   resources :camp_sites, only: [:index, :show]
   resources :admin_camp_sites, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :boards, only: [:new, :create, :index, :show, :edit, :update, :destroy]

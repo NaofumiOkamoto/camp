@@ -2,8 +2,9 @@
   <div>
     <%= link_to '管理者登録', new_admin_registration_path, class: "btn btn-info" %>
     <%= link_to '管理者ログイン', new_admin_session_path, class: "btn btn-info" %>
-    <%= link_to 'キャンプ場新規登録', new_admin_camp_site_path, class: "btn btn-primary" %>
+    <%= link_to 'CAMP場新規登録', new_admin_camp_site_path, class: "btn btn-primary" %>
     <%= link_to 'CAMP場一覧', admin_camp_sites_path, class: "btn btn-primary" %>
+    <%= link_to 'USER一覧', admin_users_path, class: "btn btn-primary" %>
     <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-danger" %>
   </div>
   <div>

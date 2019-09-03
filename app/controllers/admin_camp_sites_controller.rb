@@ -38,6 +38,7 @@ class AdminCampSitesController < ApplicationController
   def destroy
     admin_camp_site = CampSite.find(params[:id])
     admin_camp_site.destroy
+    flash[:danger] = "#{admin_camp_site.name}を削除しました"
     redirect_to admin_camp_sites_path
 
   end
