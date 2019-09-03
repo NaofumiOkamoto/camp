@@ -12,4 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+//adminキャンプ場一覧
+.admin-cmap-sites-index-box {
+  float: left;
+  width: 200px;
+  height: 300px;
+}
