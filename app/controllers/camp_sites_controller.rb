@@ -6,5 +6,6 @@ class CampSitesController < ApplicationController
   end
   def show
     @camp_site = CampSite.find(params[:id])
+    @boards = Board.where(camp_site_id: @camp_site.id)
   end
 end

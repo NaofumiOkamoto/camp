@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: boards
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  date         :date
+#  time         :time
+#  place        :string
+#  purpos_id    :integer
+#  detail       :string
+#  condition    :string
+#  comment      :string
+#  camp_site_id :string
+#  is_deleted   :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

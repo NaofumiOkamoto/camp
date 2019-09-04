@@ -12,3 +12,17 @@
     <% end %>
     <%= render 'like_camps/like_camp_site', camp_site: @camp_site %>
 </table>
+
+<!-- 掲示板 -->
+<h2>募集掲示板</h2>
+<div>
+  <% @boards.each do |board| %>
+<div>
+    <%= board.user.nickname %>
+    <%= board.purpos_name %>
+    <%= board.condition %>
+    <%= board.date %>
+    <%= board.time %>
+    <%= board.place %>
+  <% end %>
+</div>

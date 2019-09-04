@@ -1,0 +1,32 @@
+<h1>掲示板作成</h1>
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>項目</td>
+        <td>掲示板情報</td>
+      </tr>
+    </thead>
+      <%= form_with model: @board, local: true do |f| %>
+        <%= render '/error_messages', model: f.object %> <!--バリデーションメッセージ -->
+        <tr><td>依頼主</td>
+          <th><%= current_user.nickname %><%= f.hidden_field :user_id, :value => current_user.id %></th></tr>
+        <tr><td>キャンプ場</td>
+          <th><%= f.collection_select :camp_site_id, CampSite.all, :id, :name %></th></tr>
+        <tr><td>日にち</td>
+          <th><%= f.date_field :date %>
+         時間<%= f.time_field :time %>頃 〜</th></tr>
+        <tr><td>場所</td>
+          <th><%= f.text_field :place %></th></tr>
+        <tr><td>目的</td>
+          <th><%= f.collection_select :purpos_id, Purpos.all, :id, :purpos_name %>
+         詳細<%= f.text_field :detail %></th></tr>
+        <tr><td>募集条件</td>
+          <th><%= f.text_field :condition %></th></tr>
+        <tr><td>コメント</td>
+          <th><%= f.text_area :comment %></th></tr>
+        <tr><td>画像</td>        <th><%= f.file_field :board_image %></th></tr>
+        <tr><td></td><th><%= f.submit class: 'btn btn-primary' %></th></tr>
+      <% end %>
+  </table>
+</div>
