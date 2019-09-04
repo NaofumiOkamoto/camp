@@ -1,5 +1,5 @@
 <h1>キャンプ場一覧</h1>
-<% @camp_sites.each do |camp_site| %>
+<% @search_camp_sites.each do |camp_site| %>
   <div class="admin-cmap-sites-index-box">
     <p><%= camp_site.id %></p>
     <p><%= camp_site.name %></p>
@@ -7,12 +7,9 @@
     <p><%= camp_site.prefecture_name %></p>
     <p><%= camp_site.address %></p>
     <p><%= camp_site.category_name %></p>
-    <p><%= camp_site.introduction %></p>
     <% if camp_site.camp_image.attached? %>
       <p><%= image_tag camp_site.camp_image, class: "camp-site-image" %></p>
     <% end %>
-    <p><%= link_to '詳細', admin_camp_site_path(camp_site) %></p>
-    <p><%= link_to '編集', edit_admin_camp_site_path(camp_site) %></p>
-    <p><%= link_to '削除', admin_camp_site_path(camp_site), method: :delete %></p>
+    <p><%= link_to '詳細', camp_site_path(camp_site) %></p>
   </div>
 <% end %>

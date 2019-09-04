@@ -1,1 +1,14 @@
 <h1>キャンプ場詳細</h1>
+<table>
+  <tr><td><%= @camp_site.id %></td></tr>
+  <tr><td><%= @camp_site.name %></td></tr>
+  <tr><td><%= @camp_site.area %></td></tr>
+  <tr><td><%= @camp_site.prefecture_name %></td></tr>
+  <tr><td><%= @camp_site.address %></td></tr>
+  <tr><td><%= @camp_site.category_name %></td></tr>
+  <tr><td><%= @camp_site.introduction %></td></tr>
+    <% if @camp_site.camp_image.attached? %>
+      <tr><td><%= image_tag @camp_site.camp_image, class: "camp-site-image" %></td></tr>
+    <% end %>
+    <%= render 'like_camps/like_camp_site', camp_site: @camp_site %>
+</table>

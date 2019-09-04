@@ -12,6 +12,10 @@
     <%= link_to 'ユーザーログイン', new_user_session_path, class: "btn btn-info" %>
     <%= link_to 'HOME', root_path, class: "btn btn-primary" %>
     <%= link_to 'MAP', maps_path, class: "btn btn-primary"%>
+    <%= link_to 'CAMP場一覧', camp_sites_path, class: "btn btn-primary"%>
+    <% if current_user %>
+      <%= link_to 'マイページ', user_path(current_user.id), class: "btn btn-primary"%>
+    <% end %>
     <%= link_to 'ユーザーログアウト', destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
   </div>
 </div>

@@ -15,6 +15,7 @@
 
 class CampSite < ApplicationRecord
   validates :name, presence: true
+  has_many :like_camps
 
 # Action Mailer（画像）
   has_one_attached :camp_image

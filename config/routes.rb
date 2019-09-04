@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :boards, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :admin_boards, only: [:index, :show, :destroy]
   resources :rooms, only: [:index, :create, :destroy]
-  resources :like_camps, only: [:create, :destroy]
-  resources :like_boards, only: [:create, :destroy]
+  post 'like_camps/:camp_site_id', to: 'like_camps#like_camp_site', as: 'like_camp'
+  delete 'like_camps/:camp_site_id', to: 'like_camps#unlike_camp_site', as: 'like_camps'
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+  resources :users, only: [:show, :edit, :index, :destroy, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

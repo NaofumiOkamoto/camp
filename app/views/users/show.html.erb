@@ -1,0 +1,18 @@
+<h1>マイページ</h1>
+
+<div>
+  <table class="table">
+    <tr><th>名前</th><th><%= @user.name %></th><tr>
+    <tr><th>画像</th><th><%= '画像' %></th><tr>
+    <tr><th>ニックネーム</th><th><%= @user.nickname %></th><tr>
+    <tr><th>都道府県</th><th><%= @user.prefecture_name %></th><tr>
+    <tr><th>メールアドレス</th><th><%= @user.email %></th><tr>
+    <tr><th>自己紹介</th><th><%= @user.introduction %></th><tr>
+</table>
+</div>
+
+<%= link_to "お気に入りキャンプ場", "#", class: "btn btn-primary" %>
+<%= link_to "気になる掲示板", "#", class: "btn btn-primary" %>
+<%= link_to "掲示板投稿履歴", "#", class: "btn btn-primary" %>
+<%= link_to "フォローユーザー", "#", class: "btn btn-primary" %>
+<%= link_to "フォロワー", "#", class: "btn btn-primary" %>

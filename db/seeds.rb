@@ -19,8 +19,10 @@ User.create!(name: name,
              prefecture_id: prefecture_id,
              style_id: style_id,
              introduction: "宜しくです",
-             check_in: "非チェックイン"
+             check_in: "非チェックイン",
             )
+  @user = User.find_by(id: "#{n+1}")
+  @user.user_image.attach(io: File.open("#{Rails.root}/db/fixtures/rantan.jpeg"), filename: "rantan.jpeg")
 end
 
 20.times do |n|
@@ -35,4 +37,6 @@ CampSite.create!(name: name,
              introduction: "良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です",
              address: "キャンプ市キャンプ村1-1-1-1-"
             )
+  @camp_site = CampSite.find_by(id: "#{n+1}")
+  @camp_site.camp_image.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
 end
