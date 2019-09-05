@@ -18,6 +18,7 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @board = Board.find(params[:id])
   end
 
   def edit
@@ -34,7 +35,8 @@ class BoardsController < ApplicationController
     :detail,
     :condition,
     :comment,
-    :camp_site_id
+    :camp_site_id,
+    :board_image
     )
   end
 end

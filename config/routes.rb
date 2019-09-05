@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'boards/new'
-  get 'boards/index'
-  get 'boards/show'
-  get 'boards/edit'
   root to: 'homes#top'
   get 'about', to: 'homes#about'
   resources :maps, only: [:index]

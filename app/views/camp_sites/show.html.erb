@@ -15,7 +15,6 @@
 
 <!-- 掲示板 -->
 <h2>募集掲示板</h2>
-<div>
   <% @boards.each do |board| %>
 <div>
     <%= board.user.nickname %>
@@ -24,5 +23,6 @@
     <%= board.date %>
     <%= board.time %>
     <%= board.place %>
+    <%= link_to '詳細', board_path(board.id), class: "btn btn-primary" %>
   <% end %>
 </div>
