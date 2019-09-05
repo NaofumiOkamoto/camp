@@ -45,13 +45,6 @@ ActiveRecord::Schema.define(version: 2019_09_05_031527) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "board_likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "board_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "boards", force: :cascade do |t|
     t.integer "user_id"
     t.date "date"

@@ -25,6 +25,7 @@ User.create!(name: name,
   @user.user_image.attach(io: File.open("#{Rails.root}/db/fixtures/rantan.jpeg"), filename: "rantan.jpeg")
 end
 
+
 20.times do |n|
   name = "オートキャンプ場#{n+1}"
   area_id = "#{n+1}"
@@ -35,8 +36,27 @@ CampSite.create!(name: name,
              prefecture_id: prefecture_id,
              category_id: category_id,
              introduction: "良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です良いキャンプ場です",
-             address: "キャンプ市キャンプ村1-1-1-1-"
+             address: "東京都渋谷区神南1丁目19-11"
             )
   @camp_site = CampSite.find_by(id: "#{n+1}")
   @camp_site.camp_image.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
 end
+CampSite.create!(name: "ふもとっぱらキャンプ場",
+             area_id: 22,
+             prefecture_id: 22,
+             category_id: 1,
+             introduction: "富士山の麓にある広いキャンプ場です",
+             address: "静岡県富士宮市麓156"
+            )
+  @camp_site = CampSite.find_by(id: 21)
+  @camp_site.camp_image.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+CampSite.create!(name: "森のまきばオートキャンプ場",
+             area_id: 12,
+             prefecture_id: 12,
+             category_id: 1,
+             introduction: "千葉県にある広いキャンプ場です",
+             address: "千葉県袖ヶ浦市林562-1-3"
+            )
+  @camp_site = CampSite.find_by(id: 22)
+  @camp_site.camp_image.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+
