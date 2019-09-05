@@ -1,0 +1,13 @@
+<div class="like-board-link" id="like-board-link-<%= board.id %>">
+  <% if user_signed_in? %> <!-- ログインしてないと押せない -->
+      <% if current_user.like_boards.find_by(board_id: board.id) %> <!-- ログインユーザーがお気に入り済みか -->
+        <%# board.like_boards.size %>
+        <%= link_to '気になーる登録済み', like_board_path(board.id), method: :delete, remote: true %>
+      <% else %>
+        <%# board.like_boards.size %>
+        <%= link_to '気になーるする', like_boards_path(board.id), method: :post, remote: true %>
+      <% end %>
+  <% else %>
+    <%= 'お気に入り' %>
+  <% end %>
+</div>

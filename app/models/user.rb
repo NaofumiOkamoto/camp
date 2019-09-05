@@ -25,6 +25,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :like_camps
+  has_many :like_boards
   has_many :boards
 
 # Action Mailer（画像）

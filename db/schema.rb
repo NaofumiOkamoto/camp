@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_065724) do
+ActiveRecord::Schema.define(version: 2019_09_05_031527) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 2019_09_04_065724) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "board_likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "boards", force: :cascade do |t|
     t.integer "user_id"
     t.date "date"
@@ -67,6 +74,13 @@ ActiveRecord::Schema.define(version: 2019_09_04_065724) do
     t.string "address"
     t.integer "category_id"
     t.text "introduction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "like_boards", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

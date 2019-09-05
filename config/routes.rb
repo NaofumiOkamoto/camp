@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :create, :destroy]
   post 'like_camps/:camp_site_id', to: 'like_camps#like_camp_site', as: 'like_camp'
   delete 'like_camps/:camp_site_id', to: 'like_camps#unlike_camp_site', as: 'like_camps'
+  post 'like_boards/:board_id', to: 'like_boards#like_board', as: 'like_board'
+  delete 'like_boards/:board_id', to: 'like_boards#unlike_board', as: 'like_boards'
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
