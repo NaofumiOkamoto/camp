@@ -11,12 +11,16 @@
 #  introduction  :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  latitude      :float
+#  longitude     :float
 #
 
 class CampSite < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :address, presence: true
+  after_validation :geocode
   has_many :like_camps
   has_many :boards
+
 
 # Action Mailer（画像）
   has_one_attached :camp_image
@@ -29,4 +33,12 @@ class CampSite < ApplicationRecord
   belongs_to_active_hash :category
   delegate :category_name, to: :category
 
+  private
+  def geocode # geocodingするAPIで経度緯度の情報を保存
+    uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0")
+    res = HTTP.get(uri).to_s
+    response = JSON.parse(res)
+    self.latitude = response["results"][0]["geometry"]["location"]["lat"]
+    self.longitude = response["results"][0]["geometry"]["location"]["lng"]
+  end
 end

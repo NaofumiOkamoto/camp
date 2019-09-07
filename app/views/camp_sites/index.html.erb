@@ -7,6 +7,8 @@
     <p><%= camp_site.prefecture_name %></p>
     <p><%= camp_site.address %></p>
     <p><%= camp_site.category_name %></p>
+    <p><%= camp_site.latitude %></p>
+    <p><%= camp_site.longitude %></p>
     <% if camp_site.camp_image.attached? %>
       <p><%= image_tag camp_site.camp_image, class: "camp-site-image" %></p>
     <% end %>
