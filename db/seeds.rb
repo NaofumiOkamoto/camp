@@ -175,3 +175,12 @@ CampSite.create!(name: "Lake Lodge YAMANAKA",
             )
   @camp_site = CampSite.find_by(id: 15)
   @camp_site.camp_image.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+CampSite.create!(name: "DMM WEB CAMP",
+             area_id: 12,
+             prefecture_id: 12,
+             category_id: 1,
+             introduction: "キャンプ場と見せかけてプログラミングスクールです",
+             address: "東京都渋谷区神南1丁目19-11"
+            )
+  @camp_site = CampSite.find_by(id: 16)
+  @camp_site.camp_image.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")

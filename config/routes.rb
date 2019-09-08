@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'rooms/show'
   root to: 'homes#top'
   get 'about', to: 'homes#about'
   resources :maps, only: [:index]
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :users, only: [:show, :edit, :index, :destroy, :update]
+
+  #mount ActionCable.server => '/cable'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
