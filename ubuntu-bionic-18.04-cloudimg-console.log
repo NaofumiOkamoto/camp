@@ -603,3 +603,4 @@ Ubuntu 18.04.2 LTS ubuntu-bionic ttyS0
 
 ubuntu-bionic login: [ 1020.394239] e1000 0000:00:03.0 enp0s3: Reset adapter
 [38805.773759] e1000 0000:00:03.0 enp0s3: Reset adapter
+[39430.774184] e1000 0000:00:03.0 enp0s3: Reset adapter

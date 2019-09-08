@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :like_camps
   has_many :like_boards
   has_many :boards
+  has_many :messages
 
 # Action Mailer（画像）
   has_one_attached :user_image
