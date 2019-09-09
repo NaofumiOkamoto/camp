@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_011815) do
+ActiveRecord::Schema.define(version: 2019_09_08_085431) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +91,10 @@ ActiveRecord::Schema.define(version: 2019_09_08_011815) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "camp_site_id"
+    t.integer "user_id"
+    t.index ["camp_site_id"], name: "index_messages_on_camp_site_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
