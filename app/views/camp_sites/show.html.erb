@@ -27,3 +27,10 @@
     気になる数<%= board.like_boards.count %>
   <% end %>
 </div>
+
+<!-- チャット -->
+<div id="messages" data-camp_site_id="<%= @camp_site.id %>">
+  <%= render @messages %>
+</div>
+<%= label nil, nil, 'コメント入力' %>
+<%= text_field nil, nil, 'data-behavior': 'room_speaker' %>

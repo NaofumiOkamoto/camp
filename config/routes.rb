@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :maps, only: [:index]
   get '/map_request', to: 'maps#map', as: 'map_request'
   resources :admin_users, only: [:index, :show, :destroy]
-  resources :camp_sites, only: [:index, :show]
+  resources :camp_sites, only: [:index]
+  get 'camp_sites/:camp_site_id', to: 'camp_sites#show', as: 'camp_site'
   resources :admin_camp_sites, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :boards, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :admin_boards, only: [:index, :show, :destroy]
