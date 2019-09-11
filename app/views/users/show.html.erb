@@ -8,7 +8,7 @@
       <h1><%= @user.nickname %>のページ</h1>
     <% end %>
 
-    <%= link_to 'フォローする', "#", class: "btn btn-primary" %>
+    <%= render 'follow_form' %>
 
     <div>
       <table class="table">
@@ -73,14 +73,18 @@
       <!-- フォローユーザー -->
       <div class="user-show-info user-show-follow">
           <div class="">
-            <%= 'フォローユーザー' %>
+            <% @following.each do |following| %>
+              <%= link_to following.nickname, user_path(following.id) %>
+            <% end %>
           </div>
       </div>
 
       <!-- フォロワー -->
       <div class="user-show-info user-show-follower">
           <div class="">
-            <%= 'フォロワー' %>
+            <% @followers.each do |follower| %>
+              <%= link_to follower.nickname, user_path(follower.id) %>
+            <% end %>
           </div>
       </div>
 

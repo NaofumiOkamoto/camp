@@ -28,7 +28,12 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  resources :users, only: [:show, :edit, :index, :destroy, :update]
+  resources :users, only: [:show, :edit, :index, :destroy, :update] do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
 
   #mount ActionCable.server => '/cable'
 
