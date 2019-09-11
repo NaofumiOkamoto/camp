@@ -1,0 +1,37 @@
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <% if user_signed_in? %>
+        <%= current_user.nickname %>ログイン中
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'HOME', root_path %></li>
+          <li><%= link_to 'MAP', maps_path %></li>
+          <li><%= link_to 'CAMP場一覧', camp_sites_path %></li>
+          <li data-turbolinks="false">
+            <%= link_to '掲示板作成', new_board_path %>
+          </li>
+          <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
+            <!-- 検索ここから -->
+              <li class="navbar-form navbar-left">
+              <div class="form-group">
+            <%= search_form_for @search, url: camp_sites_path do |f| %>
+                <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
+                <%# f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
+                <%# f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
+              </div>
+                <%= f.submit "検索", class: "btn btn-default" %>
+              </li>
+              </li>
+            <% end %>
+            <!-- 検索ここまで -->
+
+          <li><%= link_to 'ユーザーログアウト', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      <% else %>
+        <%= link_to 'ユーザー新規登録', new_user_registration_path, class: "btn btn-info" %>
+        <%= link_to 'ユーザーログイン', new_user_session_path, class: "btn btn-info" %>
+        <%= link_to 'HOME', root_path, class: "btn btn-primary" %>
+        <%= link_to 'MAP', maps_path, class: "btn btn-primary"%>
+        <%= link_to 'CAMP場一覧', camp_sites_path, class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>

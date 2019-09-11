@@ -34,6 +34,7 @@ class CampSite < ApplicationRecord
   belongs_to_active_hash :category
   delegate :category_name, to: :category
 
+
   private
   def geocode # geocodingするAPIで経度緯度の情報を保存
     uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0")

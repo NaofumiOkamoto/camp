@@ -1,3 +1,19 @@
-<div class="message">
-  <p><%= "#{message.user.email}: #{message.content}" %></p>
+<div class="container" id="chat-message">
+  <div class="row">
+    <% if message.user_id == current_user.id %>
+      <div id=<%= "message-"+ message.id.to_s %> class="col-xs-8">
+        <p id= <%= "content-"+ message.id.to_s %> class="chat-message-line">
+        <span id=<%= "nickname-"+ message.id.to_s %> ><%= "#{message.user.nickname}" %></span>
+        <span class="chat-message-comment"><%= "#{message.content}" %></span>
+        </p>
+      </div>
+    <% else %>
+      <div id=<%= "message-"+ message.id.to_s %> class="col-xs-8 col-xs-offset-3">
+        <p id= <%= "content-"+ message.id.to_s %>>
+        <span class="chat-message-comment"><%= "#{message.content}" %></span>
+        <span id=<%= "nickname-"+ message.id.to_s %> ><%= "#{message.user.nickname}" %></span>
+        </p>
+      </div>
+    <% end %>
+  </div>
 </div>

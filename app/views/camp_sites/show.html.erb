@@ -1,36 +1,99 @@
-<h1>キャンプ場詳細</h1>
-<table>
-  <tr><td><%= @camp_site.id %></td></tr>
-  <tr><td><%= @camp_site.name %></td></tr>
-  <tr><td><%= @camp_site.area %></td></tr>
-  <tr><td><%= @camp_site.prefecture_name %></td></tr>
-  <tr><td><%= @camp_site.address %></td></tr>
-  <tr><td><%= @camp_site.category_name %></td></tr>
-  <tr><td><%= @camp_site.introduction %></td></tr>
-    <% if @camp_site.camp_image.attached? %>
-      <tr><td><%= image_tag @camp_site.camp_image, class: "camp-site-image" %></td></tr>
-    <% end %>
-    <%= render 'like_camps/like_camp_site', camp_site: @camp_site %>
-</table>
-
-<!-- 掲示板 -->
-<h2>募集掲示板</h2>
-  <% @boards.each do |board| %>
-<div>
-    <%= board.user.nickname %>
-    <%= board.purpos_name %>
-    <%= board.condition %>
-    <%= board.date %>
-    <%= board.time %>
-    <%= board.place %>
-    <%= link_to '詳細', board_path(board.id), class: "btn btn-primary" %>
-    気になる数<%= board.like_boards.count %>
-  <% end %>
+<div class="container camp-site-show-page">
+  <div class="row">
+        <% if @camp_site.camp_image.attached? %>
+            <%= image_tag @camp_site.camp_image, class: "camp-site-show-image" %>
+        <% end %>
+  </div>
 </div>
+<hr>
+    <!-- 掲示板 -->
+<div class="container">
+  <div class="row">
 
-<!-- チャット -->
-<div id="messages" data-camp_site_id="<%= @camp_site.id %>">
-  <%= render @messages %>
+    <div class="col-xs-3 camp-site-subtitle-info">
+      <h3 class="">キャンプ情報</h3>
+    </div>
+    <div class="col-xs-3 camp-site-subtitle-board">
+      <h3 class="">募集掲示板</h3>
+    </div>
+    <div class="col-xs-3 camp-site-subtitle-chat">
+      <h3 class="">チャットルーム</h3>
+    </div>
+    <div class="col-xs-3 camp-site-subtitle-map">
+      <h3 class="">地図</h3>
+    </div>
+
+  <hr>
+  <hr>
+  <div class="camp-site-board-chat">
+
+    <div class="camp-site-show-info">
+        <table>
+          <h1><%= @camp_site.name %></h1>
+          <span><%= render 'like_camps/like_camp_site', camp_site: @camp_site %></span>
+          <hr>
+          <tr><td><%= @camp_site.address %></td></tr>
+          <tr><td><%= @camp_site.category_name %></td></tr>
+          <tr><td><%= @camp_site.introduction %></td></tr>
+        </table>
+    </div>
+
+    <div class="">
+        <% @boards.each do |board| %>
+      <div class="camp-site-board-index">
+          <%= board.user.nickname %>
+          <%= board.purpos_name %>
+          <%= board.condition %>
+          <%= board.date %>
+          <%= board.time %>
+          <%= board.place %>
+          <%= link_to '詳細', board_path(board.id), class: "btn btn-primary" %>
+          気になる数<%= board.like_boards.count %>
+      </div>
+        <% end %>
+    </div>
+
+      <!-- チャット -->
+    <div class="camp-site-chat-index">
+        <%# label nil, nil, 'コメント入力' %>
+        <%# text_field nil, nil, 'data-behavior': 'room_speaker' %>
+        <form>
+          <input type="text" />
+          <input type="submit" value="投稿" onClick="postChatMessage()" class="chat-button" />
+        </form>
+        <div class="camp-site-messages">
+          <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= current_user.id%>">
+            <%= render @messages %>
+          </div>
+        </div>
+    </div>
+
+    <!-- 地図 -->
+    <div id="camp-show-map">
+    </div>
+
+<script>
+var map;
+var marker;
+var infoWindow;
+
+function initMap(){
+  map = new google.maps.Map(document.getElementById('camp-show-map'), {
+  center: {lat: <%= @camp_site.latitude %>, lng: <%= @camp_site.longitude %>},
+  zoom:15
+  });
+    //マーカー設置
+    var address = {lat: <%= @camp_site.latitude %>, lng: <%= @camp_site.longitude %>};
+    marker = new google.maps.Marker({
+      map: map,
+      position: address,
+      });
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0&callback=initMap" async defer></script>
+
+  </div>
+
+  </div>
 </div>
-<%= label nil, nil, 'コメント入力' %>
-<%= text_field nil, nil, 'data-behavior': 'room_speaker' %>

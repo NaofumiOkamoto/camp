@@ -1,18 +1,20 @@
-<h2>募集掲示板</h2>
-<div>
-    <%= @board.user.nickname %>
-    <%= @board.purpos_name %>
-    <%= @board.condition %>
-    <%= @board.date %>
-    <%= @board.time %>
-    <%= @board.place %>
-    <%= @board.detail %>
-    <%= @board.comment %>
-    <% if @board.board_image.attached? %>
-      <%= image_tag @board.board_image %>
-    <% end %>
+<div class="container">
+  <h2>募集掲示板</h2>
+  <div>
+      <%= link_to @board.user.nickname, user_path(@board.user_id) %>
+      <%= @board.purpos_name %>
+      <%= @board.condition %>
+      <%= @board.date %>
+      <%= @board.time %>
+      <%= @board.place %>
+      <%= @board.detail %>
+      <%= @board.comment %>
+      <% if @board.board_image.attached? %>
+        <%= image_tag @board.board_image %>
+      <% end %>
+  </div>
+
+  <%= render 'like_boards/like_board', board: @board %>
+
+  <h2>コメント欄</h2>
 </div>
-
-<%= render 'like_boards/like_board', board: @board %>
-
-<h2>コメント欄</h2>

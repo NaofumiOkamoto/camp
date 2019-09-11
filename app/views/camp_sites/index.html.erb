@@ -1,28 +1,37 @@
-<h1>キャンプ場一覧</h1>
-<!-- 検索ここから -->
-<%= search_form_for @search, url: camp_sites_path do |f| %>
-  <%= f.label :name_cont, "キャンプ場名" %>
-  <%= f.search_field :name_cont %>
-  <%= f.collection_select :area_id_eq, @camp_sites, :area_id, :area, :include_blank => '全国' %>
-  <%= f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
-  <%= f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
-  <%= f.submit "検索" %>
-<% end %>
-<!-- 検索ここまで -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5">
+      <h1>キャンプ場一覧</h1>
+    </div>
+            <!-- 検索ここから -->
+            <div class="col-xs-6">
+              <div class="form-group">
+              <%= search_form_for @search, url: camp_sites_path do |f| %>
+                  <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
+                  <%= f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
+                  <%= f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => 'キャンプ場種類' %>
+                  <%= f.submit "検索", class: "btn btn-default" %>
+              <% end %>
+              </div>
+            </div>
+            <!-- 検索ここまで -->
 
-<% @search_camp_sites.each do |camp_site| %>
-  <div class="admin-cmap-sites-index-box">
-    <p><%= camp_site.id %></p>
-    <p><%= camp_site.name %></p>
-    <p><%= camp_site.area %></p>
-    <p><%= camp_site.prefecture_name %></p>
-    <p><%= camp_site.address %></p>
-    <p><%= camp_site.category_name %></p>
-    <p><%= camp_site.latitude %></p>
-    <p><%= camp_site.longitude %></p>
-    <% if camp_site.camp_image.attached? %>
-      <p><%= image_tag camp_site.camp_image, class: "camp-site-image" %></p>
-    <% end %>
-    <p><%= link_to '詳細', camp_site_path(camp_site) %></p>
+
+
+    <!-- キャンプ場一覧 -->
+    <div class="">
+      <% @search_camp_sites.each do |camp_site| %>
+      <div class="admin-cmap-sites-index-box">
+          <%= link_to camp_site_path(camp_site) do %>
+            <% if camp_site.camp_image.attached? %>
+              <p><%= image_tag camp_site.camp_image, class: "camp-site-image" %></p>
+            <% end %>
+            <p><%= link_to camp_site.name, camp_site_path(camp_site) %></p>
+            <p><%= camp_site.address %></p>
+            <p><%= camp_site.category_name %></p>
+          <% end %>
+      </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

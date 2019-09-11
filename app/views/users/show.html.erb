@@ -1,18 +1,90 @@
-<h1>マイページ</h1>
+<div class="container">
+  <div class="row">
 
-<div>
-  <table class="table">
-    <tr><th>名前</th><th><%= @user.name %></th><tr>
-    <tr><th>画像</th><th><%= '画像' %></th><tr>
-    <tr><th>ニックネーム</th><th><%= @user.nickname %></th><tr>
-    <tr><th>都道府県</th><th><%= @user.prefecture_name %></th><tr>
-    <tr><th>メールアドレス</th><th><%= @user.email %></th><tr>
-    <tr><th>自己紹介</th><th><%= @user.introduction %></th><tr>
-</table>
+    <% if current_user.id == @user.id %>
+      <h1>マイページ</h1>
+      <%= link_to '編集', edit_user_path %>
+    <% else %>
+      <h1><%= @user.nickname %>のページ</h1>
+    <% end %>
+
+    <%= link_to 'フォローする', "#", class: "btn btn-primary" %>
+
+    <div>
+      <table class="table">
+        <tr><th>ユーザーID</th><th><%= @user.id %></th><tr>
+        <tr><th>名前</th><th><%= @user.name %></th><tr>
+        <tr><th>画像</th><th><%= '画像' %></th><tr>
+        <tr><th>ニックネーム</th><th><%= @user.nickname %></th><tr>
+        <tr><th>都道府県</th><th><%= @user.prefecture_name %></th><tr>
+        <tr><th>メールアドレス</th><th><%= @user.email %></th><tr>
+        <tr><th>自己紹介</th><th><%= @user.introduction %></th><tr>
+    </table>
+    </div>
+
+    <div class="user-show-subtitle-box clearfix">
+      <div class="user-show-subtitle user-show-subtitle-like-camp">
+        <h3>お気に入り<br>キャンプ場</h3>
+      </div>
+      <div class="user-show-subtitle user-show-subtitle-like-board">
+        <h3>気になる<br>掲示板</h3>
+      </div>
+      <div class="user-show-subtitle user-show-subtitle-post-board">
+        <h3>掲示板<br>投稿履歴</h3>
+      </div>
+      <div class="user-show-subtitle user-show-subtitle-follow">
+        <h3>フォロー<br>ユーザー</h3>
+      </div>
+      <div class="user-show-subtitle user-show-subtitle-follower">
+        <h3>フォロワー</h3>
+      </div>
+    </div>
+
+    <div class="user-show-info-box">
+
+      <!-- お気に入りキャンプ場 -->
+      <div class="user-show-info user-show-like-camp">
+        <% @camps.each do |camp| %>
+          <%= camp.camp_site.name %>
+        <% end %>
+      </div>
+
+      <!-- 気になる掲示板 -->
+      <div class="user-show-info user-show-like-board">
+        <% @boards.each do |board| %>
+          <div class="">
+            <%= board.board.user.nickname %>
+            <%= board.board.purpos_name %>
+            <%= board.board.date %>
+            <%= board.board.time %>
+            <%= link_to '詳細', board_path(board.board.id) %>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- 掲示板投稿履歴 -->
+      <div class="user-show-info user-show-post-board">
+        <% @post_boards.each do |post| %>
+          <div class="">
+            <%= post.purpos_name %>
+          </div>
+        <% end %>
+      </div>
+      <!-- フォローユーザー -->
+      <div class="user-show-info user-show-follow">
+          <div class="">
+            <%= 'フォローユーザー' %>
+          </div>
+      </div>
+
+      <!-- フォロワー -->
+      <div class="user-show-info user-show-follower">
+          <div class="">
+            <%= 'フォロワー' %>
+          </div>
+      </div>
+
+    </div>
+
+  </div>
 </div>
-
-<%= link_to "お気に入りキャンプ場", "#", class: "btn btn-primary" %>
-<%= link_to "気になる掲示板", "#", class: "btn btn-primary" %>
-<%= link_to "掲示板投稿履歴", "#", class: "btn btn-primary" %>
-<%= link_to "フォローユーザー", "#", class: "btn btn-primary" %>
-<%= link_to "フォロワー", "#", class: "btn btn-primary" %>

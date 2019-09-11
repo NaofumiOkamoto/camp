@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     if @board.save
       flash[:success] = "掲示板を作成しました"
-      redirect_to camp_sites_path
+      redirect_to "/camp_sites/#{@board.camp_site_id}"
     else
       render :new
     end
