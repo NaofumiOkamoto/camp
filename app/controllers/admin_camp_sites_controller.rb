@@ -55,9 +55,9 @@ class AdminCampSitesController < ApplicationController
     :address,
     :category_id,
     :introduction,
-    :camp_image,
     :latitude,
-    :longitude
+    :longitude,
+    camp_images: []
     )
   end
 

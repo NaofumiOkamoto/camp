@@ -24,7 +24,7 @@ class CampSite < ApplicationRecord
 
 
 # Action Mailer（画像）
-  has_one_attached :camp_image
+  has_many_attached :camp_images
 
 # 地域、都道府県のアクティブハッシュ
   extend ActiveHash::Associations::ActiveRecordExtensions

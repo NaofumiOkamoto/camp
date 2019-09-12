@@ -12,6 +12,9 @@
 <style>
 #map{
   height: 600px;
+    width: 70%;
+      float: left;
+        margin-right: 30px;
 }
 </style>
 
@@ -21,8 +24,9 @@ var map;
 var geocoder;
 var marker = [];
 var infoWindow = [];
-var center = { lat: 36.000, lng: 140.000 };
+var center = { lat: 36.000, lng: 139.000 };
 
+// 初期表示
 function initMap(){
   geocoder = new google.maps.Geocoder() //geocoderを初期化
   map = new google.maps.Map(document.getElementById('map'), {

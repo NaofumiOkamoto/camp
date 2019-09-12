@@ -23,7 +23,7 @@ class Board < ApplicationRecord
   has_many :like_boards
 
 # Action Mailer（画像）
-  has_one_attached :board_image
+  has_many_attached :board_images
 
 # 募集目的のアクティブハッシュ
   extend ActiveHash::Associations::ActiveRecordExtensions

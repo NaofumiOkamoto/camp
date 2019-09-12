@@ -3,18 +3,19 @@
 
     <% if current_user.id == @user.id %>
       <h1>マイページ</h1>
-      <%= link_to '編集', edit_user_path %>
     <% else %>
       <h1><%= @user.nickname %>のページ</h1>
     <% end %>
 
-    <%= render 'follow_form' %>
-
+    <% if current_user.id != @user.id %>
+      <%= render 'follow_form' %>
+    <% end %>
+  <%= image_tag @user.user_image, class: "" %>
     <div>
       <table class="table">
+        <%= link_to '編集', edit_user_path %>
         <tr><th>ユーザーID</th><th><%= @user.id %></th><tr>
         <tr><th>名前</th><th><%= @user.name %></th><tr>
-        <tr><th>画像</th><th><%= '画像' %></th><tr>
         <tr><th>ニックネーム</th><th><%= @user.nickname %></th><tr>
         <tr><th>都道府県</th><th><%= @user.prefecture_name %></th><tr>
         <tr><th>メールアドレス</th><th><%= @user.email %></th><tr>

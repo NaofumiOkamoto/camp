@@ -17,7 +17,7 @@
         <tr><td>その他住所</td>  <th><%= f.text_area :address %></th></tr>
         <tr><td>種類</td>        <th><%= f.collection_select :category_id, Category.all, :id, :category_name  %></th></tr>
         <tr><td>紹介文</td>      <th><%= f.text_area :introduction %></th></tr>
-        <tr><td>画像</td>        <th><%= f.file_field :camp_image %></th></tr>
+        <tr><td>画像</td>        <th><%= f.file_field :camp_images, multiple: true %></th></tr>
         <tr><td></td><th><%= f.submit class: 'btn btn-primary' %></th></tr>
       <% end %>
   </table>

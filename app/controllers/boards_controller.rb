@@ -36,7 +36,7 @@ class BoardsController < ApplicationController
     :condition,
     :comment,
     :camp_site_id,
-    :board_image
+    board_images: []
     )
   end
 end
