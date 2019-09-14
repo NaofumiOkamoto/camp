@@ -56,6 +56,8 @@ CampSite.create!(name: "森のまきばオートキャンプ場",
             )
   @camp_site = CampSite.find_by(id: 2)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "柏しょうなんゆめファーム",
              area_id: 12,
              prefecture_id: 12,
@@ -66,6 +68,8 @@ CampSite.create!(name: "柏しょうなんゆめファーム",
             )
   @camp_site = CampSite.find_by(id: 3)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "南房総オレンジ村オートキャンプ場",
              area_id: 12,
              prefecture_id: 12,
@@ -75,6 +79,8 @@ CampSite.create!(name: "南房総オレンジ村オートキャンプ場",
             )
   @camp_site = CampSite.find_by(id: 4)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp4.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "長瀞オートキャンプ場",
              area_id: 12,
              prefecture_id: 12,
@@ -84,6 +90,8 @@ CampSite.create!(name: "長瀞オートキャンプ場",
             )
   @camp_site = CampSite.find_by(id: 5)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp5.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "北軽井沢スウィートグラス",
              area_id: 12,
              prefecture_id: 12,
@@ -93,6 +101,8 @@ CampSite.create!(name: "北軽井沢スウィートグラス",
             )
   @camp_site = CampSite.find_by(id: 6)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "南アルプス三景園オートキャンプ場",
              area_id: 12,
              prefecture_id: 12,
@@ -102,6 +112,8 @@ CampSite.create!(name: "南アルプス三景園オートキャンプ場",
             )
   @camp_site = CampSite.find_by(id: 7)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "長瀞キャンプヴィレッジ",
              area_id: 12,
              prefecture_id: 12,
@@ -112,6 +124,7 @@ CampSite.create!(name: "長瀞キャンプヴィレッジ",
             )
   @camp_site = CampSite.find_by(id: 8)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp2.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "秩父巴川オートキャンプ場",
              area_id: 12,
              prefecture_id: 12,
@@ -121,6 +134,7 @@ CampSite.create!(name: "秩父巴川オートキャンプ場",
             )
   @camp_site = CampSite.find_by(id: 9)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "青野原オートキャンプ場",
              area_id: 12,
              prefecture_id: 12,
@@ -130,6 +144,7 @@ CampSite.create!(name: "青野原オートキャンプ場",
             )
   @camp_site = CampSite.find_by(id: 10)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "浩庵キャンプ場",
              area_id: 12,
              prefecture_id: 12,
@@ -139,6 +154,7 @@ CampSite.create!(name: "浩庵キャンプ場",
             )
   @camp_site = CampSite.find_by(id: 11)
   @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp1.jpg"), filename: "camp.jpg")
+  @camp_site.camp_images.attach(io: File.open("#{Rails.root}/db/fixtures/camp3.jpg"), filename: "camp.jpg")
 CampSite.create!(name: "フォンテーヌの森つくばキャンプ場",
              area_id: 12,
              prefecture_id: 12,
@@ -200,7 +216,7 @@ CampSite.create!(name: "DMM WEB CAMP",
   # 掲示板
   50.times do |n|
     user_id = "#{rand(1..20)}"
-    date = "2019/10/#{n+1}"
+    date = "2019/10/#{rand(1..30)}"
     time = "#{rand(8..20)}:00"
     place = "#{rand(1..20)}番サイト"
     purpos_id = "#{rand(1..5)}"
@@ -218,7 +234,8 @@ Board.create!(user_id: user_id,
              camp_site_id: camp_site_id,
              )
 @board = Board.find_by(id: "#{n+1}")
-@board.board_image.attach(io: File.open("#{Rails.root}/db/fixtures/rantan.jpeg"), filename: "rantan.jpeg")
+@board.board_images.attach(io: File.open("#{Rails.root}/db/fixtures/rantan.jpeg"), filename: "rantan.jpeg")
+@board.board_images.attach(io: File.open("#{Rails.root}/db/fixtures/gear.jpeg"), filename: "rantan.jpeg")
   end
 
   10.times do |n|

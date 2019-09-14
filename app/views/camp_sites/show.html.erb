@@ -5,11 +5,12 @@
           <%= image_tag @camp_site.camp_images.first, class: "camp-site-show-image-0" %>
       </div>
       <div class="col-xs-4 camp-show-image-col">
-            <% if @camp_site.camp_images[1..2].empty? %>
-              <%= image_tag '/assets/tent.png', class: "camp-site-show-image" %>
-              <%= image_tag '/assets/tent.png', class: "camp-site-show-image" %>
-            <% elsif @camp_site.camp_images[2].empty? %>
-              <%= image_tag '/assets/tent.png', class: "camp-site-show-image" %>
+            <% if @camp_site.camp_images[1..2].blank? %>
+              <%= image_tag @camp_site.camp_images[0], class: "camp-site-show-image" %>
+              <%= image_tag @camp_site.camp_images[0], class: "camp-site-show-image" %>
+            <% elsif @camp_site.camp_images[2].blank? %>
+              <%= image_tag @camp_site.camp_images[0], class: "camp-site-show-image" %>
+              <%= image_tag @camp_site.camp_images[1], class: "camp-site-show-image" %>
             <% else %>
               <% @camp_site.camp_images[1..2].each do |image| %>
                 <%= image_tag image, class: "camp-site-show-image" %>
@@ -59,16 +60,25 @@
     <!-- 掲示板 -->
     <div class="">
         <% @boards.each do |board| %>
-      <div class="camp-site-board-index">
-          <%= board.user.nickname %>
-          <%= board.purpos_name %>
-          <%= board.condition %>
-          <%= board.date %>
-          <%= board.time %>
-          <%= board.place %>
-          <%= link_to '詳細', board_path(board.id), class: "btn btn-primary" %>
-          気になる数<%= board.like_boards.count %>
-      </div>
+          <%= link_to  board_path(board.id) do %>
+            <div class="col-xs-12 camp-site-board-index">
+              <div class="col-xs-3">
+                <%= board.date %><br>
+                <%= board.time %><br>
+                <%= board.place %>
+              </div>
+              <div class="col-xs-2">
+                <%= board.user.nickname %>
+              </div>
+              <div class="col-xs-4">
+                <%= board.purpos_name %><br>
+                <%= board.condition %>
+              </div>
+              <div class="col-xs-3">
+                気になる数<%= board.like_boards.count %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
     </div>
 

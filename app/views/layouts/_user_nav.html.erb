@@ -1,15 +1,7 @@
   <div class="navbar navbar-default">
     <div class="container-fluid">
       <% if user_signed_in? %>
-        <%= current_user.nickname %>ログイン中
         <ul class="nav navbar-nav">
-          <li><%= link_to 'HOME', root_path %></li>
-          <li><%= link_to 'MAP', maps_path %></li>
-          <li><%= link_to 'CAMP場一覧', camp_sites_path %></li>
-          <li data-turbolinks="false">
-            <%= link_to '掲示板作成', new_board_path %>
-          </li>
-          <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
             <!-- 検索ここから -->
               <li class="navbar-form navbar-left">
               <div class="form-group">
@@ -20,11 +12,73 @@
               </div>
                 <%= f.submit "検索", class: "btn btn-default" %>
               </li>
-              </li>
             <% end %>
             <!-- 検索ここまで -->
 
-          <li><%= link_to 'ユーザーログアウト', destroy_user_session_path, method: :delete %></li>
+            <li>
+              <%= current_user.nickname %>ログイン中<br>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            </li>
+        </ul>
+          <!-- ハンバーガーメニュー -->
+          <ul>
+              <div id="sp-menu">
+                <h3>MENU</h3>
+                <ul>
+                  <li><%= link_to root_path do %>
+                    <img src="/assets/bonfire.png" alt="" class="nav-icon">
+                    HOME
+                  <% end %>
+                  </li>
+                  <li><%= link_to maps_path do  %>
+                    <img src="/assets/bonfire.png" alt="" class="nav-icon">
+                    MAP
+                  <% end %>
+                  </li>
+                  <li><%= link_to camp_sites_path do %>
+                    <img src="/assets/tipi.png" alt="" class="nav-icon">
+                    CAMP場一覧
+                  <% end %>
+                  </li>
+                  <li data-turbolinks="false">
+                    <%= link_to new_board_path do %>
+                    <img src="/assets/axe2.png" alt="" class="nav-icon">
+                    掲示板
+                  <% end %>
+                  </li>
+                  <li><%= link_to user_path(current_user.id) do %>
+                    <img src="/assets/boy-scout2.png" alt="" class="nav-icon">
+                    マイページ
+                  <% end %>
+                  </li>
+                    <!-- 検索ここから -->
+                      <li>
+                        <div class="form-group">
+                          <%= search_form_for @search, url: camp_sites_path do |f| %>
+                          <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
+                          <%# f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
+                          <%# f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
+                        </div>
+                          <%= f.submit "検索", class: "btn btn-default" %>
+                      </li>
+                          <% end %>
+                    <!-- 検索ここまで -->
+
+                  <li><%= link_to 'ユーザーログアウト', destroy_user_session_path, method: :delete %></li>
+              </ul>
+
+            </div>
+            <div id="hm-icon">
+              <a class="menu-trigger" href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+          </li>
+
+
+          <!-- ハンバーガーメニューここまで -->
         </ul>
       <% else %>
         <%= link_to 'ユーザー新規登録', new_user_registration_path, class: "btn btn-info" %>

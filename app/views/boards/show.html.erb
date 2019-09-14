@@ -1,26 +1,32 @@
 <div class="container">
-  <h2>募集掲示板</h2>
-  <div>
-      <%= link_to @board.user.nickname, user_path(@board.user_id) %>
-      <%= @board.purpos_name %>
-      <%= @board.condition %>
-      <%= @board.date %>
-      <%= @board.time %>
-      <%= @board.place %>
-      <%= @board.detail %>
-      <%= @board.comment %>
-      <div>
-        <% if @board.board_images.attached? %>
-          <% @board.board_images.each do |image| %>
-            <%= image_tag image.variant(resize: "200x200") %>
-          <% end %>
-        <% end %>
+  <div class="row">
+    <div class="col-xs-12 board-show-head">
+      <h2>募集掲示板</h2>
+      <div class="col-xs-3 board-show-user">
+        <p><%= image_tag @board.user.user_image, class: "board-user-image" %></p>
+        <p>募集者<%= link_to @board.user.nickname, user_path(@board.user_id) %></p>
       </div>
-  </div>
+      <div class="col-xs-9 board-show-board">
+        <p>募集内容:<%= @board.purpos_name %></p>
+        <p>詳細: <%= @board.detail %></p>
+        <p>場所: <%= @board.place %></p>
+        <p>条件: <%= @board.condition %></p>
+        <p>日時: <%= @board.date %><%= @board.time %></p>
+        <p>コメント: <%= @board.comment %></p>
+      </div>
+    </div>
+        <div>
+          <% if @board.board_images.attached? %>
+            <% @board.board_images.each do |image| %>
+              <%= image_tag image.variant(resize: "200x200") %>
+            <% end %>
+          <% end %>
+        </div>
 
-  <%= render 'like_boards/like_board', board: @board %>
+    <%= render 'like_boards/like_board', board: @board %>
 
-  <h2>コメント欄</h2>
-  <div class="board-comment-box">
+    <h2>コメント欄</h2>
+    <div class="board-comment-box">
+    </div>
   </div>
 </div>

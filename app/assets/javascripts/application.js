@@ -27,6 +27,15 @@ function postChatMessage() {
   App.room.speak(element.value);
   element.value = '';
 }
+//ハンバーガーメニュー
+$(document).on('turbolinks:load', function() {
+  $('.menu-trigger').on('click', function(){
+  $(this).toggleClass('active');
+  $('#sp-menu').fadeToggle();
+  return false;
+  });
+});
+
 
 //キャンプ場一覧無限スクロール
 $(window).on('scroll', function() {
@@ -108,7 +117,15 @@ $(document).on('turbolinks:load', function() {
     $(this).css({'background-color': '#fff'});
   });
 });
-
+//キャンプ場詳細掲示板
+$(document).on('turbolinks:load', function() {
+  $('.camp-site-board-index').mouseover(function(){
+    $(this).css({'background-color': '#808000'});
+  });
+  $('.camp-site-board-index').mouseout(function(){
+    $(this).css({'background-color': '#f5f5dc'});
+  });
+});
 //ユーザー詳細ページ
 $(document).on('turbolinks:load', function() {
   //お気に入りキャンプ場タブ
