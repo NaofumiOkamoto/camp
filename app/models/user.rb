@@ -17,13 +17,27 @@
 #  introduction           :text
 #  check_in               :string           default("非チェックイン")
 #  isdeleted              :boolean          default(FALSE)
+#  provider               :string
+#  uid                    :string
 #
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
+  def self.form_omniauth(auth) #snsログイン用
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+    unless user
+      user = User.create(
+        uid: auth.uid,
+        provider: auth.provider,
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
+    end
+    user
+  end
   has_many :like_camps
   has_many :like_boards
   has_many :boards
