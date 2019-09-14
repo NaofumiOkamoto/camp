@@ -17,6 +17,8 @@
 #  introduction           :text
 #  check_in               :string           default("非チェックイン")
 #  isdeleted              :boolean          default(FALSE)
+#  provider               :string
+#  uid                    :string
 #
 
 require 'test_helper'
