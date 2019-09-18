@@ -22,6 +22,14 @@
             <th><%= f.text_area :comment %></th></tr>
             <tr><td>画像</td>
             <th><%= f.file_field :board_images ,multiple: true %></th></tr>
+            <tr><th>
+                <%# if @board.board_images.attached? %>
+                  <% @board.board_images.each do |image| %>
+                    <%= image_tag image.preview(resize: "150x150") %>
+                    <%= f.hidden_field :board_images %>
+                  <% end %>
+                <%# end %>
+              </th></tr>
       </table>
             <div class="board-new-button"><%= f.submit '掲示板投稿', class: 'btn board-new-button' %></div>
           <% end %>

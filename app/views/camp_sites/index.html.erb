@@ -9,21 +9,26 @@
           <div class="form-group">
           <%= search_form_for @search, url: camp_sites_path do |f| %>
               <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
-              <%= f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
-              <%= f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => 'キャンプ場種類' %>
+              <%= f.collection_select :prefecture_id_eq, @prefectures, :id, :prefecture_name, :include_blank => '全国' %>
+              <%= f.collection_select :category_id_eq, @categories, :id, :category_name, :include_blank => 'キャンプ場種類' %>
               <%= f.submit "検索", class: "btn btn-default" %>
+              検索結果<%= @search_camp_count.count %>件
           <% end %>
           </div>
         </div>
         <!-- 検索ここまで -->
     </div>
 
-
+    <!-- 閲覧履歴表示 -->
+    <div class="left-side-history">
+      <%= render '/history', recently_campsite: @recently_campsite %>
+    </div>
 
       <!-- キャンプ場一覧 -->
+      <div class="camp-index">
       <div class="camp-sites-index jscroll clearfix">
           <% @search_camp_sites.each do |camp_site| %>
-            <div class="camp-sites-index-box col-xs-4 clearfix">
+            <div class="camp-sites-index-box">
                 <%= link_to camp_site_path(camp_site) do %>
                   <% if camp_site.camp_images.attached? %>
                     <p><%= image_tag camp_site.camp_images.first, class: "camp-site-image" %></p>
@@ -40,9 +45,9 @@
                   </div>
                 <% end %>
             </div>
-          <% end %>
         <%= paginate @search_camp_sites %>
+          <% end %>
+      </div>
       </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>

@@ -167,21 +167,41 @@ ul {
   margin: 0 auto;
   border: solid 2px #bdb76b;
 }
+//履歴
+.left-side-history {
+  width: 245px;
+  height: 400px;
+  border: solid 1px #808000;
+  border-radius: 10px;
+  float: left;
+  position: fixed;
+  top: 94px;
+  left: 28px;
+}
 
 //キャンプ場一覧
+.camp-index {
+  width: 85%;
+  float: right;
+}
+.camp-sites-index {
+  width: 100%;
+}
 .camp-sites-index-box {
-  width: 500px;
+  width: 33%;
   height: 420px;
   text-align: center;
-  font-size: 20px;
+  font-size: 17px;
+  float: left;
+  padding-top: 20px;
 }
 .camp-sites-index-box:hover {
   transform: scale(1.02);
   transition-duration: 0.2s;
 }
 .camp-site-image {
-  width: 400px;
-  height: 250px;
+  width: 80%;
+  height: 200px;
 }
 .camp-site-index-info {
   font-size: 13px;
@@ -192,20 +212,20 @@ ul {
   width: 100%;
 }
 .camp-site-index-name {
-  font-size: 29px;
+  font-size: 23px;
   font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
   color: #556b2f;
 }
 nav.pagination {
   display: none;
 }
-small {
-  display: block;
+.small {
   text-align: center;
   margin: 0 auto;
   font-size: 30px;
   font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
   color: #556b2f;
+  width: 100%;
 }
 .camp-index-tab {
   background-color: #eee8aa;
@@ -215,11 +235,15 @@ small {
   color: #808000;
 }
 //キャンプ場詳細
+.camp-show-container {
+  width: 94%;
+}
 .camp-site-show-page {
-  width: 88%;
+  width: 80%;
+  float: right;
 }
 .camp-site-show-image-box {
-  width: 800px;
+  width: 100%;
   height: 350px;
 }
 .camp-site-show-image-0 {
@@ -270,11 +294,14 @@ small {
   height: 100px;
   margin-top: 13px;
   padding: 3px 10px 3px 10px;
-  display: none;
   background-color: #f5f5dc;
   font-size: 20px;
   color: #bdb76b;
 }
+.camp-site-board-index-box {
+  display: none;
+}
+  //border: solid 1px #d2b48c;
 .camp-site-board-index:hover {
   transform: scale(1.02);
   transition-duration: 0.2s;
@@ -288,21 +315,35 @@ small {
   padding: 5px;
 }
 .camp-site-messages {
-  width: 500px;
-  height: 300px;
+  width: 90%;
+  height: 700px;
   overflow: scroll;
+  margin: 0 auto;
 }
 .chat-message-comment {
-  width: 350px;
+  width: 100%;
   background-color: #f0e68c;
   border: solid 1px #d2b48c;
   border-radius: 10px;
-  padding: 3px 6px 3px 6px;
-  margin-bottom: 5px;
+  padding: 10px 15px 15px 10px;
+  margin: 0 18px;
+  font-size: 20px;
 }
 .chat-message-line {
-  width: 200px;
+  width: 100%;
   padding-top: 4px;
+}
+#chat-message {
+  margin-bottom: 10px;
+}
+.chat-message-right {
+  text-align: right;
+}
+.chat-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  border: solid 1px #808000;
 }
   //地図
 #camp-show-map {
@@ -334,6 +375,21 @@ small {
 .user-show-like-camp {
   display: block;
 }
+.user-show-edit-form {
+  width: 60%;
+  margin: 0 auto;
+}
+.user-edit-button {
+  width: 100px;
+  height: 50px;
+  background-color: #808000;
+  color: #fff;
+  font-size: 20px;
+}
+.user-show-edit-button {
+  text-align: right;
+}
+
 //掲示板作成
 .board-new-table {
   width:65%;

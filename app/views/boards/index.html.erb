@@ -1,2 +1,46 @@
-<h1>Boards#index</h1>
-<p>Find me in app/views/boards/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>掲示板一覧</h1>
+    <%= link_to '掲示板作成', new_board_path %>
+        <!-- 検索ここから -->
+        <div class="col-xs-6">
+          <div class="form-group">
+          <%= search_form_for @search_board, url: boards_path do |f| %>
+              <%= f.collection_select :purpos_id_eq, @purposes, :id, :purpos_name, :include_blank => '目的' %>
+              <%= f.collection_select :camp_site_id_eq, @camp_site, :id, :name, :include_blank => 'キャンプ場' %>
+              <%= f.date_field :date_gteq %>~
+              <%= f.date_field :date_lteq %>
+              <%= f.submit "検索", class: "btn btn-default" %>
+                      <%= @search_board_count.count %>件
+          <% end %>
+          </div>
+        </div>
+        <!-- 検索ここまで -->
+      <div class="camp-sites-index jscroll">
+          <% @search_board_sites.each do |board| %>
+            <%= link_to  board_path(board.id) do %>
+              <div class="col-xs-12 camp-site-board-index">
+                <div class="col-xs-3">
+                  <%= board.date %>
+                  <%= board.time %><br>
+                  <%= board.camp_site.name %>
+                  <%= board.place %>
+                </div>
+                <div class="col-xs-2">
+                  <%= board.user.nickname %>
+                </div>
+                <div class="col-xs-4">
+                  <%= board.purpos_name %><br>
+                  <%= board.condition %>
+                </div>
+                <div class="col-xs-3">
+                  気になる数<%= board.like_boards.count %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <%= paginate @search_board_sites %>
+      </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>

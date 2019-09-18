@@ -1,5 +1,15 @@
-<div class="container camp-site-show-page">
+<div class="container camp-show-container">
   <div class="row">
+
+<!-- 閲覧履歴表示 -->
+<div class="left-side-history">
+  <%= render '/history', recently_campsite: @recently_campsite %>
+</div>
+
+<div class="camp-site-show-page">
+  <div class="row">
+
+    <!-- 画像 -->
       <div class="col-xs-8 camp-show-image-col">
         <% if @camp_site.camp_images.attached? %>
           <%= image_tag @camp_site.camp_images.first, class: "camp-site-show-image-0" %>
@@ -18,12 +28,8 @@
           <% end %>
         <% end %>
       </div>
-  </div>
-</div>
 <hr>
     <!-- 掲示板 -->
-<div class="container camp-site-show-page-body">
-  <div class="row">
 
     <div class="col-xs-3 camp-site-subtitle camp-site-subtitle-info">
       <h3 class="">キャンプ情報</h3>
@@ -61,13 +67,14 @@
     <div class="">
         <% @boards.each do |board| %>
           <%= link_to  board_path(board.id) do %>
-            <div class="col-xs-12 camp-site-board-index">
+            <div class="col-xs-12 camp-site-board-index camp-site-board-index-box">
               <div class="col-xs-3">
                 <%= board.date %><br>
                 <%= board.time %><br>
                 <%= board.place %>
               </div>
               <div class="col-xs-2">
+                <%= board.camp_site.name %>
                 <%= board.user.nickname %>
               </div>
               <div class="col-xs-4">
@@ -125,4 +132,6 @@ function initMap(){
   </div>
 
   </div>
+</div>
+</div>
 </div>

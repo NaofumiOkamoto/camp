@@ -18,6 +18,7 @@
 //= require underscore
 //= require gmaps/google
 //= require jquery.jscroll.min.js
+//= reauire js.cookie
 //= require turbolinks
 //= require_tree .
 
@@ -46,7 +47,6 @@ $(window).on('scroll', function() {
         contentSelector: '.camp-sites-index',
         nextSelector: 'span.next:last a'
       });
-        console.log(scrollHeight)
   }
 });
 
@@ -224,3 +224,28 @@ $(document).on('turbolinks:load', function() {
     $(this).css({'background-color': '#bdb76b'});
   });
 });
+
+//画像プレビュー（未実装）
+$(document).on('turbolinks:load', function(){
+  $('#board_board_images').on('change',function(e){
+  var files = e.target.files;
+  var d = (new $.Deferred()).resolve();
+  $.each(files, function(i,file){
+  d = d.then(function(){return previewImage(file)});
+  });
+});
+  var previewImage = function(imageFile){
+    var reader = new FileReader();
+    var img = new Image();
+    var def =$.Deferred();
+    reader.onload = function(e){
+      $('.board_images_field').append(img);
+    console.log(img)
+      img.src = e.target.result;
+      def.resolve(img);
+    };
+    reader.readAsDataURL(imageFile);
+    return def.promise();
+    }
+})
+

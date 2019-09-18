@@ -11,8 +11,8 @@ document.addEventListener 'turbolinks:load', ->
       console.log('rec')
       console.log(data)
       $('#messages').prepend data['message']
-      if data['user_id'] != $('#messages').data('user_id') 
-        $('#message-' + data['message_id']).addClass('col-xs-offset-3')
+      if data['user_id'] != $('#messages').data('user_id')
+        $('#message-' + data['message_id']).addClass('chat-message-right')
         $('#nickname-' + data['message_id']).remove()
         $('#content-' + data['message_id']).append('<span id="nickname-"' + String(data['message_id']) + ' >' + data['nick_name'] + '</span>')
 

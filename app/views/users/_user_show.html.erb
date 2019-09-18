@@ -1,0 +1,35 @@
+
+<div class="user-show-my-page">
+  <table class="table" id="user-show-my-page">
+
+    <p class="user-show-edit-button"><%= link_to '編集', edit_user_path, class: "btn user-edit-button", remote: true %></p>
+
+    <tr>
+      <th>名前</th>
+      <th><%= user.name %></th>
+    </tr>
+
+    <tr>
+      <th>ニックネーム</th>
+      <th><%= user.nickname %></th>
+    </tr>
+
+    <% unless user.prefecture_id.nil? %>
+      <tr>
+        <th>都道府県</th>
+        <th><%= user.prefecture_name %></th>
+      </tr>
+    <% end %>
+
+    <tr>
+      <th>メールアドレス</th>
+      <th><%= user.email %></th>
+    </tr>
+
+    <tr>
+      <th>自己紹介</th>
+      <th><%= user.introduction %></th>
+    </tr>
+
+  </table>
+</div>

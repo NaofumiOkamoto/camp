@@ -15,6 +15,11 @@ class BoardsController < ApplicationController
   end
 
   def index
+    @search_board = Board.ransack(params[:q])
+    @search_board_count = @search_board.result
+    @search_board_sites = @search_board.result.page(params[:page]).per(6) #検索結果
+    @purposes = Purpos.all
+    @camp_site = CampSite.all
   end
 
   def show

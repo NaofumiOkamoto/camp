@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
+  before_action :recently
 
   def set_search
     @search = CampSite.ransack(params[:q]) #検索オブジェクト
@@ -15,7 +16,13 @@ class ApplicationController < ActionController::Base
    renderer.render(*args)
   end
 
+
   protected
+
+  def recently
+    @recently = cookies[:recent_camp_site_id].split(",").uniq.reverse
+    #ここに掲示板履歴@recently = cookies[:recent_camp_site_id].split(",").uniq.reverse
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :nickname, :prefecture_id, :style_id, :introduction])

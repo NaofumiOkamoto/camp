@@ -10,21 +10,12 @@
     <% if current_user.id != @user.id %>
       <%= render 'follow_form' %>
     <% end %>
-      <% if @user.user_image.attached? %>
-        <%= image_tag @user.user_image, class: "" %>
-      <% end %>
-    <div>
-      <table class="table">
-        <%= link_to '編集', edit_user_path %>
-        <tr><th>ユーザーID</th><th><%= @user.id %></th><tr>
-        <tr><th>名前</th><th><%= @user.name %></th><tr>
-        <tr><th>ニックネーム</th><th><%= @user.nickname %></th><tr>
-          <% unless @user.prefecture_id.nil? %>
-            <tr><th>都道府県</th><th><%= @user.prefecture_name %></th><tr>
-          <% end %>
-        <tr><th>メールアドレス</th><th><%= @user.email %></th><tr>
-        <tr><th>自己紹介</th><th><%= @user.introduction %></th><tr>
-    </table>
+    <% if @user.user_image.attached? %>
+      <%= image_tag @user.user_image, class: "" %>
+    <% end %>
+
+    <div class="user-show-edit-form">
+      <%= render 'user_show', user: @user %>
     </div>
 
     <div class="user-show-subtitle-box clearfix">
@@ -92,6 +83,7 @@
             <% end %>
           </div>
       </div>
+
 
     </div>
 

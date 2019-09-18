@@ -1,0 +1,12 @@
+<!-- 閲覧履歴 -->
+<div class="user-show-inf user-show-history">
+  <h4>閲覧履歴</h4>
+  <h4>キャンプ場(最新5件)</h4>
+  <% if @recently %>
+    <% @recently[0..5].each do |r| %>
+        <% campsite = CampSite.find(r) %>
+        <p><%= link_to campsite.name, camp_site_path("#{r}") %></p>
+    <% end %>
+  <% end %>
+  <h4>掲示板(最新5件)</h4>
+</div>
