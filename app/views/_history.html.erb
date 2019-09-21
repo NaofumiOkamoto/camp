@@ -24,9 +24,11 @@
         <h4>掲示板閲覧履歴(最新5件)</h4>
         <% if @recently_board %>
           <% @recently_board[0..4].each do |r| %>
-              <% board = Board.find(r) %>
-              <%= link_to board_path("#{r}") do %></p>
-                <p>・<%= board.date %><%= board.camp_site.name %></p>
+              <% board = Board.find_by(id: r) %>
+              <% if board.present? %>
+                <%= link_to board_path("#{r}") do %></p>
+                  <p>・<%= board.date %><%= board.camp_site.name %></p>
+                <% end %>
               <% end %>
           <% end %>
         <% end %>

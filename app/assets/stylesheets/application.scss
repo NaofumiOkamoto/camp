@@ -704,18 +704,31 @@ nav.pagination {
   border-radius: 100px;
   border: solid 4px #bdb76d;
 }
+.board-edit-board {
+  padding: 30px 0 30px 50px;
+}
 .board-show-board {
   padding: 30px 50px 30px 50px;
   font-size: 20px;
   border-radius: 20px;
 }
-.board-show-board span{
-  display: inline-block;
-  width: 135px;
-}
 .board-show-board p {
   border-bottom: solid 1px #dbd76b;
   margin-bottom: 20px;
+}
+.board-span1 {
+  display: inline-block;
+  width: 160px;
+}
+.board-span2 {
+  display: inline-block;
+  width: 70%;
+}
+input[type="file"] {
+    display: inline;
+}
+.board-button {
+  text-align: center;
 }
 .board-show-page {
   width: 70%;
@@ -750,4 +763,8 @@ nav.pagination {
 .board-image {
   width: 200px;
   height: 200px;
+}
+.board-destroy-button {
+  margin-top: 20px;
+  background-color: #dbd76b;
 }

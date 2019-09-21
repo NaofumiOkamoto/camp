@@ -13,27 +13,13 @@
           <%= render 'like_boards/like_board', board: @board %>
         </div>
         <div class="col-xs-9 board-show-board">
-          <p><span>日時      </span>   <%= @board.date %><%= @board.time %></p>
-          <p><span>キャンプ場</span>   <%= @board.camp_site.name %></p>
-          <p><span>場所      </span>   <%= @board.place %></p>
-          <p><span>募集内容  </span>   <%= @board.purpos_name %></p>
-          <p><span>詳細      </span>   <%= @board.detail %></p>
-          <p><span>条件      </span>   <%= @board.condition %></p>
-          <p><span>コメント  </span>   <%= @board.comment %></p>
+          <%= render 'board_show', board: @board %>
         </div>
       </div>
     </div>
 
         <h3>イメージ画像</h3>
-        <div class="board-images">
-          <% if @board.board_images.attached? %>
-            <% @board.board_images.each do |image| %>
-              <%= image_tag image.variant(resize: "200x200") %>
-            <% end %>
-          <% else %>
-            <img src="/assets/no_image.jpg" alt="" class="board-no-image">
-          <% end %>
-        </div>
+          <%= render 'board_img', board: @board %>
 
 
     <h2>コメント欄</h2>

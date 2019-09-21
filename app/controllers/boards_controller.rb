@@ -32,6 +32,23 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    @board = Board.find(params[:id])
+  end
+
+  def update
+    @board = Board.find(params[:id])
+    @board.update(board_params)
+    if params[:board][:image_ids]
+      params[:board][:image_ids].each do |image_id|
+        image = @board.board_images.find(image_id)
+        image.purge
+      end
+    end
+  end
+  def destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    redirect_to user_path(current_user.id)
   end
 
   private

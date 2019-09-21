@@ -26,11 +26,15 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def recently #閲覧履歴
-    @recently = cookies[:recent_camp_site_id].split(",").uniq.reverse
+  def recently #キャンプ場 閲覧履歴
+    if cookies[:recent_camp_site_id]
+      @recently = cookies[:recent_camp_site_id].split(",").uniq.reverse
+    end
   end
-  def recently_board #閲覧履歴
-    @recently_board = cookies[:recent_board_id].split(",").uniq.reverse
+  def recently_board #掲示板 閲覧履歴
+    if cookies[:recent_board_id]
+      @recently_board = cookies[:recent_board_id].split(",").uniq.reverse
+    end
   end
 
   def configure_permitted_parameters
