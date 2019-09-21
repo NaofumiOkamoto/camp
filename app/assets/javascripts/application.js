@@ -117,15 +117,6 @@ $(document).on('turbolinks:load', function() {
     $(this).css({'background-color': '#fff'});
   });
 });
-//キャンプ場詳細掲示板
-$(document).on('turbolinks:load', function() {
-  $('.camp-site-board-index').mouseover(function(){
-    $(this).css({'background-color': '#808000'});
-  });
-  $('.camp-site-board-index').mouseout(function(){
-    $(this).css({'background-color': '#f5f5dc'});
-  });
-});
 //ユーザー詳細ページ
 $(document).on('turbolinks:load', function() {
   //お気に入りキャンプ場タブ
@@ -142,10 +133,10 @@ $(document).on('turbolinks:load', function() {
     $('.user-show-subtitle-follower').css({'border-bottom': 'solid 0px'});
   });
   $('.user-show-subtitle-like-camp').mouseover(function(){
-    $(this).css({'background-color': '#808000'});
+    $(this).css({'background-color': '#eee8aa'});
   });
   $('.user-show-subtitle-like-camp').mouseout(function(){
-    $(this).css({'background-color': '#bdb76b'});
+    $(this).css({'background-color': '#fff'});
   });
   // 気になる掲示板タブ
   $('.user-show-subtitle-like-board').on('click', function(){
@@ -161,10 +152,10 @@ $(document).on('turbolinks:load', function() {
     $('.user-show-subtitle-follower').css({'border-bottom': 'solid 0px'});
   });
   $('.user-show-subtitle-like-board').mouseover(function(){
-    $(this).css({'background-color': '#808000'});
+    $(this).css({'background-color': '#eee8aa'});
   });
   $('.user-show-subtitle-like-board').mouseout(function(){
-    $(this).css({'background-color': '#bdb76b'});
+    $(this).css({'background-color': '#fff'});
   });
   // 掲示板投稿履歴
   $('.user-show-subtitle-post-board').on('click', function(){
@@ -180,10 +171,10 @@ $(document).on('turbolinks:load', function() {
     $('.user-show-subtitle-follower').css({'border-bottom': 'solid 0px'});
   });
   $('.user-show-subtitle-post-board').mouseover(function(){
-    $(this).css({'background-color': '#808000'});
+    $(this).css({'background-color': '#eee8aa'});
   });
   $('.user-show-subtitle-post-board').mouseout(function(){
-    $(this).css({'background-color': '#bdb76b'});
+    $(this).css({'background-color': '#fff'});
   });
   // フォローユーザー
   $('.user-show-subtitle-follow').on('click', function(){
@@ -199,10 +190,10 @@ $(document).on('turbolinks:load', function() {
     $('.user-show-subtitle-follower').css({'border-bottom': 'solid 0px'});
   });
   $('.user-show-subtitle-follow').mouseover(function(){
-    $(this).css({'background-color': '#808000'});
+    $(this).css({'background-color': '#eee8aa'});
   });
   $('.user-show-subtitle-follow').mouseout(function(){
-    $(this).css({'background-color': '#bdb76b'});
+    $(this).css({'background-color': '#fff'});
   });
   // フォロワー
   $('.user-show-subtitle-follower').on('click', function(){
@@ -218,10 +209,10 @@ $(document).on('turbolinks:load', function() {
     $('.user-show-subtitle-follow').css({'border-bottom': 'solid 0px'});
   });
   $('.user-show-subtitle-follower').mouseover(function(){
-    $(this).css({'background-color': '#808000'});
+    $(this).css({'background-color': '#eee8aa'});
   });
   $('.user-show-subtitle-follower').mouseout(function(){
-    $(this).css({'background-color': '#bdb76b'});
+    $(this).css({'background-color': '#fff'});
   });
 });
 
@@ -249,3 +240,14 @@ $(document).on('turbolinks:load', function(){
     }
 })
 
+//未ログイン時にいいね押したらログインを促すアラートを表示
+$(document).on('turbolinks:load', function(){
+  $(".login-info").on("click", function(){
+    var title = confirm("お気に入り登録するにはログインが必要です。ログインページへ移動しますか？")
+    if ( title == true ){
+    window.location.href = "http://localhost:3000/users/sign_in"
+    }
+    else{
+    }
+  })
+});

@@ -1,44 +1,48 @@
 <div class="user-edit-my-page">
-<%= form_with model: user, path: user_path do |f| %>
-<table class="table" id="user-edit-my-page">
 
+  <%= form_with model: user, path: user_path do |f| %>
+  <table class="table" id="user-edit-my-page">
 
-      <tr>
-        <th>ユーザーID</th>
-        <th><%= user.id %></th>
-      </tr>
+        <tr>
+          <th>画像</th>
+          <th><%= f.file_field :user_image %></th>
+        </tr>
 
-      <tr>
-        <th>名前</th>
-        <th><%= f.text_field :name %></th>
-      </tr>
-
-      <tr>
-        <th>ニックネーム</th>
-        <th><%= f.text_field :nickname %></th>
-      </tr>
-
-        <% unless user.prefecture_id.nil? %>
-          <tr>
-            <th>都道府県</th>
-            <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name %></th>
-          </tr>
+        <tr>
+        <% if current_user == user.id %>
+          <th>名前</th>
+          <th><%= f.text_field :name %></th>
         <% end %>
+        </tr>
 
-      <tr>
-        <th>メールアドレス</th>
-        <th><%= f.email_field :email %></th>
-      </tr>
-      <tr>
-        <th>自己紹介</th>
-        <th><%= f.text_field :introduction %></th>
-      </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <th><%= f.text_field :nickname %></th>
+        </tr>
 
-      <tr class="board-new-button">
-        <th><%= f.submit '更新', class: "btn board-new-button" %></th>
-      </tr>
+          <% unless user.prefecture_id.nil? %>
+            <tr>
+              <th>都道府県</th>
+              <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name %></th>
+            </tr>
+          <% end %>
+
+        <tr>
+          <th>メールアドレス</th>
+          <th><%= f.email_field :email %></th>
+        </tr>
+
+        <tr>
+          <th>自己紹介</th>
+          <th><%= f.text_field :introduction %></th>
+        </tr>
+
+  </table>
+
+        <div class="board-new-button">
+          <%= f.submit '更新', class: "btn board-new-button" %>
+        </div>
 
   <% end %>
 
-</table>
 </div>

@@ -1,21 +1,23 @@
-<h2>gmap</h2>
-<!--地名入力 -->
-<input id="address" type="textbox" value="">
-<!-- buttonクリックでcodeAddress実行 -->
-<input type="button" value="検索" onclick="codeAddress()">
+<div class="map-page">
+  <!--地名入力 -->
+  <div class="map-button-area">
+    <span class="map-info">地図で検索</span>
+    <input id="address" type="textbox" value="" class="map-search-form">
+    <!-- buttonクリックでcodeAddress実行 -->
+    <input type="button" value="検索" class="map-search-button" onclick="codeAddress()">
 
-<button onclick="getLocation()">現在地</button>
-<button onclick="initMap()">広くみる</button>
+    <button class="map-local" onclick="getLocation()">現在地</button>
+    <button class="map-back" onclick="initMap()">広くみる</button>
+  </div>
 
-<div id='map'></div>
+  <!-- 地図 -->
+  <div id='map'></div>
+</div>
+
+<!-- 閲覧履歴表示 -->
+      <%= render '/history', recently_campsite: @recently_campsite %>
 
 <style>
-#map{
-  height: 600px;
-    width: 70%;
-      float: left;
-        margin-right: 30px;
-}
 </style>
 
 <script>

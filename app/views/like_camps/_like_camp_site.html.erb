@@ -1,13 +1,25 @@
 <div class="like-camp-link" id="like-camp-link-<%= camp_site.id %>">
-  <% if user_signed_in? %> <!-- ログインしてないと押せない -->
+  <div class="col-xs-6 like-span">お気に入り数<%= camp_site.like_camps.count %></div>
+    <% if user_signed_in? %> <!-- ログインしてないと押せない -->
       <% if current_user.like_camps.find_by(camp_site_id: camp_site.id) %> <!-- ログインユーザーがお気に入り済みか -->
-        <%= camp_site.like_camps.count %>
-        <%= link_to 'お気に入り済み', like_camp_path(camp_site.id), method: :delete, remote: true %>
+        <%= link_to like_camp_path(camp_site.id), method: :delete, remote: true do %>
+          <div class="col-xs-6 like-camp-like-button">
+            <img src="/assets/bonfire2.png" alt="" class="like-icon">
+            お気に入り済み
+          </div>
+        <% end %>
       <% else %>
-        <%= camp_site.like_camps.count %>
-        <%= link_to 'お気に入りする', like_camps_path(camp_site.id), method: :post, remote: true %>
+        <%= link_to like_camps_path(camp_site.id), method: :post, remote: true do %>
+          <div class="col-xs-6 like-camp-like-button">
+            <img src="/assets/fire.png" alt="" class="like-icon">
+            お気に入りする
+          </div>
+        <% end %>
       <% end %>
   <% else %>
-    <%= 'お気に入り' %>
+      <div class="col-xs-6 like-camp-like-button login-info">
+        <img src="/assets/fire.png" alt="" class="like-icon">
+        お気に入りする
+      </div>
   <% end %>
 </div>

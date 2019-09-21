@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     if @board.save
       flash[:success] = "掲示板を作成しました"
-      redirect_to "/camp_sites/#{@board.camp_site_id}"
+      redirect_to board_path"#{@board.id}"
     else
       render :new
     end
@@ -24,6 +24,11 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    if cookies[:recent_board_id].nil?
+      cookies[:recent_board_id] = @board.id.to_s
+    else
+      cookies[:recent_board_id] += "," + @board.id.to_s
+    end
   end
 
   def edit

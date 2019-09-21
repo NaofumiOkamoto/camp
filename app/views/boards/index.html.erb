@@ -1,21 +1,33 @@
 <div class="container">
   <div class="row">
+
     <h1>掲示板一覧</h1>
-    <%= link_to '掲示板作成', new_board_path %>
-        <!-- 検索ここから -->
-        <div class="col-xs-6">
-          <div class="form-group">
-          <%= search_form_for @search_board, url: boards_path do |f| %>
-              <%= f.collection_select :purpos_id_eq, @purposes, :id, :purpos_name, :include_blank => '目的' %>
-              <%= f.collection_select :camp_site_id_eq, @camp_site, :id, :name, :include_blank => 'キャンプ場' %>
-              <%= f.date_field :date_gteq %>~
-              <%= f.date_field :date_lteq %>
-              <%= f.submit "検索", class: "btn btn-default" %>
-                      <%= @search_board_count.count %>件
-          <% end %>
-          </div>
+
+      <!-- 検索ここから -->
+      <div class="col-xs-6">
+        <div class="form-group">
+        <%= search_form_for @search_board, url: boards_path do |f| %>
+            <%= f.collection_select :purpos_id_eq, @purposes, :id, :purpos_name, :include_blank => '目的' %>
+            <%= f.collection_select :camp_site_id_eq, @camp_site, :id, :name, :include_blank => 'キャンプ場' %>
+            <%= f.date_field :date_gteq %>~
+            <%= f.date_field :date_lteq %>
+            <%= f.submit "検索", class: "btn btn-default" %>
+                    <%= @search_board_count.count %>件
+        <% end %>
         </div>
-        <!-- 検索ここまで -->
+      </div>
+      <!-- 検索ここまで -->
+
+      <div class="col-xs-6 board-index-new-button">
+        <% if user_signed_in? %>
+          <span data-turbolinks="false">
+            <p><%= link_to '掲示板作成', new_board_path %></p>
+          </span>
+        <% else %>
+          <p class="login-info">掲示板作成</p>
+        <% end %>
+      </div>
+
       <div class="camp-sites-index jscroll">
           <% @search_board_sites.each do |board| %>
             <%= link_to  board_path(board.id) do %>
@@ -41,6 +53,7 @@
           <% end %>
         <%= paginate @search_board_sites %>
       </div>
+
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>

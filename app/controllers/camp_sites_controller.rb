@@ -1,5 +1,4 @@
 class CampSitesController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     @search = CampSite.ransack(params[:q]) #検索オブジェクト

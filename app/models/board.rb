@@ -18,6 +18,7 @@
 #
 
 class Board < ApplicationRecord
+  validates :date, :time, :place, :purpos_id, presence: true
   belongs_to :user
   belongs_to :camp_site
   has_many :like_boards

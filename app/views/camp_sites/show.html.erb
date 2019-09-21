@@ -2,9 +2,7 @@
   <div class="row">
 
 <!-- 閲覧履歴表示 -->
-<div class="left-side-history">
-  <%= render '/history', recently_campsite: @recently_campsite %>
-</div>
+      <%= render '/history', recently_campsite: @recently_campsite %>
 
 <div class="camp-site-show-page">
   <div class="row">
@@ -50,16 +48,21 @@
   <div class="col-xs-12 camp-site-board-chat">
     <!-- キャンプ情報 -->
     <div class="col-xs-12 camp-site-show-info">
-      <div class="col-xs-7">
+      <div class="col-xs-6">
         <h1><%= @camp_site.name %></h1>
       </div>
-      <div class="col-xs-5 camp-site-like">
+
+      <div class="col-xs-6 camp-site-like">
         <%= render 'like_camps/like_camp_site', camp_site: @camp_site %>
       </div>
+
       <div class="col-xs-12 camp-site-show-info-under">
-        <p><%= @camp_site.address %></p>
-        <p><%= @camp_site.category_name %></p>
-        <p><%= @camp_site.introduction %></p>
+        <p>◼️ 所在地</p>
+        <p class="camp-show-info-p"><%= @camp_site.address %></p>
+        <p>◼️  キャンプ場スタイル</p>
+        <p class="camp-show-info-p"><%= @camp_site.category_name %></p>
+        <p>◼️ キャンプ場コメント</p>
+        <p class="camp-show-info-p"><%= @camp_site.introduction %></p>
       </div>
     </div>
 
@@ -91,16 +94,25 @@
 
       <!-- チャット -->
     <div class="camp-site-chat-index">
-        <%# label nil, nil, 'コメント入力' %>
-        <%# text_field nil, nil, 'data-behavior': 'room_speaker' %>
-        <form>
-          <input type="text" />
-          <input type="submit" value="投稿" onClick="postChatMessage()" class="chat-button" />
-        </form>
+          <% if user_signed_in? %>
+            <form>
+              <input type="text" />
+              <input type="submit" value="投稿" onClick="postChatMessage()" class="chat-button" />
+            </form>
+          <% else %>
+            <p>
+              チャット投稿にはログインが必要です
+              <%= link_to 'ログインする', new_user_session_path, class: "btn btn-primary" %>
+            </p>
+          <% end %>
         <div class="camp-site-messages">
-          <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= current_user.id%>">
-            <%= render @messages %>
-          </div>
+          <% if user_signed_in? %>
+            <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= current_user.id%>">
+          <% else %>
+            <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= %>">
+          <% end %>
+              <%= render @messages %>
+            </div>
         </div>
     </div>
 

@@ -1,71 +1,138 @@
-  <div class="navbar navbar-default">
+  <div class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-      <% if user_signed_in? %>
-        <ul class="nav navbar-nav">
-            <!-- 検索ここから -->
-              <li class="navbar-form navbar-left">
+        <div class="row nav navbar-nav">
+
+          <div class="col-xs-12">
+
+            <div class="top-logo-li col-xs-4 col-xs-offset-4">
+              <%= link_to root_path do %>
+                <h1 class="top-logo">CAMP DOOR</h1>
+              <% end %>
+            </div>
+
+            <!-- nav検索ここから -->
+            <div class="navbar-form navbar-left col-xs-2">
+              <span data-turbolinks="false">
               <div class="form-group">
-            <%= search_form_for @search, url: camp_sites_path do |f| %>
-                <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
-                <%# f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
-                <%# f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
+                <%= search_form_for @search, url: camp_sites_path do |f| %>
+                    <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
+                    <%# f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
+                    <%# f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
+                    <%= f.submit "検索", class: "btn btn-default" %>
+                <% end %>
               </div>
-                <%= f.submit "検索", class: "btn btn-default" %>
-              </li>
-            <% end %>
+              </span>
+            </div>
             <!-- 検索ここまで -->
 
-            <li>
-              <%= current_user.nickname %>ログイン中<br>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-            </li>
-        </ul>
-          <!-- ハンバーガーメニュー -->
-          <ul>
-              <div id="sp-menu">
-                <h3>MENU</h3>
-                <ul>
-                  <li><%= link_to root_path do %>
-                    <img src="/assets/bonfire.png" alt="" class="nav-icon">
-                    HOME
-                  <% end %>
-                  </li>
-                  <li><%= link_to maps_path do  %>
-                    <img src="/assets/bonfire.png" alt="" class="nav-icon">
-                    MAP
-                  <% end %>
-                  </li>
-                  <li><%= link_to camp_sites_path do %>
-                    <img src="/assets/tipi.png" alt="" class="nav-icon">
-                    CAMP場一覧
-                  <% end %>
-                  </li>
-                  <li data-turbolinks="false">
-                    <%= link_to new_board_path do %>
-                    <img src="/assets/axe2.png" alt="" class="nav-icon">
-                    掲示板
-                  <% end %>
-                  </li>
-                  <li><%= link_to user_path(current_user.id) do %>
-                    <img src="/assets/boy-scout2.png" alt="" class="nav-icon">
-                    マイページ
-                  <% end %>
-                  </li>
-                    <!-- 検索ここから -->
-                      <li>
-                        <div class="form-group">
-                          <%= search_form_for @search, url: camp_sites_path do |f| %>
-                          <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
-                          <%# f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
-                          <%# f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
-                        </div>
-                          <%= f.submit "検索", class: "btn btn-default" %>
-                      </li>
-                          <% end %>
-                    <!-- 検索ここまで -->
+      <% if user_signed_in? %>
+              <div class="right-nav">
+                <%= current_user.nickname %>ログイン中<br>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              </div>
+      <% else %>
+              <div class="right-nav">
+                <%= link_to new_user_registration_path, class: "btn" do %>
+                    <span>
+                        新規登録
+                    </span>
+                <% end %>
+                <%= link_to new_user_session_path, class: "btn" do %>
+                    <span>
+                     ログイン
+                    </span>
+                <% end %>
+              </div>
+      <% end %>
 
-                  <li><%= link_to 'ユーザーログアウト', destroy_user_session_path, method: :delete %></li>
-              </ul>
+          </div>
+
+        </div>
+          <!-- ハンバーガーメニュー -->
+              <div id="sp-menu">
+                <h3 class="sp-menu-menu">MENU</h3>
+                    <%= link_to root_path do %>
+                      <p class="sp-menu-p">
+                        <span>
+                            <img src="/assets/camper-van.png" alt="" class="nav-icon">
+                            HOME
+                        </span>
+                      </p>
+                    <% end %>
+
+                    <%= link_to maps_path do  %>
+                      <p class="sp-menu-p">
+                        <span>
+                            <img src="/assets/map2.png" alt="" class="nav-icon">
+                            MAPで検索
+                        </span>
+                      </p>
+                    <% end %>
+
+                    <%= link_to camp_sites_path do %>
+                      <p class="sp-menu-p">
+                        <span>
+                            <img src="/assets/tent2.png" alt="" class="nav-icon">
+                            CAMP場一覧
+                        </span>
+                      </p>
+                    <% end %>
+
+                    <%= link_to boards_path do %>
+                      <p class="sp-menu-p">
+                            <img src="/assets/axe2.png" alt="" class="nav-icon">
+                            掲示板一覧
+                        </span>
+                      </p>
+                    <% end %>
+
+                    <%= link_to new_board_path do %>
+                      <p class="sp-menu-p">
+                            <img src="/assets/axe2.png" alt="" class="nav-icon">
+                            掲示板作成
+                        </span>
+                      </p>
+                    <% end %>
+
+      <% if user_signed_in? %>
+
+                    <%= link_to user_path(current_user.id) do %>
+                      <p class="sp-menu-p">
+                        <span>
+                            <img src="/assets/boy-scout2.png" alt="" class="nav-icon">
+                            マイページ
+                        </span>
+                      </p>
+                    <% end %>
+
+                    <%= link_to destroy_user_session_path, method: :delete do %>
+                      <p class="sp-menu-p">
+                        <span>
+                          <img src="/assets/boy-scout2.png" alt="" class="nav-icon">
+                          ログアウト
+                        </span>
+                      </p>
+                    <% end %>
+      <% else %>
+                    <%= link_to new_user_registration_path do %>
+                      <p class="sp-menu-p">
+                        <span>
+                            <img src="/assets/boy-scout2.png" alt="" class="nav-icon">
+                            新規登録
+                        </span>
+                      </p>
+                    <% end %>
+
+                    <%= link_to new_user_session_path do %>
+                      <p class="sp-menu-p">
+                        <span>
+                          <img src="/assets/boy-scout2.png" alt="" class="nav-icon">
+                         ログイン
+                        </span>
+                      </p>
+                    <% end %>
+
+      <% end %>
 
             </div>
             <div id="hm-icon">
@@ -76,16 +143,7 @@
               </a>
             </div>
           </li>
-
-
           <!-- ハンバーガーメニューここまで -->
-        </ul>
-      <% else %>
-        <%= link_to 'ユーザー新規登録', new_user_registration_path, class: "btn btn-info" %>
-        <%= link_to 'ユーザーログイン', new_user_session_path, class: "btn btn-info" %>
-        <%= link_to 'HOME', root_path, class: "btn btn-primary" %>
-        <%= link_to 'MAP', maps_path, class: "btn btn-primary"%>
-        <%= link_to 'CAMP場一覧', camp_sites_path, class: "btn btn-primary"%>
-      <% end %>
+
     </div>
   </div>

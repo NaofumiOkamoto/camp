@@ -1,38 +1,56 @@
-<div class="container">
+<div class="container user-show-page">
   <div class="row">
 
+      <!-- 閲覧履歴表示 -->
+      <%= render '/history', recently_campsite: @recently_campsite %>
+
+<div class="clearfix">
+  <div class="col-xs-6">
     <% if current_user.id == @user.id %>
       <h1>マイページ</h1>
     <% else %>
       <h1><%= @user.nickname %>のページ</h1>
     <% end %>
+  </div>
 
+  <div class="col-xs-6 user-follow-page">
     <% if current_user.id != @user.id %>
       <%= render 'follow_form' %>
     <% end %>
-    <% if @user.user_image.attached? %>
-      <%= image_tag @user.user_image, class: "" %>
-    <% end %>
+  </div>
+</div>
 
-    <div class="user-show-edit-form">
-      <%= render 'user_show', user: @user %>
-    </div>
+<hr size="10">
+
+<div class="clearfix">
+  <div class="col-xs-12 user-show-middle">
+      <div class="col-xs-4 user-show-img-box">
+        <%= render 'user_img', user: @user %>
+      </div>
+
+      <div class="col-xs-8 user-show-edit-form">
+        <%= render 'user_show', user: @user %>
+      </div>
+  </div>
+</div>
+
+<hr>
 
     <div class="user-show-subtitle-box clearfix">
       <div class="user-show-subtitle user-show-subtitle-like-camp">
-        <h3>お気に入り<br>キャンプ場</h3>
+        <h3>お気に入り<br>キャンプ場(<%= @camps.count %>)</h3>
       </div>
       <div class="user-show-subtitle user-show-subtitle-like-board">
-        <h3>気になる<br>掲示板</h3>
+        <h3>気になる<br>掲示板(<%= @boards.count %>)</h3>
       </div>
       <div class="user-show-subtitle user-show-subtitle-post-board">
-        <h3>掲示板<br>投稿履歴</h3>
+        <h3>掲示板<br>投稿履歴(<%= @post_boards.count %>)</h3>
       </div>
       <div class="user-show-subtitle user-show-subtitle-follow">
-        <h3>フォロー<br>ユーザー</h3>
+        <h3>フォロー<br>ユーザー(<%= @following.count %>)</h3>
       </div>
       <div class="user-show-subtitle user-show-subtitle-follower">
-        <h3>フォロワー</h3>
+        <h3>フォロワー(<%= @followers.count %>)</h3>
       </div>
     </div>
 
@@ -41,47 +59,88 @@
       <!-- お気に入りキャンプ場 -->
       <div class="user-show-info user-show-like-camp">
         <% @camps.each do |camp| %>
-          <%= camp.camp_site.name %>
+          <%= link_to camp_site_path("#{camp.camp_site.id}") do %>
+            <div>
+              <p><%= image_tag camp.camp_site.camp_images[0], class: "likecamp-img" %></p>
+              <p><%= camp.camp_site.name %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
 
       <!-- 気になる掲示板 -->
       <div class="user-show-info user-show-like-board">
         <% @boards.each do |board| %>
-          <div class="">
-            <%= board.board.user.nickname %>
-            <%= board.board.purpos_name %>
-            <%= board.board.date %>
-            <%= board.board.time %>
-            <%= link_to '詳細', board_path(board.board.id) %>
-          </div>
+            <%= link_to  board_path(board.id) do %>
+              <div class="col-xs-12 camp-site-board-index">
+                <div class="col-xs-3">
+                  <%= board.board.date %>
+                  <%= board.board.time %><br>
+                  <%= board.board.camp_site.name %>
+                  <%= board.board.place %>
+                </div>
+                <div class="col-xs-2">
+                  <%= board.board.user.nickname %>
+                </div>
+                <div class="col-xs-4">
+                  <%= board.board.purpos_name %><br>
+                  <%= board.board.condition %>
+                </div>
+                <div class="col-xs-3">
+                  気になる数<%= board.board.like_boards.count %>
+                </div>
+              </div>
+            <% end %>
         <% end %>
       </div>
 
       <!-- 掲示板投稿履歴 -->
       <div class="user-show-info user-show-post-board">
-        <% @post_boards.each do |post| %>
-          <div class="">
-            <%= post.purpos_name %>
-          </div>
+        <% @post_boards.each do |board| %>
+            <%= link_to  board_path(board.id) do %>
+              <div class="col-xs-12 camp-site-board-index">
+                <div class="col-xs-3">
+                  <%= board.date %>
+                  <%= board.time %><br>
+                  <%= board.camp_site.name %>
+                  <%= board.place %>
+                </div>
+                <div class="col-xs-2">
+                  <%= board.user.nickname %>
+                </div>
+                <div class="col-xs-4">
+                  <%= board.purpos_name %><br>
+                  <%= board.condition %>
+                </div>
+                <div class="col-xs-3">
+                  気になる数<%= board.like_boards.count %>
+                </div>
+              </div>
+            <% end %>
         <% end %>
       </div>
       <!-- フォローユーザー -->
-      <div class="user-show-info user-show-follow">
-          <div class="">
+        <div class="user-show-info user-show-follow">
             <% @following.each do |following| %>
-              <%= link_to following.nickname, user_path(following.id) %>
+              <%= link_to user_path("#{following.id}") do %>
+                <div>
+                  <p><%= image_tag following.user_image, class: "follow-img" %></p>
+                  <p><%= following.nickname %></p>
+                </div>
+              <% end %>
             <% end %>
-          </div>
-      </div>
+        </div>
 
       <!-- フォロワー -->
       <div class="user-show-info user-show-follower">
-          <div class="">
             <% @followers.each do |follower| %>
-              <%= link_to follower.nickname, user_path(follower.id) %>
+              <%= link_to user_path("#{follower.id}") do %>
+                <div>
+                  <p><%= image_tag follower.user_image, class: "follow-img" %></p>
+                  <p><%= follower.nickname %></p>
+                </div>
+              <% end %>
             <% end %>
-          </div>
       </div>
 
 

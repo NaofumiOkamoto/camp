@@ -1,12 +1,11 @@
-
 <div class="user-show-my-page">
   <table class="table" id="user-show-my-page">
 
-    <p class="user-show-edit-button"><%= link_to '編集', edit_user_path, class: "btn user-edit-button", remote: true %></p>
-
     <tr>
+    <% if current_user == user.id %>
       <th>名前</th>
       <th><%= user.name %></th>
+    <% end %>
     </tr>
 
     <tr>
@@ -32,4 +31,10 @@
     </tr>
 
   </table>
+  <% if current_user.id == user.id %>
+    <p class="user-show-edit-button">
+      <%= link_to '編集', edit_user_path, class: "btn user-edit-button", remote: true %>
+    </p>
+  <% end %>
+
 </div>

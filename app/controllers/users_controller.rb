@@ -5,8 +5,6 @@ class UsersController < ApplicationController
     @boards = @user.like_boards  # 気になる掲示板
     @post_boards = @user.boards  # 掲示板投稿履歴
 
-    @camp_site = CampSite.find(params[:id])
-
     @following = @user.following.where(params[:id])
     @followers = @user.followers.where(params[:id])
 
@@ -18,7 +16,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    # redirect_to user_path"#{@user.id}"
   end
 
   def index
@@ -26,6 +23,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :nickname, :prefecture_id, :email, :introduction)
+    params.require(:user).permit(:name, :nickname, :prefecture_id, :email, :introduction, :user_image)
   end
 end

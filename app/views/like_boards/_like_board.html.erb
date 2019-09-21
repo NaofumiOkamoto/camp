@@ -2,12 +2,21 @@
   <% if user_signed_in? %> <!-- ログインしてないと押せない -->
       <% if current_user.like_boards.find_by(board_id: board.id) %> <!-- ログインユーザーがお気に入り済みか -->
         <%# board.like_boards.size %>
-        <%= link_to '気になーる登録済み', like_board_path(board.id), method: :delete, remote: true %>
+          <div class="like-camp-like-button">
+            <img src="/assets/bonfire2.png" alt="" class="like-icon">
+              <%= link_to '気になーる登録済み', like_board_path(board.id), method: :delete, remote: true %>
+          </div>
       <% else %>
         <%# board.like_boards.size %>
-        <%= link_to '気になーるする', like_boards_path(board.id), method: :post, remote: true %>
+          <div class="like-camp-like-button">
+            <img src="/assets/fire.png" alt="" class="like-icon">
+              <%= link_to '気になーる！！', like_boards_path(board.id), method: :post, remote: true %>
+          </div>
       <% end %>
   <% else %>
-    <%= 'お気に入り' %>
+      <div class="like-camp-like-button login-info">
+        <img src="/assets/fire.png" alt="" class="like-icon">
+        気になーる！！
+      </div>
   <% end %>
 </div>
