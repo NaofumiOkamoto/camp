@@ -7,14 +7,14 @@
             <%= render '/error_messages', model: f.object %> <!--バリデーションメッセージ -->
             <tr><td>依頼主</td>
             <th><%= current_user.nickname %><%= f.hidden_field :user_id, :value => current_user.id %></th></tr>
-            <tr><td>キャンプ場</td>
+            <tr><td>キャンプ場<br>（必須）</td>
             <th><%= f.collection_select :camp_site_id, CampSite.all, :id, :name %></th></tr>
-            <tr><td>日にち</td>
+            <tr><td>日にち<br>（必須）</td>
               <th><%= f.date_field :date %><span class="board-new-time">時間</span><%= f.time_field :time %>頃 〜</th></tr>
-            <tr><td>目的</td>
+            <tr><td>目的<br>（必須）</td>
             <th><%= f.collection_select :purpos_id, Purpos.all, :id, :purpos_name %>
              詳細<%= f.text_field :detail %></th></tr>
-            <tr><td>場所</td>
+            <tr><td>場所<br>（必須）</td>
             <th><%= f.text_field :place, class: "board-new-text-field", placeholder: "サイト番号など" %></th></tr>
             <tr><td>募集条件</td>
             <th><%= f.text_field :condition, class: "board-new-text-field" %></th></tr>
@@ -23,13 +23,6 @@
             <tr><td>画像</td>
             <th><%= f.file_field :board_images ,multiple: true %></th></tr>
             <tr><th>
-                <%# if @board.board_images.attached? %>
-                  <% @board.board_images.each do |image| %>
-                    <%= image_tag image.preview(resize: "150x150") %>
-                    <%= f.hidden_field :board_images %>
-                  <% end %>
-                <%# end %>
-              </th></tr>
       </table>
             <div class="board-new-button"><%= f.submit '掲示板投稿', class: 'btn board-new-button' %></div>
           <% end %>

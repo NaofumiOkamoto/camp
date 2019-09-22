@@ -14,14 +14,14 @@
         <% end %>
       <!-- 閲覧履歴 -->
       <div class="user-show-history">
-        <h4>キャンプ場閲覧履歴<br>(最新5件)</h4>
+        <h3>キャンプ場閲覧履歴<br>(最新5件)</h3>
         <% if @recently %>
           <% @recently[0..4].each do |r| %>
               <% campsite = CampSite.find(r) %>
               <p>・<%= link_to campsite.name, camp_site_path("#{r}") %></p>
           <% end %>
         <% end %>
-        <h4>掲示板閲覧履歴(最新5件)</h4>
+        <h3>掲示板閲覧履歴(最新5件)</h3>
         <% if @recently_board %>
           <% @recently_board[0..4].each do |r| %>
               <% board = Board.find_by(id: r) %>

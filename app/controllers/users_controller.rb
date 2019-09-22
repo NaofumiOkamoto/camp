@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :facebook_sign_up
+
   def show
     @user = User.find(params[:id])
     @camps = @user.like_camps  # お気に入りキャンプ場

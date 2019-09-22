@@ -2,26 +2,28 @@
   <table class="table" id="user-show-my-page">
 
     <tr>
-    <% if current_user == user.id %>
-      <th>名前</th>
+    <% if current_user.id == user.id %>
+      <th>名前（必須）</th>
       <th><%= user.name %></th>
     <% end %>
     </tr>
 
     <tr>
-      <th>ニックネーム</th>
+      <th>ニックネーム（必須）</th>
       <th><%= user.nickname %></th>
     </tr>
 
-    <% unless user.prefecture_id.nil? %>
       <tr>
-        <th>都道府県</th>
+        <th>都道府県（必須）</th>
+    <% unless user.prefecture_id.nil? %>
         <th><%= user.prefecture_name %></th>
-      </tr>
+      <% else %>
+        <th>未設定</th>
     <% end %>
+      </tr>
 
     <tr>
-      <th>メールアドレス</th>
+      <th>メールアドレス（必須）</th>
       <th><%= user.email %></th>
     </tr>
 

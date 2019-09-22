@@ -32,16 +32,16 @@
               </div>
       <% else %>
               <div class="right-nav">
-                <%= link_to new_user_registration_path, class: "btn" do %>
-                    <span>
+                    <div>
+                    <%= link_to new_user_registration_path, class: "btn" do %>
                         新規登録
-                    </span>
-                <% end %>
-                <%= link_to new_user_session_path, class: "btn" do %>
-                    <span>
+                    <% end %>
+                    </div>
+                    <div>
+                    <%= link_to new_user_session_path, class: "btn" do %>
                      ログイン
-                    </span>
-                <% end %>
+                    <% end %>
+                    </div>
               </div>
       <% end %>
 

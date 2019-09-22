@@ -4,12 +4,7 @@
   <table class="table" id="user-edit-my-page">
 
         <tr>
-          <th>画像</th>
-          <th><%= f.file_field :user_image %></th>
-        </tr>
-
-        <tr>
-        <% if current_user == user.id %>
+        <% if current_user.id == user.id %>
           <th>名前</th>
           <th><%= f.text_field :name %></th>
         <% end %>
@@ -20,12 +15,10 @@
           <th><%= f.text_field :nickname %></th>
         </tr>
 
-          <% unless user.prefecture_id.nil? %>
             <tr>
               <th>都道府県</th>
-              <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name %></th>
+              <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name, :include_blank => '都道府県' %></th>
             </tr>
-          <% end %>
 
         <tr>
           <th>メールアドレス</th>
@@ -35,6 +28,11 @@
         <tr>
           <th>自己紹介</th>
           <th><%= f.text_field :introduction %></th>
+        </tr>
+
+        <tr>
+          <th>画像</th>
+          <th><%= f.file_field :user_image %></th>
         </tr>
 
   </table>

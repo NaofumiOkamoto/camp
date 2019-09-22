@@ -15,7 +15,7 @@
     <% else %>
       <%= render 'layouts/user_nav' %>
     <% end %>
-    <%= render '/flash_message' %> <!--フラッシュメッセージ -->
+      <%= render '/flash_message' %> <!--フラッシュメッセージ -->
     <% if content_for?(:body_attributes) %>
       <%= yield(:body_attributes) %>
     <% end %>

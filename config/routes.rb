@@ -24,13 +24,13 @@ Rails.application.routes.draw do
   }
 
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks', #snsログイン
     sessions:      'users/sessions',
     passwords:     'users/passwords',
-    registrations: 'users/registrations',
-    omniauth_callbacks: 'users/omniauth_callbacks' #snsログイン
+    registrations: 'users/registrations'
   }
 
-  resources :users, only: [:show, :edit, :index, :destroy, :update] do
+  resources :users, only: [:edit, :index, :destroy, :update, :show] do
     member do
       get :following, :followers
     end

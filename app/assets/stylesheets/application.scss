@@ -40,6 +40,13 @@ a {
   height: 67px;
   width: 100%;
 }
+.alert {
+  text-align: center;
+  margin-bottom: 0;
+}
+.alert-notice {
+  background-color: #f0e68c;
+}
 .navbar-default {
   background-color: #bdb76b;
   width: 100%;
@@ -62,11 +69,11 @@ a {
 }
 .right-nav {
   float: right;
-  margin-top: 15px;
   color: #fff;
+  font-size: 17px;
 }
 .right-nav .btn{
-  font-size: 20px;
+  font-size: 17px;
 }
 .navbar-left {
   margin-top: 20px;
@@ -93,21 +100,21 @@ a {
 .menu-trigger {
   position: relative;
   width: 50px;
-  height: 44px;
+  height: 40px;
 }
 .menu-trigger span {
   position: absolute;
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: #808000;
+  background-color: #556b2f;
   border-radius: 4px;
 }
 .menu-trigger span:nth-of-type(1) {
   top: 0;
 }
 .menu-trigger span:nth-of-type(2) {
-  top: 20px;
+  top: 17px;
 }
 .menu-trigger span:nth-of-type(3) {
   bottom: 0;
@@ -157,9 +164,50 @@ a {
   color: #556b2f;
   text-decoration: none;
 }
-// トップページ
-.container-fluid {
+//ユーザーログイン
+.user-session-new-page h2 {
+  margin-bottom: 50px;
 }
+#user_name,
+#user_nickname,
+#user_prefecture_id,
+#user_introduction,
+#user_password_confirmation,
+#user_password,
+#user_email {
+  width: 300px;
+  height: 35px;
+  margin-bottom: 10px;
+  border: solid 1px #808000;
+}
+.facebook-button,
+.user-ragistration-info,
+.login_btn {
+  width: 300px;
+  height: 35px;
+  background-color: #808000;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+}
+.user-ragistration-info{
+  background-color: #eee8aa;
+}
+.facebook-button p,
+.user-ragistration-info p{
+  padding-top: 7px;
+  color: #000;
+}
+.facebook-button{
+  background-color: #4169e1;
+}
+.facebook-button a{
+  color: #fff;
+}
+.user-session-new-page #user_user_image {
+  margin-bottom: 10px;
+}
+// トップページ
 .container-fluid span{
   text-align: center;
   margin: 0 auto;
@@ -196,7 +244,7 @@ a {
 }
 .top-page-about {
   width: 100%;
-  height: 1000px;
+  height: 450px;
   margin-top: 50px;
 }
 .top-subimage {
@@ -208,12 +256,17 @@ a {
   margin: 0 auto;
   border: solid 2px #bdb76b;
 }
+.about-image {
+  height: 200px;
+  width: 300px;
+}
 //履歴
 .left-side-history-title h2 {
   text-align: center;
   color: black;
 }
-.left-side-history h4 {
+.left-side-history h4,
+.left-side-history h3, {
   text-align: center;
   color: black;
   background-color: #eee8aa;
@@ -224,6 +277,11 @@ a {
   margin: 0 auto;
   margin-top: 24px;
   margin-bottom: 15px;
+  font-size: 17px;
+}
+.left-side-history h3 {
+  font-size: 17px;
+  background-color: #dbd76b;
 }
 .left-side-history-title {
   position: fixed;
@@ -442,6 +500,19 @@ nav.pagination {
   height: 50px;
 }
   //掲示板一覧
+.board-index-page {
+  width: 75%;
+  float: right;
+}
+.board-search-risult {
+  font-size: 22px;
+  color: #556b2f;
+}
+.btn-board-search-button {
+  width: 100px;
+  height: 30px;
+  background-color: #dbd56b;
+}
 .camp-site-board-index {
   //border: solid 1px #d2b48c;
   border-radius: 10px;
@@ -633,6 +704,10 @@ nav.pagination {
   width:65%;
   margin: 0 auto;
 }
+#q_date_gteq,             //掲示板ページ検索日にち
+#q_date_lteq,             //掲示板ページ検索日にち
+#q_camp_site_id_eq,      //掲示板ページ検索目的
+#q_purpos_id_eq,     //掲示板ページ検索キャンプ場
 #board_camp_site_id,  //キャンプ場入力
 #board_date,         //日にち入力
 #board_purpos_id,    //目的入力
@@ -649,6 +724,10 @@ nav.pagination {
 }
 #board_time{        //時間入力部分
   width: 100px;
+}
+#q_date_gteq,
+#q_date_lteq{
+  width: 150px;
 }
 #board_purpos_id,#board_date{        //目的入力部分
   width: 200px;

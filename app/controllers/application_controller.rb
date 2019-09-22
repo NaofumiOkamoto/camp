@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :recently
   before_action :recently_board
   before_action :ranking
+  before_action :facebook_sign_up
 
   def set_search
     @search = CampSite.ransack(params[:q]) #検索オブジェクト
@@ -21,6 +22,25 @@ class ApplicationController < ActionController::Base
   def ranking
     @ranking_camp = CampSite.find(LikeCamp.group(:camp_site_id).order('count(camp_site_id) desc').pluck(:camp_site_id))
     @ranking_board = CampSite.find(Board.group(:camp_site_id).order('count(camp_site_id) desc').pluck(:camp_site_id))
+  end
+
+  def after_sign_in_path_for(resource)
+    user = User.find(current_user.id)
+    if user.nickname.blank?
+      flash[:success] = "他の必須事項を編集ボタンから入力してください"
+      user_path(current_user.id)
+    else
+      root_path
+    end
+  end
+
+  def facebook_sign_up
+    if user_signed_in?
+      if current_user.nickname.blank? || current_user.prefecture_id.blank?
+        flash[:success] = "必要事項を編集ボタンから入力してください"
+        redirect_to controller: 'users', action: 'show', id: current_user.id
+      end
+    end
   end
 
 
