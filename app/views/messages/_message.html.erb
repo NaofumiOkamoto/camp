@@ -6,7 +6,11 @@
         <p id= <%= "content-"+ message.id.to_s %> class="chat-message-line">
           <span id=<%= "nickname-"+ message.id.to_s %>>
             <%= message.user.nickname %>
-            <%= image_tag(url_for(message.user.user_image), class: "chat-image") %>
+            <% if message.user.user_image.attached? %>
+              <%= image_tag(url_for(message.user.user_image), class: "chat-image") %>
+            <% else %>
+              <img src="/assets/no_image.jpg" alt="" class="chat-image">
+            <% end %>
             <span class="chat-message-comment"><%= "#{message.content}" %></span>
             <%= message.created_at.strftime("%Y年%m月%d日 %H:%M") %>
           </span>
@@ -22,7 +26,11 @@
           <%= message.created_at.strftime("%Y年%m月%d日 %H:%M") %>
           <span class="chat-message-comment"><%= "#{message.content}" %></span>
           <span id=<%= "nickname-"+ message.id.to_s %> >
-            <%= image_tag(url_for(message.user.user_image), class: "chat-image") %>
+            <% if message.user.user_image.attached? %>
+              <%= image_tag(url_for(message.user.user_image), class: "chat-image") %>
+            <% else %>
+              <img src="/assets/no_image.jpg" alt="" class="chat-image">
+            <% end %>
             <%= "#{message.user.nickname}" %>
           </span>
         </p>

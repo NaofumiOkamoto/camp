@@ -25,8 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    user = User.find(current_user.id)
-    if user.nickname.blank?
+    if current_user.nickname.blank? || current_user.prefecture_id.blank? || current_user.name.blank?
       flash[:success] = "他の必須事項を編集ボタンから入力してください"
       user_path(current_user.id)
     else
@@ -36,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   def facebook_sign_up
     if user_signed_in?
-      if current_user.nickname.blank? || current_user.prefecture_id.blank?
+      if current_user.nickname.blank? || current_user.prefecture_id.blank? || current_user.name.blank?
         flash[:success] = "必要事項を編集ボタンから入力してください"
         redirect_to controller: 'users', action: 'show', id: current_user.id
       end

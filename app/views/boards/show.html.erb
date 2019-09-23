@@ -6,20 +6,28 @@
 
     <div class="clearfix">
       <div class="col-xs-12 board-show-head clearfix">
+
         <div class="col-xs-3 board-show-user">
+
           <p><%= image_tag @board.user.user_image, class: "board-user-image" %></p>
           <p>募集者<%= link_to @board.user.nickname, user_path(@board.user_id) %></p>
+
           <!--気になる掲示板にボタン -->
-          <%= render 'like_boards/like_board', board: @board %>
+          <% if user_signed_in? && current_user.id != @board.user_id %>
+            <%= render 'like_boards/like_board', board: @board %>
+          <% end %>
+
         </div>
+
         <div class="col-xs-9 board-show-board">
           <%= render 'board_show', board: @board %>
         </div>
+
       </div>
     </div>
 
-        <h3>イメージ画像</h3>
-          <%= render 'board_img', board: @board %>
+    <h3>イメージ画像</h3>
+      <%= render 'board_img', board: @board %>
 
 
     <h2>コメント欄</h2>

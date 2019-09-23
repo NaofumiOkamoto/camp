@@ -2,9 +2,12 @@
   <div class="row">
     <div class="board-new-table">
     <h1>掲示板作成</h1>
+
       <table class="table">
+
           <%= form_with model: @board, local: true do |f| %>
             <%= render '/error_messages', model: f.object %> <!--バリデーションメッセージ -->
+
             <tr><td>依頼主</td>
             <th><%= current_user.nickname %><%= f.hidden_field :user_id, :value => current_user.id %></th></tr>
             <tr><td>キャンプ場<br>（必須）</td>
@@ -22,10 +25,11 @@
             <th><%= f.text_area :comment %></th></tr>
             <tr><td>画像</td>
             <th><%= f.file_field :board_images ,multiple: true %></th></tr>
-            <tr><th>
       </table>
+
             <div class="board-new-button"><%= f.submit '掲示板投稿', class: 'btn board-new-button' %></div>
           <% end %>
+
     </div>
   </div>
 </div>

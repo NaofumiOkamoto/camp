@@ -251,3 +251,52 @@ $(document).on('turbolinks:load', function(){
     }
   })
 });
+
+//トップページ
+$(document).on('turbolinks:load', function() {
+  //CAMPDOORとは
+  $('.top-about-left-img').on('click', function(){
+    $(this).css({'border': 'solid 5px #bdb76b'});
+    $('.top-page-camp-door').css({'display': 'block'});
+    $('.top-page-iru').css({'display': 'none'});
+    $('.top-page-ikitai').css({'display': 'none'});
+    $('.top-page-iru').css({'border': 'solid 0px'});
+    $('.top-page-ikitai').css({'border': 'solid 0px'});
+  });
+  $('.top-about-left-img').mouseover(function(){
+    $(this).css({'background-color': '#eee8aa'});
+  });
+  $('.top-about-left-img').mouseout(function(){
+    $(this).css({'background-color': '#fff'});
+  });
+  //キャンプ場にいる
+  $('.top-about-center-img').on('click', function(){
+    $(this).css({'border': 'solid 5px #bdb76b'});
+    $('.top-page-iru').css({'display': 'block'});
+    $('.top-page-camp-door').css({'display': 'none'});
+    $('.top-page-ikitai').css({'display': 'none'});
+    $('.top-page-camp-door').css({'border': 'solid 0px'});
+    $('.top-page-ikitai').css({'border': 'solid 0px'});
+  });
+  $('.top-about-center-img').mouseover(function(){
+    $(this).css({'background-color': '#eee8aa'});
+  });
+  $('.top-about-center-img').mouseout(function(){
+    $(this).css({'background-color': '#fff'});
+  });
+  //キャンプ場にいる
+  $('.top-about-right-img').on('click', function(){
+    $(this).css({'border': 'solid 5px #bdb76b'});
+    $('.top-page-ikitai').css({'display': 'block'});
+    $('.top-page-camp-door').css({'display': 'none'});
+    $('.top-page-iru').css({'display': 'none'});
+    $('.top-page-camp-door').css({'border': 'solid 0px'});
+    $('.top-page-iru').css({'border': 'solid 0px'});
+  });
+  $('.top-about-right-img').mouseover(function(){
+    $(this).css({'background-color': '#eee8aa'});
+  });
+  $('.top-about-right-img').mouseout(function(){
+    $(this).css({'background-color': '#fff'});
+  });
+})

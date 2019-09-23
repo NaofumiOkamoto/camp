@@ -6,8 +6,11 @@
   <p><span class="board-span1">詳細      </span>   <span class="board-span2"><%= board.detail %></span></p>
   <p><span class="board-span1">条件      </span>   <span class="board-span2"><%= board.condition %></span></p>
   <p><span class="board-span1">コメント  </span>   <span class="board-span2"><%= board.comment %></span></p>
-  <% if board.user_id == current_user.id %>
-    <div class="board-button"><%= link_to '編集', edit_board_path, class: "btn user-edit-button", remote: true %></div>
-    <div class="board-button"><%= link_to '削除', board_path, method: :delete, class: "btn user-edit-button board-destroy-button" %></div>
+
+  <% if user_signed_in? %>
+    <% if board.user_id == current_user.id %>
+      <div class="board-button"><%= link_to '編集', edit_board_path, class: "btn user-edit-button", remote: true %></div>
+      <div class="board-button"><%= link_to '削除', board_path, method: :delete, class: "btn user-edit-button board-destroy-button" %></div>
+    <% end %>
   <% end %>
 </div>

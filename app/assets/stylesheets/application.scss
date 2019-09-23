@@ -239,26 +239,59 @@ a {
   font-size: 20px;
   text-align: right;
 }
-.top-about-left {
+.top-about {
   text-align: center;
 }
 .top-page-about {
   width: 100%;
-  height: 450px;
+  height: 350px;
   margin-top: 50px;
+}
+.top-about-under {
+  width: 80%;
+  margin: 0 auto;
+}
+.top-page-camp-door,
+.top-page-ikitai,
+.top-page-iru {
+  height: 1000px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+.top-page-camp-door p {
+  font-size: 24px;
+  padding-top: 36px;
 }
 .top-subimage {
   background-color: #fff;
   border-radius: 200px;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   text-align: center;
   margin: 0 auto;
   border: solid 2px #bdb76b;
 }
+.about-image-right,
 .about-image {
-  height: 200px;
-  width: 300px;
+  height: 150px;
+  width: 250px;
+}
+.about-image-phone-right,
+.about-image-phone {
+  height: 70px;
+  width: 70px;
+}
+.about-image-middle {
+  height: 150px;
+  width: 150px;
+}
+.triangle{
+  height: 50px;
+  width: 15%;
+  border-top: 50px solid #eee8aa;
+  border-right: 100px solid transparent;
+  border-left: 100px solid transparent;
+  margin: 50px auto;
 }
 //履歴
 .left-side-history-title h2 {
@@ -345,6 +378,7 @@ margin-top: 30px;
 .camp-index-head h1 {
 margin-top: 38px;
 }
+.camp-sites-board,
 .camp-sites-index {
   width: 100%;
 }
@@ -379,7 +413,7 @@ margin-top: 38px;
   font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
   color: #556b2f;
 }
-nav.pagination {
+.camp-sites-index nav.pagination {
   display: none;
 }
 .small {
@@ -514,14 +548,14 @@ nav.pagination {
   background-color: #dbd56b;
 }
 .camp-site-board-index {
-  //border: solid 1px #d2b48c;
   border-radius: 10px;
-  height: 100px;
-  margin-top: 13px;
-  padding: 3px 10px 3px 10px;
+  height: 140px;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 18px 10px 3px 10px;
   background-color: #f5f5dc;
   font-size: 20px;
-  color: #808000;
+  color: #000;
 }
 .camp-site-board-index-box {
   display: none;
@@ -530,6 +564,9 @@ nav.pagination {
   transform: scale(1.01);
   transition-duration: 0.2s;
   background-color: #eee8aa;
+}
+.board-index-new-button {
+  height: 170px;
 }
 .board-index-new-button p {
   width: 200px;
@@ -544,6 +581,13 @@ nav.pagination {
 }
 .board-index-new-button p a {
   color: #fff;
+}
+.paginate {
+  text-align: center;
+  font-size: 26px;
+}
+.board-p {
+  border-bottom: solid 1px #dbd76b;
 }
 
   //チャット
@@ -656,6 +700,10 @@ nav.pagination {
 }
 .user-show-edit-form {
   padding-right: 50px;
+}
+#user-edit-my-page span{
+  color: red;
+  font-size: 10px;
 }
 .user-edit-button {
   width: 300px;

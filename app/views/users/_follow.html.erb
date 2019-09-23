@@ -1,4 +1,10 @@
-<%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :followed_id, @user.id %></div>
-  <%= f.submit "フォロー中", class: "btn follow-btn" %>
+<% if user_signed_in? %>
+  <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+    <div><%= hidden_field_tag :followed_id, @user.id %></div>
+    <%= f.submit "フォローする", class: "btn follow-btn" %>
+  <% end %>
+<% else %>
+    <div class="col-xs-6 btn follow-btn login-info">
+      <p>フォローする</p>
+    </div>
 <% end %>

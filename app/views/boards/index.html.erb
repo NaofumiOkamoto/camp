@@ -33,34 +33,20 @@
             <% end %>
           </div>
 
-          <div class="camp-sites-index jscroll">
+          <div class="camp-sites-board">
               <% @search_board_sites.each do |board| %>
+                <%= link_to  board_path(board.id) do %>
                   <div class="col-xs-12 camp-site-board-index">
-                    <%= link_to  board_path(board.id) do %>
-                      <div class="col-xs-3">
-                        <%= board.date %>
-                        <%= board.time %><br>
-                        <%= board.camp_site.name %>
-                        <%= board.place %>
-                      </div>
-                      <div class="col-xs-2">
-                        <%= board.user.nickname %>
-                      </div>
-                      <div class="col-xs-4">
-                        <%= board.purpos_name %><br>
-                        <%= board.condition %>
-                      </div>
-                      <div class="col-xs-3">
-                        気になる数<%= board.like_boards.count %>
-                      </div>
-                    <% end %>
+                    <%= render 'board_each', board: board %>
                   </div>
-                <%= paginate @search_board_sites %>
+                <% end %>
               <% end %>
+          </div>
+          <div class="paginate">
+              <%= paginate @search_board_sites, class: "btn-flat-border paginate" %>
           </div>
 
       </div>
     </div>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>

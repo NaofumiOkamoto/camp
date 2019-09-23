@@ -2,7 +2,7 @@
   <table class="table" id="user-show-my-page">
 
     <tr>
-    <% if current_user.id == user.id %>
+    <% if user_signed_in? && current_user.id == user.id %>
       <th>名前（必須）</th>
       <th><%= user.name %></th>
     <% end %>
@@ -33,7 +33,7 @@
     </tr>
 
   </table>
-  <% if current_user.id == user.id %>
+  <% if user_signed_in? && current_user.id == user.id %>
     <p class="user-show-edit-button">
       <%= link_to '編集', edit_user_path, class: "btn user-edit-button", remote: true %>
     </p>

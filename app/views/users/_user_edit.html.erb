@@ -5,23 +5,23 @@
 
         <tr>
         <% if current_user.id == user.id %>
-          <th>名前</th>
+          <th>名前<span>（必須）</span></th>
           <th><%= f.text_field :name %></th>
         <% end %>
         </tr>
 
         <tr>
-          <th>ニックネーム</th>
+          <th>ニックネーム<span>（必須）</span></th>
           <th><%= f.text_field :nickname %></th>
         </tr>
 
             <tr>
-              <th>都道府県</th>
+              <th>都道府県<span>（必須）</span></th>
               <th><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name, :include_blank => '都道府県' %></th>
             </tr>
 
         <tr>
-          <th>メールアドレス</th>
+          <th>メールアドレス<span>（必須）</span></th>
           <th><%= f.email_field :email %></th>
         </tr>
 

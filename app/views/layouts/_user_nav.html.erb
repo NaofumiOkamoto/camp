@@ -86,15 +86,17 @@
                       </p>
                     <% end %>
 
+
+      <% if user_signed_in? %>
+
                     <%= link_to new_board_path do %>
                       <p class="sp-menu-p">
+                        <span data-turbolinks="false">
                             <img src="/assets/axe2.png" alt="" class="nav-icon">
                             掲示板作成
                         </span>
                       </p>
                     <% end %>
-
-      <% if user_signed_in? %>
 
                     <%= link_to user_path(current_user.id) do %>
                       <p class="sp-menu-p">
