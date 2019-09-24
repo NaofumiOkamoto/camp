@@ -32,6 +32,46 @@
 
     <h2>コメント欄</h2>
     <div class="board-comment-box">
+      <div class="board-comment-input">
+        <%= form_with model: [@board, @board_comment], local: true do |f| %>
+          <%= f.text_field :comment, class: "map-search-form", placeholder: "コメント入力" %>
+          <%= f.submit "送信", class: "btn btn-board-search-button" %>
+        <% end %>
+      </div>
+
+      <% @board_comments.each do |comment| %>
+        <% if user_signed_in? && comment.user_id == @board.user_id %>
+
+          <p class="chat-message-line">
+            <%= comment.user.nickname %>
+          <% if comment.user.user_image.attached? %>
+            <%= image_tag comment.user.user_image, class: "chat-image" %>
+          <% else %>
+            <img src="/assets/no_image.jpg" alt="" class="chat-image">
+          <% end %>
+            <span class="chat-message-comment"><%= comment.comment %></span>
+            <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+          </p>
+
+        <% else %>
+
+          <div class="chat-message-right">
+
+            <p class="chat-message-line">
+              <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+              <span class="chat-message-comment"><%= comment.comment %></span>
+            <% if comment.user.user_image.attached? %>
+              <%= image_tag comment.user.user_image, class: "chat-image"%>
+            <% else %>
+              <img src="/assets/no_image.jpg" alt="" class="chat-image">
+            <% end %>
+              <%= comment.user.nickname %>
+            </p>
+
+          </div>
+
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

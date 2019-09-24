@@ -29,6 +29,8 @@ class BoardsController < ApplicationController
     else
       cookies[:recent_board_id] += "," + @board.id.to_s
     end
+    @board_comment = BoardComment.new
+    @board_comments = BoardComment.all
   end
 
   def edit
