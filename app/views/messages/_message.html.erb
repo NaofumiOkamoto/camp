@@ -1,0 +1,41 @@
+<div id="chat-message">
+    <% if user_signed_in? && message.user_id == current_user.id %>
+
+      <div id=<%= "message-"+ message.id.to_s %> class="col-xs-12">
+
+        <p id= <%= "content-"+ message.id.to_s %> class="chat-message-line">
+          <span id=<%= "nickname-"+ message.id.to_s %>>
+            <%= message.user.nickname %>
+            <% if message.user.user_image.attached? %>
+              <%= image_tag(url_for(message.user.user_image), class: "chat-image") %>
+            <% else %>
+              <img src="/assets/no_image.jpg" alt="" class="chat-image">
+            <% end %>
+            <span class="chat-message-comment"><%= "#{message.content}" %></span>
+            <%= message.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+          </span>
+        </p>
+
+      </div>
+
+    <% else %>
+
+      <div id=<%= "message-"+ message.id.to_s %> class="col-xs-12 chat-message-right">
+
+        <p id= <%= "content-"+ message.id.to_s %> class="chat-message-line">
+          <%= message.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+          <span class="chat-message-comment"><%= "#{message.content}" %></span>
+          <span id=<%= "nickname-"+ message.id.to_s %> >
+            <% if message.user.user_image.attached? %>
+              <%= image_tag(url_for(message.user.user_image), class: "chat-image") %>
+            <% else %>
+              <img src="/assets/no_image.jpg" alt="" class="chat-image">
+            <% end %>
+            <%= "#{message.user.nickname}" %>
+          </span>
+        </p>
+
+      </div>
+
+    <% end %>
+</div>

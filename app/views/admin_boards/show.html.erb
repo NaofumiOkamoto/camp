@@ -1,0 +1,18 @@
+<h1>管理者用掲示板詳細</h1>
+
+
+<div>
+    <%= @board.user.nickname %>
+    <%= @board.purpos_name %>
+    <%= @board.condition %>
+    <%= @board.date %>
+    <%= @board.time %>
+    <%= @board.place %>
+    <%= @board.detail %>
+    <%= @board.comment %>
+    <% if @board.board_image.attached? %>
+      <%= image_tag @board.board_image %>
+    <% end %>
+</div>
+
+<h2>コメント欄</h2>

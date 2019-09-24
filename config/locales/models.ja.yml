@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+      board:
+        date: 日にち
+        time: 時間
+        place: 場所
+  views:
+    pagination:
+      previous: "« 前ページ"
+      next: "次ページ »"
+      truncate: "...."
+      first: "先頭"
+      last: "最後"

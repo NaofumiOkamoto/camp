@@ -1,0 +1,40 @@
+<h1>管理者キャンプ場一覧</h1>
+
+<!-- 検索ここから -->
+<%= search_form_for @search, url: admin_camp_sites_path do |f| %>
+  <%= f.label :name_cont, "キャンプ場名" %>
+  <%= f.search_field :name_cont %>
+  <%= f.collection_select :area_id_eq, @camp_sites, :area_id, :area, :include_blank => '全国' %>
+  <%= f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
+  <%= f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
+  <%= f.submit "検索" %>
+<% end %>
+<!-- 検索ここまで -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <td>id</td>
+        <td>キャンプ場名</td>
+        <td>エリア</td>
+        <td>都道府県</td>
+        <td>住所</td>
+        <td>キャンプ場タイプ</td>
+      </tr>
+    </thead>
+    <tbody>
+    <% @search_camp_sites.each do |camp_site| %>
+      <tr>
+        <th><%= camp_site.id %></th>
+        <th><%= camp_site.name %></th>
+        <th><%= camp_site.area %></th>
+        <th><%= camp_site.prefecture_name %></th>
+        <th><%= camp_site.address %></th>
+        <th><%= camp_site.category_name %></th>
+        <th><%= link_to '詳細', admin_camp_site_path(camp_site) %></th>
+        <th><%= link_to '編集', edit_admin_camp_site_path(camp_site) %></th>
+        <th><%= link_to '削除', admin_camp_site_path(camp_site), method: :delete %></th>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>

@@ -1,0 +1,959 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body {
+  margin-top: 70px;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: #556b2f;
+}
+.container {
+  position: relative;
+  margin-top: 63px;
+}
+.container-fluid {
+  height: 67px;
+  width: 100%;
+}
+.alert {
+  text-align: center;
+  margin-bottom: 0;
+}
+.alert-notice {
+  background-color: #f0e68c;
+}
+.navbar-default {
+  background-color: #bdb76b;
+  width: 100%;
+  margin-bottom: 0;
+  border-bottom: solid 0px;
+  z-index: 10;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #556b2f;
+}
+.navbar-nav {
+  font-size: 20px;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+  width: 100%;
+}
+.nav-icon {
+  width: 70px;
+  height: 70px;
+  margin-right: 30px;
+}
+.right-nav {
+  float: right;
+  color: #fff;
+  font-size: 17px;
+}
+.right-nav .btn{
+  font-size: 17px;
+}
+.navbar-left {
+  margin-top: 20px;
+}
+.top-logo {
+  font-family: 'Chalkduster','Marker Felt','Skia-Regular_Black',sans-serif;
+  color: #556b2f;
+  text-align: center;
+  font-size: 36px;
+}
+// ハンバーガー
+#hm-icon {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 10;
+}
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.menu-trigger {
+  position: relative;
+  width: 50px;
+  height: 40px;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #556b2f;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 17px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+.menu-trigger.active apan:nth-of-type(1) {
+  -webkit-transform: translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg);
+  background-color: #fff;
+}
+.menu-trigger.active apan:nth-of-type(2) {
+  opacity: 0;
+}
+.menu-trigger.active apan:nth-of-type(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+  background-color: #fff;
+}
+.table-hover > tbody > tr:hover {
+  background-color: #bdb76b;
+}
+.sp-menu-p {
+  font-size: 31px;
+  padding-left: 150px;
+  padding-top: 18px;
+  border-bottom: 1px solid #bdb76b;
+}
+.sp-menu-p:hover {
+  background-color: #bdb76b;
+}
+#sp-menu {
+  width: 600px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #eee8aa;
+  min-height: 100%;
+  display: none;
+  z-index: 9;
+}
+.sp-menu-menu {
+  text-align: center;
+  color: #808000;
+  font-size: 31px;
+  margin-bottom: 50px;
+}
+#sp-menu a {
+  color: #556b2f;
+  text-decoration: none;
+}
+//ユーザーログイン
+.user-session-new-page h2 {
+  margin-bottom: 50px;
+}
+#user_name,
+#user_nickname,
+#user_prefecture_id,
+#user_introduction,
+#user_password_confirmation,
+#user_password,
+#user_email {
+  width: 300px;
+  height: 35px;
+  margin-bottom: 10px;
+  border: solid 1px #808000;
+}
+.facebook-button,
+.user-ragistration-info,
+.login_btn {
+  width: 300px;
+  height: 35px;
+  background-color: #808000;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+}
+.user-ragistration-info{
+  background-color: #eee8aa;
+}
+.facebook-button p,
+.user-ragistration-info p{
+  padding-top: 7px;
+  color: #000;
+}
+.facebook-button{
+  background-color: #4169e1;
+}
+.facebook-button a{
+  color: #fff;
+}
+.user-session-new-page #user_user_image {
+  margin-bottom: 10px;
+}
+// トップページ
+.container-fluid span{
+  text-align: center;
+  margin: 0 auto;
+}
+.top-image {
+  background-image: url(camp2.jpeg);
+  background-size: cover;
+  opacity: 0.7;
+  width: 100%;
+  height: 800px;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+.top-info-box {
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  top: 250px;
+}
+.top-info {
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+  font-size: 70px;
+}
+.top-info-info {
+  position: absolute;
+  bottom: 50px;
+  right: 30px;
+  font-size: 20px;
+  text-align: right;
+}
+.top-about {
+  text-align: center;
+}
+.top-about-page {
+  width: 100%;
+  background-color: #fafad2;
+}
+.top-page-about {
+  width: 77%;
+  height: 350px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.about-info-box {
+  background-color: #fafad2;
+  padding: 25px 0;
+  border-radius: 20px;
+  height: 250px;
+}
+.top-about-under {
+  width: 80%;
+  margin: 0 auto;
+}
+.top-page-camp-door,
+.top-page-ikitai,
+.top-page-iru {
+  height: 1000px;
+  margin-bottom: 100px;
+  text-align: center;
+  display: none;
+}
+.top-page-camp-door h2,
+.top-page-ikitai h2,
+.top-page-ikitai p,
+.top-page-iru h2,
+.top-page-iru p {
+  text-align: left;
+}
+.top-page-ikitai p,
+.top-page-iru p {
+  font-size: 18px;
+}
+.top-page-camp-door{
+  display: block;
+}
+.top-page-camp-door p {
+  font-size: 24px;
+  padding-top: 16px;
+}
+.tunagaru {
+  font-size: 24px;
+}
+.top-subimage {
+  background-color: #fff;
+  border-radius: 200px;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin: 0 auto;
+  border: solid 2px #bdb76b;
+}
+.top-about-left-img {
+  border: solid 25px #bdb76b;
+}
+.about-hr {
+  border: 10px solid #dbd76b;
+  margin-bottom: 50px;
+}
+.about-image-right,
+.about-image {
+  height: 200px;
+  width: 200px;
+}
+.about-image-phone-right,
+.about-image-phone {
+  height: 70px;
+  width: 70px;
+}
+.about-image-middle {
+  height: 150px;
+  width: 150px;
+}
+.triangle{
+  height: 50px;
+  width: 15%;
+  border-top: 50px solid #eee8aa;
+  border-right: 100px solid transparent;
+  border-left: 100px solid transparent;
+  margin: 32px auto;
+}
+.example-comment {
+  margin-top: 100px;
+}
+.purpose-comment {
+  margin-top: 92px;
+}
+.about-login, .about-signup {
+  width: 350px;
+  height: 60px;
+  background-color: #bdb76b;
+  margin: 50px auto 0 auto;
+  padding-top: 10px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+.about-signup {
+  background-color: #808000;
+  color: #fff;
+}
+//履歴
+.left-side-history-title h2 {
+  text-align: center;
+  color: black;
+}
+.left-side-history h4,
+.left-side-history h3, {
+  text-align: center;
+  color: black;
+  background-color: #eee8aa;
+  border-radius: 10px;
+  height: 50px;
+  padding: 5px 0;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 24px;
+  margin-bottom: 15px;
+  font-size: 17px;
+}
+.left-side-history h3 {
+  font-size: 17px;
+  background-color: #dbd76b;
+}
+.left-side-history-title {
+  position: fixed;
+  top: 95px;
+  left: 28px;
+  float: left;
+  width: 17%;
+}
+.left-side-history {
+  width: 100%;
+  height: 650px;
+  border: solid 1px #808000;
+  border-radius: 7px;
+  padding-top: 1px;
+  overflow: scroll;
+}
+.left-side-history p {
+  padding-left: 5px;
+  text-align: left;
+}
+//地図
+.map-page {
+  float: right;
+  width: 80%;
+}
+#map{
+  height: 600px;
+  margin-right: 30px;
+}
+.map-info {
+  font-size: 31px;
+  float: left;
+}
+.map-button-area {
+  margin: 30px 0 30px 30px;
+  text-align: right;
+  margin-right: 50px;
+}
+.map-search-form {
+  border: solid 2px #808000;
+  width: 60%;
+  height: 35px;
+}
+.map-search-button,.map-local,.map-back {
+  width: 80px;
+  height: 35px;
+  background-color: #fff;
+}
+.map-local,.map-back {
+  background-color: #eee8aa;
+}
+//キャンプ場一覧
+.camp-index {
+  width: 85%;
+  float: right;
+  padding: 30px 0 0 30px;
+}
+.camp-index-head {
+margin-top: 30px;
+}
+.camp-index-head h1 {
+margin-top: 38px;
+}
+.camp-sites-board,
+.camp-sites-index {
+  width: 100%;
+}
+.camp-sites-index-box {
+  width: 33%;
+  height: 420px;
+  text-align: center;
+  font-size: 17px;
+  float: left;
+  padding-top: 20px;
+}
+.camp-sites-index-box:hover {
+  transform: scale(1.02);
+  transition-duration: 0.2s;
+}
+.camp-site-image {
+  width: 80%;
+  height: 200px;
+}
+.camp-site-index-info {
+  font-size: 13px;
+}
+.camp-index-page {
+  margin: 0 auto;
+  padding: 0 50px 50px 50px;
+  width: 100%;
+  text-align: center;
+  color: #556b2f;
+}
+.camp-site-index-name {
+  font-size: 23px;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+  color: #556b2f;
+}
+.camp-sites-index nav.pagination {
+  display: none;
+}
+.small {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 30px;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+  color: #556b2f;
+  width: 100%;
+}
+.camp-index-tab {
+  background-color: #eee8aa;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 20px;
+  color: #808000;
+}
+.camp-index-page .camp_site_search {
+  padding: 30px 0 20px 0;
+  background-color: #eee8aa;
+  border-radius: 10px;
+}
+.camp-index-page .form-control {  //検索フォーム
+  width: 422px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#q_category_id_eq, //検索県選択
+#q_prefecture_id_eq {  //検索種類選択
+  height: 37px;
+  width: 200px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid #bdb76b;
+  font-size: 16px;
+  margin-right: 10px;
+  text-align: center;
+}
+.camp-index-page .btn-default {  //検索ボタン
+  background-color: #556b2f;
+  margin-left: 195px;
+  width: 100px;
+  font-size: 20px;
+  color: #fff;
+}
+.camp-index-page span {  //検索結果
+  font-size: 20px;
+}
+//キャンプ場詳細
+.camp-show-container {
+  width: 94%;
+  padding-top: 52px;
+}
+.camp-site-show-page {
+  width: 70%;
+  float: right;
+  margin-right: 100px;
+}
+.camp-site-show-image-box {
+  width: 100%;
+  height: 350px;
+}
+.camp-site-show-image-0 {
+  width: 100%;
+  height: 440px;
+}
+.camp-site-show-image {
+  width: 100%;
+  height: 220px;
+}
+.camp-show-image-col {
+  padding: 0px;
+}
+.camp-site-show-info {
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+.camp-site-show-info h1 {
+  margin-top: 41px;
+}
+.camp-site-show-info-under {
+  padding-top: 20px;
+  border-top: solid 1px #bdb76b;
+}
+.camp-site-subtitle {
+  text-align: center;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+  padding: 0 10px;
+}
+.camp-site-subtitle-info {
+  border-bottom: solid 5px #bdb76b;
+}
+.camp-site-board-chat {
+  margin-top: 10px;
+  height: 700px;
+}
+.camp-site-like {
+  margin-top: 37px;
+  text-align: right;
+}
+.like-camp-like-button {
+  background-color: #dbd76b;
+  height: 50px;
+  text-align: center;
+  border-radius: 10px;
+}
+.like-camp-like-button:hover {
+  background-color: #eee8aa;
+}
+.like-span {
+  padding-top: 10px;
+  text-align: left;
+}
+.like-icon {
+  width: 50px;
+  height: 50px;
+}
+  //掲示板一覧
+.board-index-page {
+  width: 75%;
+  float: right;
+}
+.board-search-risult {
+  font-size: 22px;
+  color: #556b2f;
+}
+.btn-board-search-button {
+  width: 100px;
+  height: 30px;
+  background-color: #dbd56b;
+}
+.camp-site-board-index {
+  border-radius: 10px;
+  height: 140px;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 18px 10px 3px 10px;
+  background-color: #f5f5dc;
+  font-size: 20px;
+  color: #000;
+}
+.camp-site-board-index-box {
+  display: none;
+}
+.camp-site-board-index:hover {
+  transform: scale(1.01);
+  transition-duration: 0.2s;
+  background-color: #eee8aa;
+}
+.board-index-new-button {
+  height: 170px;
+}
+.board-index-new-button p {
+  width: 200px;
+  height: 50px;
+  background-color: #808000;
+  color: #fff;
+  float: right;
+  border-radius: 10px;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 5px;
+}
+.board-index-new-button p a {
+  color: #fff;
+}
+.paginate {
+  text-align: center;
+  font-size: 26px;
+}
+.board-p {
+  border-bottom: solid 1px #dbd76b;
+}
+
+  //チャット
+.camp-site-chat-index {
+  display: none;
+  border: solid 1px #d2b48c;
+  border-radius: 10px;
+  padding: 5px;
+}
+.camp-site-messages {
+  width: 90%;
+  height: 700px;
+  overflow: scroll;
+  margin: 0 auto;
+}
+.chat-message-comment {
+  width: 100%;
+  background-color: #f0e68c;
+  border: solid 1px #d2b48c;
+  border-radius: 10px;
+  padding: 10px 15px 15px 10px;
+  margin: 0 18px;
+  font-size: 20px;
+}
+.chat-message-line {
+  width: 100%;
+  padding-top: 4px;
+}
+#chat-message {
+  margin-bottom: 10px;
+}
+.chat-message-right {
+  text-align: right;
+}
+.chat-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  border: solid 1px #808000;
+}
+  //地図
+#camp-show-map {
+  height: 500px;
+  display: none;
+}
+//ユーザーページ
+.user-show-page {
+  width: 75%;
+  float: right;
+  padding: 30px 10px 0 30px;
+  margin-top: 10px;
+}
+.user-show-subtitle-box {
+  padding-right: 100px;
+}
+.user-show-subtitle {
+  text-align: center;
+  height: 80px;
+  width: 20%;
+  float: left;
+}
+.user-show-subtitle-like-camp {
+  border-bottom: solid 7px #808000;
+}
+.user-show-info-box {
+  border: solid 1px #d2b48c;
+  border-radius: 4px;
+  height: 500px;
+  margin: 15px 100px 50px 0;
+  overflow: scroll;
+}
+.user-show-info {
+  display: none;
+  padding: 10px;
+}
+.user-show-like-camp {
+  display: block;
+}
+.user-show-like-camp p {
+  font-size: 18px;
+}
+.user-show-like-camp div,
+.user-show-follower div,
+.user-show-follow div {
+  width: 18%;
+  height: 200px;
+  margin: 19px 37px;
+  background-color: #f5f5dc;
+  border-radius: 10px;
+  padding: 17px 0 0 0;
+  font-size: 24px;
+  color: #556b2f;
+  float: left;
+  text-align: center;
+}
+.user-show-like-camp div:hover,
+.user-show-follower div:hover,
+.user-show-follow div:hover {
+  background-color: #dbd76b;
+  transform: scale(1.01);
+  transition-duration: 0.2s;
+}
+.likecamp-img {
+  width: 125px;
+  height: 95px;
+}
+.follow-img {
+  width: 110px;
+  height: 110px;
+}
+.user-show-edit-form {
+  padding-right: 50px;
+}
+#user-edit-my-page span{
+  color: red;
+  font-size: 10px;
+}
+.user-edit-button {
+  width: 300px;
+  height: 50px;
+  background-color: #808000;
+  color: #fff;
+  font-size: 20px;
+}
+.user-show-edit-button {
+  text-align: center;
+}
+.camp-show-info-p {
+  padding-left: 34px;
+  margin: -10px 0 30px 0;
+  color: #556b2f;
+}
+.user-follow-page {
+  height: 70px;
+  padding: 18px 10px 0 10px;
+}
+.user-follow-page .btn { //フォローボタン
+ background-color: #808000;
+ color: #fff;
+ height: 50px;
+ width: 300px;
+}
+.user-follow-page .follow-btn { //フォローボタン
+ background-color: #eee8aa;
+ color: #000;
+}
+.user-show-img-box {
+  text-align: center;
+  padding-top: 70px;
+}
+.user-show-img {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+}
+.user-show-middle {
+  padding-bottom: 30px;
+}
+
+//掲示板作成
+.board-new-table {
+  width:65%;
+  margin: 0 auto;
+}
+#q_date_gteq,             //掲示板ページ検索日にち
+#q_date_lteq,             //掲示板ページ検索日にち
+#q_camp_site_id_eq,      //掲示板ページ検索目的
+#q_purpos_id_eq,     //掲示板ページ検索キャンプ場
+#board_camp_site_id,  //キャンプ場入力
+#board_date,         //日にち入力
+#board_purpos_id,    //目的入力
+#board_time,         //時間入力
+.board-new-text-field {  //テキストボックス入力
+  height: 37px;
+  width: 300px;
+  border-radius: 4px;
+  border: 2px solid #bdb76b;
+  background-color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+  text-align: center;
+}
+#board_time{        //時間入力部分
+  width: 100px;
+}
+#q_date_gteq,
+#q_date_lteq{
+  width: 150px;
+}
+#board_purpos_id,#board_date{        //目的入力部分
+  width: 200px;
+}
+#board_place,#board_condition{        //目的入力部分
+  border: 1px solid #bdb76b;
+  border-radius: 0px;
+}
+#board_comment{        //時間入力部分
+  width: 300px;
+  border: 1px solid #bdb76b;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>thead>tr>th {
+  border-bottom: solid 1px rgba(189,183,107,0.2);
+  border-top: solid 0px #fff;
+  height: 70px;
+  vertical-align: middle;
+  font-size: 17px;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+}
+.table>tbody>tr>td {    //左項目部分
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+  font-size: 23px;
+  color: #808000;
+}
+.table>tbody>tr>th {   //入力部分
+  padding-left: 70px;
+}
+.board-new-button {    //更新ボタン
+  background-color: #808000; //#556b2f
+  color: #fff;
+  width: 300px;
+  margin: 0 auto;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+  font-size: 30px;
+}
+.board-new-table h1 {
+  text-align: center;
+  font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
+}
+
+//掲示板詳細
+.board-comment-box {
+  border: 1px solid #808000;
+  height: 400px;
+  width: 100%;
+  padding: 20px;
+  overflow: scroll;
+}
+.board-user-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: solid 4px #bdb76d;
+}
+.board-edit-board {
+  padding: 30px 0 30px 50px;
+}
+.board-show-board {
+  padding: 30px 50px 30px 50px;
+  font-size: 20px;
+  border-radius: 20px;
+}
+.board-show-board p {
+  border-bottom: solid 1px #dbd76b;
+  margin-bottom: 20px;
+}
+.board-span1 {
+  display: inline-block;
+  width: 160px;
+}
+.board-span2 {
+  display: inline-block;
+  width: 70%;
+}
+input[type="file"] {
+    display: inline;
+}
+.board-button {
+  text-align: center;
+}
+.board-show-page {
+  width: 70%;
+  margin-right: 100px;
+  float: right;
+}
+.board-show-page h1 {
+  width: 300px;
+  margin: 0 auto 30px auto;
+}
+.board-images {
+  text-align: center;
+  background-color: #f5f5dd;
+  height: 250px;
+  padding: 20px 0 0 20px;
+  border-radius: 10px;
+}
+.board-images img {
+  width: 200px;
+  height: 200px;
+}
+.board-show-head h2 {
+  text-align: center;
+}
+.board-show-user {
+  text-align: center;
+  font-size: 20px;
+}
+.board-show-user p{
+  margin: 20px 0;
+}
+.board-image {
+  width: 200px;
+  height: 200px;
+}
+.board-destroy-button {
+  margin-top: 20px;
+  background-color: #dbd76b;
+}
+.board-comment-input {
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
+}

@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+
+    <!-- 閲覧履歴表示 -->
+    <%= render '/history', recently_campsite: @recently_campsite %>
+
+    <div class="board-index-page">
+      <div class="row">
+
+        <h1>掲示板一覧</h1>
+
+          <!-- 検索ここから -->
+          <div class="col-xs-8">
+            <div class="form-group">
+            <%= search_form_for @search_board, url: boards_path do |f| %>
+              <p><%= f.collection_select :purpos_id_eq, @purposes, :id, :purpos_name, :include_blank => '目的' %></p>
+              <p><%= f.collection_select :camp_site_id_eq, @camp_site, :id, :name, :include_blank => 'キャンプ場' %></p>
+              <p><%= f.date_field :date_gteq %>~<%= f.date_field :date_lteq %></p>
+              <div class="col-xs-3"><%= f.submit "検索", class: "btn btn-board-search-button" %></div>
+              <div class="col-xs-8 board-search-risult">検索結果<%= @search_board_count.count %>件</div>
+            <% end %>
+            </div>
+          </div>
+          <!-- 検索ここまで -->
+
+          <div class="col-xs-4 board-index-new-button">
+            <% if user_signed_in? %>
+              <span data-turbolinks="false">
+                <p><%= link_to '掲示板作成', new_board_path %></p>
+              </span>
+            <% else %>
+              <p class="login-info">掲示板作成</p>
+            <% end %>
+          </div>
+
+          <div class="camp-sites-board">
+              <% @search_board_sites.each do |board| %>
+                <%= link_to  board_path(board.id) do %>
+                  <div class="col-xs-12 camp-site-board-index">
+                    <%= render 'board_each', board: board %>
+                  </div>
+                <% end %>
+              <% end %>
+          </div>
+          <div class="paginate">
+              <%= paginate @search_board_sites, class: "btn-flat-border paginate" %>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

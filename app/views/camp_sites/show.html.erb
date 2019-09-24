@@ -1,0 +1,136 @@
+<div class="container camp-show-container">
+  <div class="row">
+
+<!-- 閲覧履歴表示 -->
+      <%= render '/history', recently_campsite: @recently_campsite %>
+
+<div class="camp-site-show-page">
+  <div class="row">
+
+    <!-- 画像 -->
+      <div class="col-xs-8 camp-show-image-col">
+        <% if @camp_site.camp_images.attached? %>
+          <%= image_tag @camp_site.camp_images.first, class: "camp-site-show-image-0" %>
+      </div>
+      <div class="col-xs-4 camp-show-image-col">
+            <% if @camp_site.camp_images[1..2].blank? %>
+              <%= image_tag @camp_site.camp_images[0], class: "camp-site-show-image" %>
+              <%= image_tag @camp_site.camp_images[0], class: "camp-site-show-image" %>
+            <% elsif @camp_site.camp_images[2].blank? %>
+              <%= image_tag @camp_site.camp_images[0], class: "camp-site-show-image" %>
+              <%= image_tag @camp_site.camp_images[1], class: "camp-site-show-image" %>
+            <% else %>
+              <% @camp_site.camp_images[1..2].each do |image| %>
+                <%= image_tag image, class: "camp-site-show-image" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+<hr>
+    <!-- 掲示板 -->
+
+    <div class="col-xs-3 camp-site-subtitle camp-site-subtitle-info">
+      <h3 class="">キャンプ情報</h3>
+    </div>
+    <div class="col-xs-3 camp-site-subtitle camp-site-subtitle-board">
+      <h3 class="">募集掲示板(<%= @camp_site.boards.size %>)件</h3>
+    </div>
+    <div class="col-xs-3 camp-site-subtitle camp-site-subtitle-chat">
+      <h3 class="">チャットルーム</h3>
+    </div>
+    <div class="col-xs-3 camp-site-subtitle camp-site-subtitle-map">
+      <h3 class="">地図</h3>
+    </div>
+
+  <hr>
+  <hr>
+  <hr>
+  <div class="col-xs-12 camp-site-board-chat">
+    <!-- キャンプ情報 -->
+    <div class="col-xs-12 camp-site-show-info">
+      <div class="col-xs-6">
+        <h1><%= @camp_site.name %></h1>
+      </div>
+
+      <div class="col-xs-6 camp-site-like">
+        <%= render 'like_camps/like_camp_site', camp_site: @camp_site %>
+      </div>
+
+      <div class="col-xs-12 camp-site-show-info-under">
+        <p>◼️ 所在地</p>
+        <p class="camp-show-info-p"><%= @camp_site.address %></p>
+        <p>◼️  キャンプ場スタイル</p>
+        <p class="camp-show-info-p"><%= @camp_site.category_name %></p>
+        <p>◼️ キャンプ場コメント</p>
+        <p class="camp-show-info-p"><%= @camp_site.introduction %></p>
+      </div>
+    </div>
+
+    <!-- 掲示板 -->
+    <div class="">
+        <% @boards.each do |board| %>
+          <%= link_to  board_path(board.id) do %>
+            <div class="col-xs-12 camp-site-board-index camp-site-board-index-box">
+              <%= render 'boards/board_each', board: board %>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+
+      <!-- チャット -->
+    <div class="camp-site-chat-index">
+          <% if user_signed_in? %>
+            <div class="board-comment-input">
+              <form>
+                <input type="text" class="map-search-form" />
+                <input type="submit" value="投稿" onClick="postChatMessage()" class="chat-button btn-board-search-button" />
+              </form>
+            </div>
+          <% else %>
+            <p>
+              チャット投稿にはログインが必要です
+              <%= link_to 'ログインする', new_user_session_path, class: "btn btn-primary" %>
+            </p>
+          <% end %>
+        <div class="camp-site-messages">
+          <% if user_signed_in? %>
+            <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= current_user.id%>">
+          <% else %>
+            <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= %>">
+          <% end %>
+              <%= render @messages %>
+            </div>
+        </div>
+    </div>
+
+    <!-- 地図 -->
+    <div id="camp-show-map">
+    </div>
+
+<script>
+var map;
+var marker;
+var infoWindow;
+
+function initMap(){
+  map = new google.maps.Map(document.getElementById('camp-show-map'), {
+  center: {lat: <%= @camp_site.latitude %>, lng: <%= @camp_site.longitude %>},
+  zoom:15
+  });
+    //マーカー設置
+    var address = {lat: <%= @camp_site.latitude %>, lng: <%= @camp_site.longitude %>};
+    marker = new google.maps.Marker({
+      map: map,
+      position: address,
+      });
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0&callback=initMap" async defer></script>
+
+  </div>
+
+  </div>
+</div>
+</div>
+</div>

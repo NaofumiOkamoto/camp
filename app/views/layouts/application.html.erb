@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pf</title>
+    <title>CAMP</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <% if admin_signed_in? %>
+      <%= render 'layouts/admin_nav' %>
+    <% else %>
+      <%= render 'layouts/user_nav' %>
+    <% end %>
+      <%= render '/flash_message' %> <!--フラッシュメッセージ -->
+    <% if content_for?(:body_attributes) %>
+      <%= yield(:body_attributes) %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

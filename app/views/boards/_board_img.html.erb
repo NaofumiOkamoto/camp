@@ -1,0 +1,9 @@
+<div class="board-images">
+  <% if board.board_images.attached? %>
+    <% board.board_images.each do |image| %>
+      <%= image_tag image.variant(resize: "200x200") %>
+    <% end %>
+  <% else %>
+    <img src="/assets/no_image.jpg" alt="" class="board-no-image">
+  <% end %>
+</div>

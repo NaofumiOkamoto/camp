@@ -1,0 +1,36 @@
+<h1>管理者用 ユーザー一覧</h1>
+
+<div class="row">
+
+  <%= search_form_for @search, url: admin_users_path do |f| %>
+    <%= f.label :name_cont, "ユーザー名" %>
+    <%= f.search_field :name_cont %>
+    <%= f.label :name_cont, "ニックネーム" %>
+    <%= f.search_field :nickname_cont %>
+    <%= f.collection_select :prefecture_id_eq, @users, :prefecture_id, :prefecture_name, :include_blank => '全て' %>
+    <%= f.submit "検索" %>
+  <% end %>
+
+  <table class="table">
+    <tr>
+      <td>ID</td>
+      <td>名前</td>
+      <td>ニックネーム</td>
+      <td>都道府県</td>
+      <td>メールアドレス</td>
+      <td>削除状態</td>
+      <td></td>
+    </tr>
+      <% @search_users.each do |user| %>
+    <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.prefecture_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.isdeleted %></td>
+        <td><%= link_to '削除', admin_user_path(user.id), method: :delete %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>

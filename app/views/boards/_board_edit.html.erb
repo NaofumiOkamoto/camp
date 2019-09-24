@@ -1,0 +1,49 @@
+<div class="board-edit-board">
+  <%= form_with model: board, path: board_path do |f| %>
+    <%= render '/error_messages', model: f.object %> <!--バリデーションメッセージ -->
+    <p>
+      <span class="board-span1">日時      </span>
+      <%= f.date_field :date %><span class="board-new-time">時間</span><%= f.time_field :time %>頃 〜
+    </p>
+    <p>
+      <span class="board-span1">キャンプ場</span>
+      <%= f.collection_select :camp_site_id, CampSite.all, :id, :name %>
+    </p>
+    <p>
+      <span class="board-span1">場所      </span>
+      <%= f.text_field :place, class: "board-new-text-field", placeholder: "サイト番号など" %>
+    </p>
+    <p>
+      <span class="board-span1">募集内容  </span>
+      <%= f.collection_select :purpos_id, Purpos.all, :id, :purpos_name %>
+    </p>
+    <p>
+      <span class="board-span1">詳細      </span>
+      <%= f.text_field :detail %>
+    </P>
+    <p>
+      <span class="board-span1">条件      </span>
+      <%= f.text_field :condition, class: "board-new-text-field" %>
+    </p>
+    <p>
+      <span class="board-span1">コメント  </span>
+      <%= f.text_area :comment %>
+    </p>
+    <p>
+      <span class="board-span1">画像      </span>
+      <span><%= f.file_field :board_images ,multiple: true %><span>
+    </p>
+
+    <p>
+    <span class="board-span1">画像<br>(削除にチェック)      </span>
+      <% @board.board_images.each do |image| %>
+        <span><%= f.check_box :image_ids, {:multiple => true}, image.id, false %><span>
+            <%= image_tag image, :size=>"100x100" %>
+      <% end %>
+    </p>
+
+    <div class="board-button">
+      <%= f.submit '更新', class: "btn user-edit-button" %>
+    </div>
+  <% end %>
+</div>
