@@ -242,10 +242,21 @@ a {
 .top-about {
   text-align: center;
 }
-.top-page-about {
+.top-about-page {
   width: 100%;
+  background-color: #fafad2;
+}
+.top-page-about {
+  width: 77%;
   height: 350px;
-  margin-top: 50px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.about-info-box {
+  background-color: #fafad2;
+  padding: 25px 0;
+  border-radius: 20px;
+  height: 250px;
 }
 .top-about-under {
   width: 80%;
@@ -257,10 +268,28 @@ a {
   height: 1000px;
   margin-bottom: 100px;
   text-align: center;
+  display: none;
+}
+.top-page-camp-door h2,
+.top-page-ikitai h2,
+.top-page-ikitai p,
+.top-page-iru h2,
+.top-page-iru p {
+  text-align: left;
+}
+.top-page-ikitai p,
+.top-page-iru p {
+  font-size: 18px;
+}
+.top-page-camp-door{
+  display: block;
 }
 .top-page-camp-door p {
   font-size: 24px;
-  padding-top: 36px;
+  padding-top: 16px;
+}
+.tunagaru {
+  font-size: 24px;
 }
 .top-subimage {
   background-color: #fff;
@@ -271,10 +300,17 @@ a {
   margin: 0 auto;
   border: solid 2px #bdb76b;
 }
+.top-about-left-img {
+  border: solid 25px #bdb76b;
+}
+.about-hr {
+  border: 10px solid #dbd76b;
+  margin-bottom: 50px;
+}
 .about-image-right,
 .about-image {
-  height: 150px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
 }
 .about-image-phone-right,
 .about-image-phone {
@@ -291,7 +327,26 @@ a {
   border-top: 50px solid #eee8aa;
   border-right: 100px solid transparent;
   border-left: 100px solid transparent;
-  margin: 50px auto;
+  margin: 32px auto;
+}
+.example-comment {
+  margin-top: 100px;
+}
+.purpose-comment {
+  margin-top: 92px;
+}
+.about-login, .about-signup {
+  width: 350px;
+  height: 60px;
+  background-color: #bdb76b;
+  margin: 50px auto 0 auto;
+  padding-top: 10px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+.about-signup {
+  background-color: #808000;
+  color: #fff;
 }
 //履歴
 .left-side-history-title h2 {
