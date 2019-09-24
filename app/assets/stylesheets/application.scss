@@ -876,9 +876,11 @@ margin-top: 38px;
 
 //掲示板詳細
 .board-comment-box {
-  border: solid;
+  border: 1px solid #808000;
   height: 400px;
   width: 100%;
+  padding: 20px;
+  overflow: scroll;
 }
 .board-user-image {
   width: 200px;
@@ -949,4 +951,9 @@ input[type="file"] {
 .board-destroy-button {
   margin-top: 20px;
   background-color: #dbd76b;
+}
+.board-comment-input {
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
 }

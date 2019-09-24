@@ -22,6 +22,7 @@ class Board < ApplicationRecord
   belongs_to :user
   belongs_to :camp_site
   has_many :like_boards
+  has_many :board_comments
 
 # Action Mailer（画像）
   has_many_attached :board_images

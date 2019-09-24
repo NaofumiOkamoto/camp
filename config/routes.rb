@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :camp_sites, only: [:index]
   get 'camp_sites/:camp_site_id', to: 'camp_sites#show', as: 'camp_site'
   resources :admin_camp_sites, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-  resources :boards, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :boards, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resource :board_comments, only: [:create, :destroy]
+  end
   resources :admin_boards, only: [:index, :show, :destroy]
   resources :rooms, only: [:index, :create, :destroy]
   post 'like_camps/:camp_site_id', to: 'like_camps#like_camp_site', as: 'like_camp'
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+
 
   resources :users, only: [:edit, :index, :destroy, :update, :show] do
     member do

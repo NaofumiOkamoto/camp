@@ -45,6 +45,7 @@ class User < ApplicationRecord
   has_many :like_boards
   has_many :boards
   has_many :messages
+  has_many :board_comments
 
   #フォロー
   has_many :active_relationships, class_name: "Relationship",
