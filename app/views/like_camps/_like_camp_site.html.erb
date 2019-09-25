@@ -4,21 +4,21 @@
       <% if current_user.like_camps.find_by(camp_site_id: camp_site.id) %> <!-- ログインユーザーがお気に入り済みか -->
         <%= link_to like_camp_path(camp_site.id), method: :delete, remote: true do %>
           <div class="col-xs-6 like-camp-like-button">
-            <img src="/assets/bonfire2.png" alt="" class="like-icon">
+            <img src="/images/bonfire2.png" alt="" class="like-icon">
             お気に入り済み
           </div>
         <% end %>
       <% else %>
         <%= link_to like_camps_path(camp_site.id), method: :post, remote: true do %>
           <div class="col-xs-6 like-camp-like-button">
-            <img src="/assets/fire.png" alt="" class="like-icon">
+            <img src="/images/fire.png" alt="" class="like-icon">
             お気に入りする
           </div>
         <% end %>
       <% end %>
   <% else %>
       <div class="col-xs-6 like-camp-like-button login-info">
-        <img src="/assets/fire.png" alt="" class="like-icon">
+        <img src="/images/fire.png" alt="" class="like-icon">
         お気に入りする
       </div>
   <% end %>
