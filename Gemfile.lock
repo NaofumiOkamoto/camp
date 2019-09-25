@@ -144,6 +144,7 @@ GEM
       railties (>= 3.2.16)
     js_cookie_rails (2.2.0)
       railties (>= 3.1)
+    json (2.2.0)
     jwt (2.2.1)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -182,6 +183,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mustermann (1.0.3)
+    mysql2 (0.5.2)
     netrc (0.11.0)
     nio4r (2.5.1)
     nokogiri (1.10.4)
@@ -364,9 +366,11 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   js_cookie_rails
+  json
   kaminari
   listen (>= 3.0.5, < 3.2)
   mini_magick
+  mysql2
   omniauth
   omniauth-facebook
   omniauth-twitter
