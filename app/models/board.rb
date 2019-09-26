@@ -21,11 +21,11 @@ class Board < ApplicationRecord
   validates :date, :time, :place, :purpos_id, presence: true
   belongs_to :user
   belongs_to :camp_site
-  has_many :like_boards
-  has_many :board_comments
+  has_many :like_boards, dependent: :destroy
+  has_many :board_comments, dependent: :destroy
 
 # Action Mailer（画像）
-  has_many_attached :board_images
+  has_many_attached :board_images, dependent: :destroy
 
 # 募集目的のアクティブハッシュ
   extend ActiveHash::Associations::ActiveRecordExtensions

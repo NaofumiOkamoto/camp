@@ -65,7 +65,9 @@
         <% @camps.each do |camp| %>
           <%= link_to camp_site_path("#{camp.camp_site.id}") do %>
             <div>
-              <p><%= image_tag camp.camp_site.camp_images[0], class: "likecamp-img" %></p>
+              <% if camp.camp_site.camp_images.attached? %>
+                <p><%= image_tag camp.camp_site.camp_images[0], class: "likecamp-img" %></p>
+              <% end %>
               <p><%= camp.camp_site.name %></p>
             </div>
           <% end %>
@@ -75,29 +77,29 @@
       <!-- 気になる掲示板 -->
       <div class="user-show-info user-show-like-board">
         <% if @boards %>
-        <% @boards.each do |board| %>
-            <%= link_to  board_path(board.id) do %>
-              <div class="col-xs-12 camp-site-board-index">
-                <div class="col-xs-2 col-xs-offset-1">
-                  <% if board.user.user_image.attached? %>
-                    <p><%= image_tag board.user.user_image, class: "chat-image" %></p>
-                  <% else %>
-                    <img src="/images/no_image.jpg" alt="" class="chat-image">
-                  <% end %>
-                  <p><%= board.user.nickname %></p>
+          <% @boards.each do |board| %>
+              <%= link_to  board_path(board.id) do %>
+                <div class="col-xs-12 camp-site-board-index">
+                  <div class="col-xs-2 col-xs-offset-1">
+                    <% if board.user.user_image.attached? %>
+                      <p><%= image_tag board.user.user_image, class: "chat-image" %></p>
+                    <% else %>
+                      <img src="/images/no_image.jpg" alt="" class="chat-image">
+                    <% end %>
+                    <p><%= board.user.nickname %></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><%= board.board.date %></p>
+                    <p><%= board.board.camp_site.name %></p>
+                    <p><%= board.board.purpos_name %></p>
+                  </div>
+                  <div class="col-xs-2">
+                    <div class="like-camp-like-button">気になる数<%= board.board.like_boards.count %></div>
+                  </div>
                 </div>
-                <div class="col-xs-6">
-                  <p><%= board.board.date %></p>
-                  <p><%= board.board.camp_site.name %></p>
-                  <p><%= board.board.purpos_name %></p>
-                </div>
-                <div class="col-xs-2">
-                  <div class="like-camp-like-button">気になる数<%= board.board.like_boards.count %></div>
-                </div>
-              </div>
-            <% end %>
-        <% end %>
-      <% else %>
+              <% end %>
+          <% end %>
+        <% else %>
           気になる掲示板はありません
         <% end %>
       </div>
@@ -108,6 +110,7 @@
             <%= link_to  board_path(board.id) do %>
                 <div class="col-xs-12 camp-site-board-index">
                   <%= render 'boards/board_each', board: board %>
+                </div>
             <% end %>
         <% end %>
       </div>
@@ -132,7 +135,7 @@
             <% @followers.each do |follower| %>
               <%= link_to user_path("#{follower.id}") do %>
                 <div>
-                  <% if following.user_image.attached? %>
+                  <% if follower.user_image.attached? %>
                     <p><%= image_tag follower.user_image, class: "follow-img" %></p>
                   <% else %>
                     <p><img src="/images/no_image.jpg" alt="" class="follow-img"></p>
