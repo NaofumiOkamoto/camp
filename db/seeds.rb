@@ -20,7 +20,6 @@ User.create!(name: name,
              prefecture_id: prefecture_id,
              style_id: style_id,
              introduction: "宜しくです",
-             check_in: "非チェックイン",
             )
   @user = User.find_by(id: "#{n+1}")
   @user.user_image.attach(io: File.open("#{Rails.root}/db/fixtures/rantan.jpeg"), filename: "rantan.jpeg")

@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 2019_09_24_035336) do
     t.integer "prefecture_id"
     t.integer "style_id"
     t.text "introduction"
-    t.string "check_in", default: "非チェックイン"
     t.boolean "isdeleted", default: false
     t.string "provider"
     t.string "uid"

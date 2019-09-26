@@ -25,11 +25,16 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.nickname.blank? || current_user.prefecture_id.blank? || current_user.name.blank?
-      flash[:success] = "他の必須事項を編集ボタンから入力してください"
-      user_path(current_user.id)
-    else
-      root_path
+    case resource
+      when Admin
+        admin_camp_sites_path
+      when User
+      if current_user.nickname.blank? || current_user.prefecture_id.blank? || current_user.name.blank?
+        flash[:success] = "他の必須事項を編集ボタンから入力してください"
+        user_path(current_user.id)
+      else
+        root_path
+      end
     end
   end
 

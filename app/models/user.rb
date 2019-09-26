@@ -41,11 +41,11 @@ class User < ApplicationRecord
     end
     user
   end
-  has_many :like_camps
-  has_many :like_boards
-  has_many :boards
-  has_many :messages
-  has_many :board_comments
+  has_many :like_camps, dependent: :destroy
+  has_many :like_boards, dependent: :destroy
+  has_many :boards, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :board_comments, dependent: :destroy
 
   #フォロー
   has_many :active_relationships, class_name: "Relationship",

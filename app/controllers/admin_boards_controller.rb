@@ -1,8 +1,13 @@
 class AdminBoardsController < ApplicationController
+  before_action :authenticate_admin!
+
+
   def index
     @search = Board.ransack(params[:q]) #検索オブジェクト
     @search_boards = @search.result
+    @purposes = Purpos.all
     @boards = Board.all
+    @camp_sites = CampSite.all
   end
 
   def show

@@ -1,4 +1,6 @@
 class AdminUsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @search = User.ransack(params[:q]) #検索オブジェクト
     @search_users = @search.result #検索結果
