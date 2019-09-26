@@ -30,7 +30,7 @@ class BoardsController < ApplicationController
       cookies[:recent_board_id] += "," + @board.id.to_s
     end
     @board_comment = BoardComment.new
-    @board_comments = BoardComment.all
+    @board_comments = BoardComment.where(board_id: @board.id)
   end
 
   def edit

@@ -38,13 +38,20 @@
     <h2>コメント欄</h2>
     <div class="board-comment-box">
       <div class="board-comment-input">
-        <%= form_with model: [@board, @board_comment], local: true do |f| %>
-          <%= f.text_field :comment, class: "map-search-form", placeholder: "コメント入力" %>
-          <%= f.submit "送信", class: "btn btn-board-search-button" %>
+        <% if user_signed_in? %>
+          <%= form_with model: [@board, @board_comment], local: true do |f| %>
+            <%= f.text_field :comment, class: "map-search-form", placeholder: "コメント入力" %>
+            <%= f.submit "送信", class: "btn btn-board-search-button" %>
+          <% end %>
+        <% else %>
+          <p>
+            コメント投稿にはログインが必要です
+            <%= link_to 'ログインする', new_user_session_path, class: "btn btn-primary" %>
+          </p>
         <% end %>
       </div>
 
-      <% @board_comments.each do |comment| %>
+      <% @board_comments.reverse_each do |comment| %>
         <% if user_signed_in? && comment.user_id == @board.user_id %>
 
           <p class="chat-message-line">
