@@ -18,8 +18,10 @@
         <h3>キャンプ場<br>閲覧履歴(最新5件)</h3>
         <% if @recently %>
           <% @recently[0..4].each do |r| %>
-              <% campsite = CampSite.find(r) %>
-              <p>・<%= link_to campsite.name, camp_site_path("#{r}") %></p>
+              <% campsite = CampSite.find_by(id: r) %>
+                <% if campsite.present? %>
+                  <p>・<%= link_to campsite.name, camp_site_path("#{r}") %></p>
+                <% end %>
           <% end %>
         <% end %>
 

@@ -5,7 +5,6 @@ class AddCulumnToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :prefecture_id, :integer
     add_column :users, :style_id, :integer
     add_column :users, :introduction, :text
-    add_column :users, :check_in, :string, default: '非チェックイン'
     add_column :users, :isdeleted, :boolean, default: false
   end
 end

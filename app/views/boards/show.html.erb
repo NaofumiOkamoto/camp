@@ -9,7 +9,12 @@
 
         <div class="col-xs-3 board-show-user">
 
-          <p><%= image_tag @board.user.user_image, class: "board-user-image" %></p>
+          <% if @board.user.user_image.attached? %>
+            <p><%= image_tag @board.user.user_image, class: "board-user-image" %></p>
+          <% else %>
+            <img src="/images/no_image.jpg" alt="" class="board-user-image">
+          <% end %>
+
           <p>募集者<%= link_to @board.user.nickname, user_path(@board.user_id) %></p>
 
           <!--気になる掲示板にボタン -->
@@ -47,7 +52,7 @@
           <% if comment.user.user_image.attached? %>
             <%= image_tag comment.user.user_image, class: "chat-image" %>
           <% else %>
-            <img src="/assets/no_image.jpg" alt="" class="chat-image">
+            <img src="/images/no_image.jpg" alt="" class="chat-image">
           <% end %>
             <span class="chat-message-comment"><%= comment.comment %></span>
             <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
@@ -63,7 +68,7 @@
             <% if comment.user.user_image.attached? %>
               <%= image_tag comment.user.user_image, class: "chat-image"%>
             <% else %>
-              <img src="/assets/no_image.jpg" alt="" class="chat-image">
+              <img src="/images/no_image.jpg" alt="" class="chat-image">
             <% end %>
               <%= comment.user.nickname %>
             </p>

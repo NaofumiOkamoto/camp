@@ -18,13 +18,13 @@
 class CampSite < ApplicationRecord
   validates :name, :address, presence: true
   after_validation :geocode
-  has_many :like_camps
-  has_many :boards
-  has_many :messages
+  has_many :like_camps, dependent: :destroy
+  has_many :boards, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
 
 # Action Mailer（画像）
-  has_many_attached :camp_images
+  has_many_attached :camp_images, dependent: :destroy
 
 # 地域、都道府県のアクティブハッシュ
   extend ActiveHash::Associations::ActiveRecordExtensions

@@ -1,4 +1,6 @@
 class AdminCampSitesController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @admin_camp_site = CampSite.new
   end
@@ -16,6 +18,8 @@ class AdminCampSitesController < ApplicationController
     @search = CampSite.ransack(params[:q]) #検索オブジェクト
     @search_camp_sites = @search.result #検索結果
     @camp_sites = CampSite.all
+    @prefectures = Prefecture.all
+    @categories = Category.all
   end
 
   def show
@@ -37,10 +41,12 @@ class AdminCampSitesController < ApplicationController
 
   def destroy
     admin_camp_site = CampSite.find(params[:id])
-    admin_camp_site.destroy
+    if admin_camp_site.destroy
     flash[:danger] = "#{admin_camp_site.name}を削除しました"
     redirect_to admin_camp_sites_path
-
+    else
+      render :index
+    end
   end
 
 

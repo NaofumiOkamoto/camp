@@ -5,8 +5,8 @@
   <%= f.label :name_cont, "キャンプ場名" %>
   <%= f.search_field :name_cont %>
   <%= f.collection_select :area_id_eq, @camp_sites, :area_id, :area, :include_blank => '全国' %>
-  <%= f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
-  <%= f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
+  <%= f.collection_select :prefecture_id_eq, @prefectures, :id, :prefecture_name, :include_blank => '全国' %>
+  <%= f.collection_select :category_id_eq, @categories, :id, :category_name, :include_blank => '指定なし' %>
   <%= f.submit "検索" %>
 <% end %>
 <!-- 検索ここまで -->

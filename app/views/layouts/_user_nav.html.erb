@@ -4,14 +4,36 @@
 
           <div class="col-xs-12">
 
-            <div class="top-logo-li col-xs-4 col-xs-offset-4">
+            <div class="col-xs-3 col-xs-offset-1">
+              <% if user_signed_in? %>
+                <div class="right-nav">
+                  <%= current_user.nickname %>ログイン中<br>
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                </div>
+                <% else %>
+                <div class="right-nav">
+                      <div>
+                      <%= link_to new_user_registration_path, class: "btn" do %>
+                          新規登録
+                      <% end %>
+                      </div>
+                      <div>
+                      <%= link_to new_user_session_path, class: "btn" do %>
+                       ログイン
+                      <% end %>
+                      </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="top-logo-li col-xs-4">
               <%= link_to root_path do %>
                 <h1 class="top-logo">CAMP DOOR</h1>
               <% end %>
             </div>
 
             <!-- nav検索ここから -->
-            <div class="navbar-form navbar-left col-xs-2">
+            <div class="navbar-form navbar-left-right">
               <span data-turbolinks="false">
               <div class="form-group">
                 <%= search_form_for @search, url: camp_sites_path do |f| %>
@@ -25,25 +47,6 @@
             </div>
             <!-- 検索ここまで -->
 
-      <% if user_signed_in? %>
-              <div class="right-nav">
-                <%= current_user.nickname %>ログイン中<br>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-              </div>
-      <% else %>
-              <div class="right-nav">
-                    <div>
-                    <%= link_to new_user_registration_path, class: "btn" do %>
-                        新規登録
-                    <% end %>
-                    </div>
-                    <div>
-                    <%= link_to new_user_session_path, class: "btn" do %>
-                     ログイン
-                    <% end %>
-                    </div>
-              </div>
-      <% end %>
 
           </div>
 
@@ -89,14 +92,14 @@
 
       <% if user_signed_in? %>
 
-                    <%= link_to new_board_path do %>
-                      <p class="sp-menu-p">
-                        <span data-turbolinks="false">
+                    <div data-turbolinks="false">
+                      <%= link_to new_board_path do %>
+                        <p class="sp-menu-p">
                             <img src="/images/axe2.png" alt="" class="nav-icon">
                             掲示板作成
-                        </span>
-                      </p>
-                    <% end %>
+                        </p>
+                      <% end %>
+                    </div>
 
                     <%= link_to user_path(current_user.id) do %>
                       <p class="sp-menu-p">

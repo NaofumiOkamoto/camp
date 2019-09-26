@@ -3,9 +3,9 @@
 <%= search_form_for @search, url: admin_boards_path do |f| %>
   <%= f.label :id_cont, "掲示板ID" %>
   <%= f.search_field :id_eq %>
-  <%= f.collection_select :purpos_id_eq, @boards, :purpos_id, :purpos_name, :include_blank => '全目的' %>
+  <%= f.collection_select :purpos_id_eq, @purposes, :id, :purpos_name, :include_blank => '全目的' %>
   <%= f.date_field :date_eq %>
-  <%= f.collection_select :camp_site_id_eq, @boards, :camp_site_id, :camp_site_id, :include_blank => '全キャンプ場' %>
+  <%= f.collection_select :camp_site_id_eq, @camp_sites, :id, :name, :include_blank => '全キャンプ場' %>
   <%= f.submit "検索" %>
 <% end %>
 
