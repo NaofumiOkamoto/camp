@@ -10,6 +10,10 @@ ja:
         date: 日にち
         time: 時間
         place: 場所
+      camp_site:
+        name: キャンプ場名
+        address: 住所
+        camp_images: 画像
   views:
     pagination:
       previous: "« 前ページ"

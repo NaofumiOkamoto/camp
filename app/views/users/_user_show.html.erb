@@ -9,8 +9,10 @@
     </tr>
 
     <tr>
+    <% if user_signed_in? && current_user.id == user.id %>
       <th>ニックネーム（必須）</th>
       <th><%= user.nickname %></th>
+    <% end %>
     </tr>
 
       <tr>

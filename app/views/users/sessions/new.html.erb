@@ -5,6 +5,13 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
+          テストユーザー<br>
+          email:     camp@camp<br>
+          password:  000000<br>
+          <br>
+        </div>
+
+        <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>

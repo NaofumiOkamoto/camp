@@ -37,10 +37,12 @@ class CampSite < ApplicationRecord
 
   private
   def geocode # geocodingするAPIで経度緯度の情報を保存
-    uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0")
-    res = HTTP.get(uri).to_s
-    response = JSON.parse(res)
-    self.latitude = response["results"][0]["geometry"]["location"]["lat"]
-    self.longitude = response["results"][0]["geometry"]["location"]["lng"]
+      uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0")
+      res = HTTP.get(uri).to_s
+      response = JSON.parse(res)
+    if response.include?("OK")
+      self.latitude = response["results"][0]["geometry"]["location"]["lat"]
+      self.longitude = response["results"][0]["geometry"]["location"]["lng"]
+    end
   end
 end

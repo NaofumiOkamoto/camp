@@ -1,9 +1,15 @@
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="row nav navbar-nav">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav admin-nav">
           <li><%= link_to '管理者ログイン', new_admin_session_path, class: "btn" %></li>
-          <li><%= link_to 'CAMP場新規登録', new_admin_camp_site_path, class: "btn" %></li>
+          <li>
+          <span data-turbolinks="false">
+          <%= link_to new_admin_camp_site_path, class: "btn" do %>
+           CAMP場新規登録
+          <% end %>
+          </span>
+          </li>
           <li><%= link_to 'CAMP場一覧', admin_camp_sites_path, class: "btn" %></li>
           <li><%= link_to 'USER一覧', admin_users_path, class: "btn" %></li>
           <li><%= link_to '掲示板一覧', admin_boards_path, class: "btn" %></li>
