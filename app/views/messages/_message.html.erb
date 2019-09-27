@@ -5,7 +5,7 @@
 
         <p id= <%= "content-"+ message.id.to_s %> class="chat-message-line">
           <span id=<%= "nickname-"+ message.id.to_s %>>
-            <%= message.user.nickname %>
+            <%= link_to message.user.nickname, user_path(message.user.id) %>
             <% if message.user.user_image.attached? %>
               <%= image_tag(url_for(message.user.user_image), class: "chat-image") %>
             <% else %>
@@ -31,7 +31,7 @@
             <% else %>
               <img src="/images/no_image.jpg" alt="" class="chat-image">
             <% end %>
-            <%= "#{message.user.nickname}" %>
+            <%= link_to message.user.nickname, user_path(message.user.id) %>
           </span>
         </p>
 

@@ -36,7 +36,7 @@ function initMap(){
   zoom: 8
   });
   <% @camp_sites.each do |camp_site, i| %>
-    var address = {lat: <%= camp_site.latitude %>, lng: <%= camp_site.longitude %>};
+      var address = {lat: <% if camp_site.latitude %><%= camp_site.latitude %><% else %>0<% end %>, lng: <% if camp_site.longitude %><%= camp_site.longitude %><% else %>0<% end %>};
     //マーカー設置
     marker[<%= camp_site.id %>] = new google.maps.Marker({
       map: map,
@@ -59,7 +59,7 @@ function codeAddress(){
   zoom: 15
     });
   <% @camp_sites.each do |camp_site, i| %>
-    var address = {lat: <%= camp_site.latitude %>, lng: <%= camp_site.longitude %>};
+      var address = {lat: <% if camp_site.latitude %><%= camp_site.latitude %><% else %>0<% end %>, lng: <% if camp_site.longitude %><%= camp_site.longitude %><% else %>0<% end %>};
     //マーカー設置
     marker[<%= camp_site.id %>] = new google.maps.Marker({
       map: map,
@@ -106,7 +106,7 @@ function getLocation(){
       map: map
     });
   <% @camp_sites.each do |camp_site, i| %>
-    var address = {lat: <%= camp_site.latitude %>, lng: <%= camp_site.longitude %>};
+      var address = {lat: <% if camp_site.latitude %><%= camp_site.latitude %><% else %>0<% end %>, lng: <% if camp_site.longitude %><%= camp_site.longitude %><% else %>0<% end %>};
     //マーカー設置
     marker[<%= camp_site.id %>] = new google.maps.Marker({
       map: map,

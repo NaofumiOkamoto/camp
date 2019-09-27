@@ -1,24 +1,45 @@
-# README
+#CAMP DOOR
+このサイトはキャンプ場で人と人がコミュニケーションを図り、繋がる為のサイトです。
+https://camping-door.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+#説明
+キャンプ場では通常一緒に来た仲間達と共に過ごしますが、このサイトではキャンプ場単位でのチャットや掲示板で仲間を募集することで同じキャンプ場にいる人たちコミュニケーションをとり、新たなキャンプの繋がりを提供します。
 
-* Ruby version
 
-* System dependencies
+#使用技術
+サーバサイド
+  言語          ：Ruby 2.5.5
+  フレームワーク：Ruby On Rails 5.2.3
+フロントエンド
+  CSSフレームワーク   ：BootStrap
+  JavaScriptライブラリ：JQuery
+本番サーバ環境
+  AWS
+データベース
+  MySQL
+WEBサーバ
+  nginx
 
-* Configuration
 
-* Database creation
+#機能と使い方
 
-* Database initialization
+####未ログイン時
+ログインしていない状態では、下記操作をすることができます
+・MAPでのキャンプ場検索
+・キャンプ場一覧画面で条件によるキャンプ場検索
+・キャンプ場詳細画面での他ユーザーチャット履歴閲覧、掲示板閲覧
 
-* How to run the test suite
+####ログイン時
+テストユーザー  camp@camp.com
+（FaceBookでのログイン可能）
 
-* Services (job queues, cache servers, search engines, etc.)
+ログインすると未ログイン時の操作に加え、下記操作ができます
+・キャンプ場、掲示板をお気に入り登録し、マイページでいつでも確認可能
+・キャンプ場詳細ページでチャットを投稿でき、他のキャンパーとコミュニケーションをとる
+・ユーザーフォローし、他ユーザーがどんなキャンプ場や掲示板をお気に入りしているか、どんな掲示板を投稿しているか確認
+・掲示板を作成して、他の仲間を募集
+・掲示板にコメントを投稿し、募集内容について問い合わせ
 
-* Deployment instructions
 
-* ...
+

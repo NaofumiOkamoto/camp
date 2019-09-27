@@ -56,6 +56,11 @@ a {
 }
 .navbar-default .navbar-nav > li > a {
   color: #556b2f;
+  font-size: 16px;
+}
+.navbar-default .navbar-nav > li span > a {
+  padding-top: 14px;
+  font-size: 16px;
 }
 .navbar-nav {
   font-size: 20px;
