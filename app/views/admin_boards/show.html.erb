@@ -1,18 +1,51 @@
-<h1>管理者用掲示板詳細</h1>
-
-
-<div>
-    <%= @board.user.nickname %>
-    <%= @board.purpos_name %>
-    <%= @board.condition %>
-    <%= @board.date %>
-    <%= @board.time %>
-    <%= @board.place %>
-    <%= @board.detail %>
-    <%= @board.comment %>
-    <% if @board.board_image.attached? %>
-      <%= image_tag @board.board_image %>
-    <% end %>
+<div class="container">
+  <h1>管理者用掲示板詳細</h1>
+  <table class="table">
+      <tr>
+        <th>募集者</th>
+        <th><%= @board.user.nickname %></th>
+      </tr>
+      <tr>
+        <th>目的</th>
+        <th><%= @board.purpos_name %></th>
+      </tr>
+      <tr>
+        <th>条件</th>
+        <th><%= @board.condition %></th>
+      </tr>
+      <tr>
+        <th>日にち</th>
+        <th><%= @board.date %></th>
+      </tr>
+      <tr>
+        <th>時間</th>
+        <th><%= @board.time %></th>
+      </tr>
+      <tr>
+        <th>場所</th>
+        <th><%= @board.place %></th>
+      </tr>
+      <tr>
+        <th>詳細</th>
+        <th><%= @board.detail %></th>
+      </tr>
+      <tr>
+        <th>コメント</th>
+        <th><%= @board.comment %></th>
+      </tr>
+      <tr>
+        <th>
+        <% if @board.board_images.attached? %>
+          <% @board.board_images.each do |image| %>
+            <%= image_tag image.variant(resize: "200x200") %>
+          <% end %>
+        <% else %>
+          <img src="/images/no_image.jpg" alt="" class="board-no-image">
+        <% end %>
+      </tr>
+      <tr>
+      <td><%= link_to '削除', admin_board_path(@board.id), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+  </table>
 </div>
 
-<h2>コメント欄</h2>
