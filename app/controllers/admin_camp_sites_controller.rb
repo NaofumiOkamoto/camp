@@ -34,6 +34,12 @@ class AdminCampSitesController < ApplicationController
     @admin_camp_site = CampSite.find(params[:id])
     if @admin_camp_site.update(camp_site_params)
       redirect_to admin_camp_sites_path
+      if params[:camp_site][:image_ids]
+        params[:camp_site][:image_ids].each do |image_id|
+          image = @admin_camp_site.camp_images.find(image_id)
+          image.purge
+        end
+      end
     else
       render :edit
     end

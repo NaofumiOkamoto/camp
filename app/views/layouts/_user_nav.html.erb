@@ -13,13 +13,18 @@
                 <% else %>
                 <div class="right-nav">
                       <div>
-                      <%= link_to new_user_registration_path, class: "btn" do %>
-                          新規登録
+                      <%= link_to new_admin_session_path, class: "btn" do %>
+                       管理者ログイン
                       <% end %>
                       </div>
-                      <div>
+                      <div class="right-nav-user-button">
+                      <%= link_to new_user_registration_path, class: "btn" do %>
+                          ユーザー新規登録
+                      <% end %>
+                      </div>
+                      <div class="right-nav-user-button">
                       <%= link_to new_user_session_path, class: "btn" do %>
-                       ログイン
+                       ユーザーログイン
                       <% end %>
                       </div>
                 </div>

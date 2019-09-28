@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Admins::RegistrationsController < Devise::RegistrationsController
+  before_action :correct_user
+
+def correct_admin
+  @adimn = Admin.find(paramd[:id])
+  if current_user.id != @admin.id
+    redirect_to new_admin_sessions_path
+  end
+end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
