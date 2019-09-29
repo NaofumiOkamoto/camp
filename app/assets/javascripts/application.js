@@ -243,9 +243,9 @@ $(document).on('turbolinks:load', function(){
 //未ログイン時にいいね押したらログインを促すアラートを表示
 $(document).on('turbolinks:load', function(){
   $(".login-info").on("click", function(){
-    var title = confirm("お気に入り登録するにはログインが必要です。ログインページへ移動しますか？")
+    var title = confirm("ログインが必要です。ログインページへ移動しますか？")
     if ( title == true ){
-    window.location.href = "http://localhost:3000/users/sign_in"
+    window.location.href = "http://camping-door.com/users/sign_in"
     }
     else{
     }

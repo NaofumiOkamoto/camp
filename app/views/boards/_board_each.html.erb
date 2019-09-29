@@ -1,5 +1,9 @@
 <div class="col-xs-2 col-xs-offset-1">
-  <p><%= image_tag board.user.user_image, class: "chat-image" %></p>
+  <% if board.user.user_image.attached? %>
+    <p><%= image_tag board.user.user_image, class: "chat-image" %></p>
+  <% else %>
+    <p><img src="/images/no_image.jpg" alt="" class="chat-image"></p>
+  <% end %>
   <p><%= board.user.nickname %></p>
 </div>
 <div class="col-xs-6">
