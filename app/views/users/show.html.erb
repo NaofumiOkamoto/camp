@@ -78,7 +78,7 @@
       <div class="user-show-info user-show-like-board">
         <% if @boards %>
           <% @boards.each do |board| %>
-              <%= link_to  board_path(board.id) do %>
+              <%= link_to  board_path(board.board.id) do %>
                 <div class="col-xs-12 camp-site-board-index">
                   <div class="col-xs-2 col-xs-offset-1">
                     <% if board.user.user_image.attached? %>
