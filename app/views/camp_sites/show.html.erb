@@ -88,6 +88,7 @@
                   <div class="camp-site-messages">
                     <% if user_signed_in? %>
                       <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= current_user.id%>">
+                        <%= render @messages %>
                       </div>
                     <% else %>
                       <div id="messages" data-camp_site_id="<%= @camp_site.id %>" data-user_id="<%= %>">

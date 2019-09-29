@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
 
 
   def ranking
-    @ranking_camp = CampSite.find(LikeCamp.group(:camp_site_id).order('count(camp_site_id) desc').pluck(:camp_site_id))
-    @ranking_board = CampSite.find(Board.group(:camp_site_id).order('count(camp_site_id) desc').pluck(:camp_site_id))
+    @ranking_camp = CampSite.find(LikeCamp.group(:camp_site_id).order(Arel.sql('count(camp_site_id) desc')).limit(5).pluck(:camp_site_id))
+    @ranking_board = CampSite.find(Board.group(:camp_site_id).order(Arel.sql('count(camp_site_id) desc')).limit(5).pluck(:camp_site_id))
   end
 
   def after_sign_in_path_for(resource)

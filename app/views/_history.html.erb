@@ -4,13 +4,13 @@
 
       <div class="left-side-ranking">
         <h4>キャンプ場<br>お気に入り数ランキング</h4>
-        <% @ranking_camp[0..4].each do |camp| %>
+        <% @ranking_camp.each do |camp| %>
           <p>・<%= link_to camp.name, camp_site_path("#{camp.id}") %>(<%= camp.like_camps.count %>)</p>
         <% end %>
       </div>
 
       <h4>キャンプ場<br>掲示板掲載数ランキング</h4>
-        <% @ranking_board[0..4].each do |board| %>
+        <% @ranking_board.each do |board| %>
           <p>・<%= link_to board.name, camp_site_path("#{board.id}") %>(<%= board.boards.count %>)</p>
         <% end %>
 

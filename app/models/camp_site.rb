@@ -40,7 +40,7 @@ class CampSite < ApplicationRecord
       uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0")
       res = HTTP.get(uri).to_s
       response = JSON.parse(res)
-    if response.include?("OK")
+    if response.has_value?("OK")
       self.latitude = response["results"][0]["geometry"]["location"]["lat"]
       self.longitude = response["results"][0]["geometry"]["location"]["lng"]
     end
