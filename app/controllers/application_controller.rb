@@ -11,12 +11,13 @@ class ApplicationController < ActionController::Base
     @search_camp_sites = @search.result #検索結果
   end
 
-  def self.render_with_signed_in_user(user, *args)
-   ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
-   proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
-   renderer = self.renderer.new('warden' => proxy)
-   renderer.render(*args)
-  end
+  # acton cable でdevise機能使用試みたが、うまくいかず
+#  def self.render_with_signed_in_user(user, *args)
+#    ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
+#    proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
+#    renderer = self.renderer.new('warden' => proxy)
+#    renderer.render(*args)
+#  end
 
 
   def ranking
@@ -24,6 +25,7 @@ class ApplicationController < ActionController::Base
     @ranking_board = CampSite.find(Board.group(:camp_site_id).order(Arel.sql('count(camp_site_id) desc')).limit(5).pluck(:camp_site_id))
   end
 
+  #サインイン時のリダイレクト
   def after_sign_in_path_for(resource)
     case resource
       when Admin
@@ -38,10 +40,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #必須事項入れないとマイページに戻される
   def facebook_sign_up
     if user_signed_in?
       if current_user.nickname.blank? || current_user.prefecture_id.blank? || current_user.name.blank?
-        flash[:success] = "必要事項を編集ボタンから入力してください"
+        flash[:success] = "必須事項を編集ボタンから入力してください"
         redirect_to controller: 'users', action: 'show', id: current_user.id
       end
     end

@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+
   def index
     @camp_sites = CampSite.all
   end
@@ -11,4 +12,5 @@ class MapsController < ApplicationController
       format.js
     end
   end
+
 end

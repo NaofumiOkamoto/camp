@@ -2,6 +2,7 @@
   <h1>キャンプ場詳細</h1>
 
   <table class="table">
+
     <tr>
       <td>ID</td>
       <td><%= @admin_camp_site.id %></td>
@@ -26,12 +27,16 @@
       <td>紹介文</td>
       <td><%= @admin_camp_site.introduction %></td>
     </tr>
+
       <% if @admin_camp_site.camp_images.attached? %>
         <% @admin_camp_site.camp_images.each do |image| %>
           <tr><td><%= image_tag image, class: "admin-camp-site-image" %></td></tr>
         <% end %>
       <% end %>
+
   </table>
+
       <p class="login_btn"><%= link_to '編集', edit_admin_camp_site_path(@admin_camp_site), class: "login_btn" %></p>
       <p class="login_btn"><%= link_to '削除', admin_camp_site_path(@admin_camp_site), method: :delete, class: "login_btn" %></p>
+
 </div>

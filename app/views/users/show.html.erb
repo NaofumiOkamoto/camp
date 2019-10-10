@@ -1,45 +1,49 @@
 <div class="container user-show-page">
   <div class="row">
 
-      <!-- 閲覧履歴表示 -->
-      <%= render '/history', recently_campsite: @recently_campsite %>
+  <!-- 閲覧履歴表示 -->
+  <%= render '/history', recently_campsite: @recently_campsite %>
 
-<div class="clearfix">
-  <div class="col-xs-6">
-    <% if user_signed_in? && current_user.id == @user.id %>
-      <h1>マイページ</h1>
-    <% else %>
-      <h1><%= @user.nickname %>のページ</h1>
-    <% end %>
-  </div>
+    <div class="clearfix">
+      <div class="col-xs-6">
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <h1>マイページ</h1>
+        <% else %>
+          <h1><%= @user.nickname %>のページ</h1>
+        <% end %>
+      </div>
 
-  <div class="col-xs-6 user-follow-page">
-    <% if user_signed_in? %>
-      <% if current_user.id != @user.id %>
-        <%= render 'follow_form' %>
-      <% end %>
-    <% else %>
-        <%= render 'follow_form' %>
-    <% end %>
-  </div>
-</div>
+      <div class="col-xs-6 user-follow-page">
+        <!-- フォローボタン -->
+        <% if user_signed_in? %>
+          <% if current_user.id != @user.id %>
+            <%= render 'follow_form' %>
+          <% end %>
+        <% else %>
+            <%= render 'follow_form' %>
+        <% end %>
+      </div>
+    </div>
 
 <hr size="10">
 
-<div class="clearfix">
-  <div class="col-xs-12 user-show-middle">
-      <div class="col-xs-4 user-show-img-box">
-        <%= render 'user_img', user: @user %>
-      </div>
+    <div class="clearfix">
+      <div class="col-xs-12 user-show-middle">
+          <div class="col-xs-4 user-show-img-box">
+            <!-- user画像 -->
+            <%= render 'user_img', user: @user %>
+          </div>
 
-      <div class="col-xs-8 user-show-edit-form">
-        <%= render 'user_show', user: @user %>
+            <!-- user情報 -->
+          <div class="col-xs-8 user-show-edit-form">
+            <%= render 'user_show', user: @user %>
+          </div>
       </div>
-  </div>
-</div>
+    </div>
 
 <hr>
 
+      <!-- タブ -->
     <div class="user-show-subtitle-box clearfix">
       <div class="user-show-subtitle user-show-subtitle-like-camp">
         <h3>お気に入り<br>キャンプ場(<%= @camps.count %>)</h3>
@@ -58,8 +62,8 @@
       </div>
     </div>
 
-    <div class="user-show-info-box">
 
+    <div class="user-show-info-box">
       <!-- お気に入りキャンプ場 -->
       <div class="user-show-info user-show-like-camp">
         <% @camps.each do |camp| %>
@@ -81,7 +85,7 @@
               <%= link_to  board_path(board.board.id) do %>
                 <div class="col-xs-12 camp-site-board-index">
                   <div class="col-xs-2 col-xs-offset-1">
-                    <% if board.user.user_image.attached? %>
+                    <% if board.board.user.user_image.attached? %>
                       <p><%= image_tag board.board.user.user_image, class: "chat-image" %></p>
                     <% else %>
                       <img src="/images/no_image.jpg" alt="" class="chat-image">
@@ -114,6 +118,7 @@
             <% end %>
         <% end %>
       </div>
+
       <!-- フォローユーザー -->
         <div class="user-show-info user-show-follow">
             <% @following.each do |following| %>

@@ -35,6 +35,8 @@ RSpec.describe Board, type: :model do
         end
         it "addressが入力されていないので保存されない" do
             expect(@board).to be_invalid
+        end
+        it "エラーメッセージが表示される" do
             expect(@board.errors[:date]).to include("を入力してください")
             expect(@board.errors[:time]).to include("を入力してください")
             expect(@board.errors[:place]).to include("を入力してください")

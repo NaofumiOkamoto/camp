@@ -3,6 +3,7 @@
 
   <div class="row">
 
+    <!-- ユーザー検索 -->
     <%= search_form_for @search, url: admin_users_path do |f| %>
       <%= f.label :name_cont, "ユーザー名" %>
       <%= f.search_field :name_cont %>
@@ -12,6 +13,7 @@
       <%= f.submit "検索" %>
     <% end %>
 
+    <!-- ユーザー一覧 -->
     <table class="table">
       <tr>
         <td>ID</td>
@@ -34,6 +36,7 @@
         <% end %>
       </tr>
     </table>
+
   </div>
 
 </div>

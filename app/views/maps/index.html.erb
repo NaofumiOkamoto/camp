@@ -1,4 +1,5 @@
 <div class="map-page">
+
   <!--地名入力 -->
   <div class="map-button-area">
     <span class="map-info">地図で検索</span>
@@ -12,13 +13,11 @@
 
   <!-- 地図 -->
   <div id='map'></div>
+
 </div>
 
-<!-- 閲覧履歴表示 -->
-      <%= render '/history', recently_campsite: @recently_campsite %>
-
-<style>
-</style>
+  <!-- 閲覧履歴表示 -->
+  <%= render '/history', recently_campsite: @recently_campsite %>
 
 <script>
 
@@ -105,25 +104,25 @@ function getLocation(){
       //position: latLng,i //マーカーはいらないと判断
       map: map
     });
-  <% @camp_sites.each do |camp_site, i| %>
-      var address = {lat: <% if camp_site.latitude %><%= camp_site.latitude %><% else %>0<% end %>, lng: <% if camp_site.longitude %><%= camp_site.longitude %><% else %>0<% end %>};
-    //マーカー設置
-    marker[<%= camp_site.id %>] = new google.maps.Marker({
-      map: map,
-      position: address,
-      });
-      //吹き出し
-      infoWindow[<%= camp_site.id %>] = new google.maps.InfoWindow({
-        //吹き出し中身をリンクにする
-        content: '<div class="sample"><%= link_to camp_site.name, camp_site_path(camp_site.id) %></div>'
-      });
-      marker[<%= camp_site.id %>].addListener('click', function(){
-        infoWindow[<%= camp_site.id %>].open(map, marker[<%= camp_site.id %>]);
-      });
-  <% end %>
+    <% @camp_sites.each do |camp_site, i| %>
+        var address = {lat: <% if camp_site.latitude %><%= camp_site.latitude %><% else %>0<% end %>, lng: <% if camp_site.longitude %><%= camp_site.longitude %><% else %>0<% end %>};
+      //マーカー設置
+        marker[<%= camp_site.id %>] = new google.maps.Marker({
+          map: map,
+          position: address,
+        });
+        //吹き出し
+        infoWindow[<%= camp_site.id %>] = new google.maps.InfoWindow({
+          //吹き出し中身をリンクにする
+          content: '<div class="sample"><%= link_to camp_site.name, camp_site_path(camp_site.id) %></div>'
+        });
+        marker[<%= camp_site.id %>].addListener('click', function(){
+          infoWindow[<%= camp_site.id %>].open(map, marker[<%= camp_site.id %>]);
+        });
+    <% end %>
   });
 }
 
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY']%>&callback=initMap" async defer></script>

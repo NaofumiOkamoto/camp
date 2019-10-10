@@ -23,6 +23,8 @@ RSpec.describe CampSite, type: :model do
         end
         it "addressが入力されていないので保存されない" do
             expect(@camp_site).to be_invalid
+        end
+        it "エラーメッセージが表示される" do
             expect(@camp_site.errors[:address]).to include("を入力してください")
             expect(@camp_site.errors[:name]).to include("を入力してください")
         end

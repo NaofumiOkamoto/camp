@@ -1,4 +1,5 @@
 <div class="board-edit-board">
+
   <%= form_with model: board, path: board_path do |f| %>
     <%= render '/error_messages', model: f.object %> <!--バリデーションメッセージ -->
     <p>
@@ -35,7 +36,7 @@
     </p>
 
     <p>
-    <span class="board-span1">画像<br>(削除にチェック)      </span>
+    <span class="board-span1">画像<br>(削除にチェック)</span>
       <% @board.board_images.each do |image| %>
         <span><%= f.check_box :image_ids, {:multiple => true}, image.id, false %><span>
             <%= image_tag image, :size=>"100x100" %>
@@ -46,4 +47,5 @@
       <%= f.submit '更新', class: "btn user-edit-button" %>
     </div>
   <% end %>
+
 </div>

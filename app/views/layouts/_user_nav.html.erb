@@ -10,23 +10,23 @@
                   <%= current_user.nickname %>ログイン中<br>
                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
                 </div>
-                <% else %>
+              <% else %>
                 <div class="right-nav">
-                      <div>
-                      <%= link_to new_admin_session_path, class: "btn" do %>
-                       管理者ログイン
-                      <% end %>
-                      </div>
-                      <div class="right-nav-user-button">
-                      <%= link_to new_user_registration_path, class: "btn" do %>
-                          ユーザー新規登録
-                      <% end %>
-                      </div>
-                      <div class="right-nav-user-button">
-                      <%= link_to new_user_session_path, class: "btn" do %>
-                       ユーザーログイン
-                      <% end %>
-                      </div>
+                  <div>
+                    <%= link_to new_admin_session_path, class: "btn" do %>
+                        管理者ログイン
+                    <% end %>
+                  </div>
+                  <div class="right-nav-user-button">
+                    <%= link_to new_user_registration_path, class: "btn" do %>
+                        ユーザー新規登録
+                    <% end %>
+                  </div>
+                  <div class="right-nav-user-button">
+                    <%= link_to new_user_session_path, class: "btn" do %>
+                        ユーザーログイン
+                    <% end %>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -40,18 +40,17 @@
             <!-- nav検索ここから -->
             <div class="navbar-form navbar-left-right">
               <span data-turbolinks="false">
-              <div class="form-group">
-                <%= search_form_for @search, url: camp_sites_path do |f| %>
-                    <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
-                    <%# f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
-                    <%# f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
-                    <%= f.submit "検索", class: "btn btn-default" %>
-                <% end %>
-              </div>
+                <div class="form-group">
+                  <%= search_form_for @search, url: camp_sites_path do |f| %>
+                      <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
+                      <%# f.collection_select :prefecture_id_eq, @camp_sites, :prefecture_id, :prefecture_name, :include_blank => '全国' %>
+                      <%# f.collection_select :category_id_eq, @camp_sites, :category_id, :category_name, :include_blank => '指定なし' %>
+                      <%= f.submit "検索", class: "btn btn-default" %>
+                  <% end %>
+                </div>
               </span>
             </div>
             <!-- 検索ここまで -->
-
 
           </div>
 
@@ -95,7 +94,7 @@
                     <% end %>
 
 
-      <% if user_signed_in? %>
+                <% if user_signed_in? %>
 
                     <div data-turbolinks="false">
                       <%= link_to new_board_path do %>
@@ -123,7 +122,9 @@
                         </span>
                       </p>
                     <% end %>
-      <% else %>
+
+                <% else %>
+
                     <%= link_to new_user_registration_path do %>
                       <p class="sp-menu-p">
                         <span>
@@ -142,9 +143,10 @@
                       </p>
                     <% end %>
 
-      <% end %>
+                <% end %>
 
             </div>
+
             <div id="hm-icon">
               <a class="menu-trigger" href="#">
                 <span></span>
@@ -152,7 +154,8 @@
                 <span></span>
               </a>
             </div>
-          </li>
+
+        </div>
           <!-- ハンバーガーメニューここまで -->
 
     </div>

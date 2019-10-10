@@ -4,5 +4,6 @@ FactoryBot.define do
     name { "testcamp1" }
     address { "渋谷" }
     prefecture_id { 1 }
+    category_id { 1 }
   end
 end

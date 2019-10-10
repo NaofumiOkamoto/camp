@@ -300,5 +300,5 @@ Devise.setup do |config|
 
 end
   Devise.setup do |config|
-    config.omniauth :facebook, '737417786711068', '0b8660468be5494deb252a8eb9403e80'
+    config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_API_KEY']
   end

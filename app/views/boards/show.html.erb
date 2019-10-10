@@ -1,6 +1,7 @@
 <div class="container board-show-page">
   <h1>募集掲示板</h1>
   <div class="row">
+
     <!-- 閲覧履歴表示 -->
     <%= render '/history', recently_campsite: @recently_campsite %>
 
@@ -8,20 +9,20 @@
       <div class="col-xs-12 board-show-head clearfix">
 
         <div class="col-xs-3 board-show-user">
-
           <% if @board.user.user_image.attached? %>
             <p><%= image_tag @board.user.user_image, class: "board-user-image" %></p>
           <% else %>
             <img src="/images/no_image.jpg" alt="" class="board-user-image">
           <% end %>
 
-          <p>募集者<%= link_to @board.user.nickname, user_path(@board.user_id) %></p>
+          <p>
+            募集者<%= link_to @board.user.nickname, user_path(@board.user_id) %>
+          </p>
 
-          <!--気になる掲示板にボタン -->
+          <!--気になる掲示板ボタン -->
           <% if user_signed_in? && current_user.id != @board.user_id %>
             <%= render 'like_boards/like_board', board: @board %>
           <% end %>
-
         </div>
 
         <div class="col-xs-9 board-show-board">
@@ -32,58 +33,58 @@
     </div>
 
     <h3>イメージ画像</h3>
-      <%= render 'board_img', board: @board %>
-
+    <%= render 'board_img', board: @board %>
 
     <h2>コメント欄</h2>
-    <div class="board-comment-box">
-      <div class="board-comment-input">
-        <% if user_signed_in? %>
-          <%= form_with model: [@board, @board_comment], local: true do |f| %>
-            <%= f.text_field :comment, class: "map-search-form", placeholder: "コメント入力" %>
-            <%= f.submit "送信", class: "btn btn-board-search-button" %>
-          <% end %>
-        <% else %>
-          <p>
-            コメント投稿にはログインが必要です
-            <%= link_to 'ログインする', new_user_session_path, class: "btn btn-primary" %>
-          </p>
-        <% end %>
-      </div>
+      <div class="board-comment-box">
 
-      <% @board_comments.reverse_each do |comment| %>
-        <% if user_signed_in? && comment.user_id == @board.user_id %>
-
-          <p class="chat-message-line">
-            <%= link_to comment.user.nickname, user_path(comment.user.id) %>
-          <% if comment.user.user_image.attached? %>
-            <%= image_tag comment.user.user_image, class: "chat-image" %>
+        <div class="board-comment-input">
+          <% if user_signed_in? %>
+            <%= form_with model: [@board, @board_comment], local: true do |f| %>
+              <%= f.text_field :comment, class: "map-search-form", placeholder: "コメント入力" %>
+              <%= f.submit "送信", class: "btn btn-board-search-button" %>
+            <% end %>
           <% else %>
-            <img src="/images/no_image.jpg" alt="" class="chat-image">
+            <p>
+              コメント投稿にはログインが必要です
+              <%= link_to 'ログインする', new_user_session_path, class: "btn btn-primary" %>
+            </p>
           <% end %>
-            <span class="chat-message-comment"><%= comment.comment %></span>
-            <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-          </p>
+        </div>
 
-        <% else %>
-
-          <div class="chat-message-right">
+        <% @board_comments.reverse_each do |comment| %>
+          <% if user_signed_in? && comment.user_id == @board.user_id %> <!-- 投稿者は左側表示 -->
 
             <p class="chat-message-line">
-              <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-              <span class="chat-message-comment"><%= comment.comment %></span>
-            <% if comment.user.user_image.attached? %>
-              <%= image_tag comment.user.user_image, class: "chat-image"%>
-            <% else %>
-              <img src="/images/no_image.jpg" alt="" class="chat-image">
-            <% end %>
               <%= link_to comment.user.nickname, user_path(comment.user.id) %>
+                <% if comment.user.user_image.attached? %>
+                  <%= image_tag comment.user.user_image, class: "chat-image" %>
+                <% else %>
+                  <img src="/images/no_image.jpg" alt="" class="chat-image">
+                <% end %>
+              <span class="chat-message-comment"><%= comment.comment %></span>
+              <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
             </p>
 
-          </div>
+          <% else %> <!-- 投稿者以外は右側表示 -->
 
+            <div class="chat-message-right">
+              <p class="chat-message-line">
+                <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+                <span class="chat-message-comment"><%= comment.comment %></span>
+                  <% if comment.user.user_image.attached? %>
+                    <%= image_tag comment.user.user_image, class: "chat-image"%>
+                  <% else %>
+                    <img src="/images/no_image.jpg" alt="" class="chat-image">
+                  <% end %>
+                <%= link_to comment.user.nickname, user_path(comment.user.id) %>
+              </p>
+            </div>
+
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+
+      </div>
+
   </div>
 </div>
