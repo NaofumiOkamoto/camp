@@ -72,7 +72,7 @@ class User < ApplicationRecord
   end
 
 
-# Action Mailer（画像）
+# Active Storage（画像）
   has_one_attached :user_image
 
 # 都道府県のアクティブハッシュ

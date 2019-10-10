@@ -23,6 +23,7 @@
           </div>
           <!-- 検索ここまで -->
 
+          <!-- 掲示板作成ボタン -->
           <div class="col-xs-4 board-index-new-button">
             <% if user_signed_in? %>
               <span data-turbolinks="false">
@@ -33,6 +34,7 @@
             <% end %>
           </div>
 
+          <!-- 掲示板一覧 -->
           <div class="camp-sites-board">
               <% @search_board_sites.each do |board| %>
                 <%= link_to  board_path(board.id) do %>
@@ -42,11 +44,13 @@
                 <% end %>
               <% end %>
           </div>
+
           <div class="paginate">
               <%= paginate @search_board_sites, class: "btn-flat-border paginate" %>
           </div>
 
       </div>
     </div>
+
   </div>
 </div>

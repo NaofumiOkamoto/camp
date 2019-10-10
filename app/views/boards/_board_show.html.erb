@@ -1,16 +1,24 @@
 <div class="board-show-board">
+
   <p><span class="board-span1">日時      </span>   <span class="board-span2"><%= board.date %><%= board.time %></span></p>
-  <p><span class="board-span1">キャンプ場</span>   <span class="board-span2"><%= board.camp_site.name %></span></p>
+  <p><span class="board-span1">キャンプ場 </span>   <span class="board-span2"><%= board.camp_site.name %></span></p>
   <p><span class="board-span1">場所      </span>   <span class="board-span2"><%= board.place %></span></p>
-  <p><span class="board-span1">募集内容  </span>   <span class="board-span2"><%= board.purpos_name %></span></p>
+  <p><span class="board-span1">募集内容   </span>   <span class="board-span2"><%= board.purpos_name %></span></p>
   <p><span class="board-span1">詳細      </span>   <span class="board-span2"><%= board.detail %></span></p>
   <p><span class="board-span1">条件      </span>   <span class="board-span2"><%= board.condition %></span></p>
-  <p><span class="board-span1">コメント  </span>   <span class="board-span2"><%= board.comment %></span></p>
+  <p><span class="board-span1">コメント   </span>   <span class="board-span2"><%= board.comment %></span></p>
 
   <% if user_signed_in? %>
     <% if board.user_id == current_user.id %>
-      <div class="board-button"><%= link_to '編集', edit_board_path, class: "btn user-edit-button", remote: true %></div>
-      <div class="board-button"><%= link_to '削除', board_path, method: :delete, class: "btn user-edit-button board-destroy-button" %></div>
+    
+      <div class="board-button">
+        <%= link_to '編集', edit_board_path, class: "btn user-edit-button", remote: true %>
+      </div>
+      <div class="board-button">
+        <%= link_to '削除', board_path, method: :delete, class: "btn user-edit-button board-destroy-button" %>
+      </div>
+
     <% end %>
   <% end %>
+
 </div>

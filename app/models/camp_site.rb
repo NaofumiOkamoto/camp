@@ -23,7 +23,7 @@ class CampSite < ApplicationRecord
   has_many :messages, dependent: :destroy
 
 
-# Action Mailer（画像）
+# Active storage（画像）
   has_many_attached :camp_images, dependent: :destroy
 
 # 地域、都道府県のアクティブハッシュ
@@ -37,9 +37,11 @@ class CampSite < ApplicationRecord
 
   private
   def geocode # geocodingするAPIで経度緯度の情報を保存
-      uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key=AIzaSyCsCJhG5dejpV82VY5PzaZG84RRqwFs2Y0")
+      uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key="+ENV['GOOGLE_API_KEY'])
       res = HTTP.get(uri).to_s
       response = JSON.parse(res)
+
+    #　緯度経度が取得できる住所なら取得する
     if response.has_value?("OK")
       self.latitude = response["results"][0]["geometry"]["location"]["lat"]
       self.longitude = response["results"][0]["geometry"]["location"]["lng"]

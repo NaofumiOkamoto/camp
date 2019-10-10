@@ -1,8 +1,9 @@
 <div id="chat-message">
+
+<!-- 投稿者は左側 -->
     <% if user_signed_in? && message.user_id == current_user.id %>
 
       <div id=<%= "message-"+ message.id.to_s %> class="col-xs-12">
-
         <p id= <%= "content-"+ message.id.to_s %> class="chat-message-line">
           <span id=<%= "nickname-"+ message.id.to_s %>>
             <%= link_to message.user.nickname, user_path(message.user.id) %>
@@ -15,13 +16,12 @@
             <%= message.created_at.strftime("%Y年%m月%d日 %H:%M") %>
           </span>
         </p>
-
       </div>
 
     <% else %>
+<!-- 投稿者以外は左側 -->
 
       <div id=<%= "message-"+ message.id.to_s %> class="col-xs-12 chat-message-right">
-
         <p id= <%= "content-"+ message.id.to_s %> class="chat-message-line">
           <%= message.created_at.strftime("%Y年%m月%d日 %H:%M") %>
           <span class="chat-message-comment"><%= "#{message.content}" %></span>
@@ -34,8 +34,8 @@
             <%= link_to message.user.nickname, user_path(message.user.id) %>
           </span>
         </p>
-
       </div>
 
     <% end %>
+
 </div>

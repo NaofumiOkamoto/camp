@@ -1,31 +1,31 @@
 <div class="container camp-index-page">
   <div class="row">
+
     <div class="col-xs-12 camp-index-head">
 
-      <div class="col-xs-5 col-xs-offset-1">
-        <h1>キャンプ場一覧</h1>
-      </div>
-
-        <!-- 検索ここから -->
-        <div class="col-xs-6">
-          <div class="form-group">
-            <%= search_form_for @search, url: camp_sites_path do |f| %>
-                <%= f.collection_select :prefecture_id_eq, @prefectures,
-                                        :id, :prefecture_name,
-                                        :include_blank => '全国',
-                                        class: "search-collection" %>
-                <%= f.collection_select :category_id_eq, @categories,
-                                        :id, :category_name,
-                                        :include_blank => 'キャンプ場種類',
-                                        class: "search-collection" %>
-                <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
-                <span>検索結果<%= @search_camp_count.count %>件</span>
-                <%= f.submit "検索", class: "btn btn-default" %>
-            <% end %>
+          <div class="col-xs-5 col-xs-offset-1">
+            <h1>キャンプ場一覧</h1>
           </div>
-        </div>
-        <!-- 検索ここまで -->
 
+          <!-- 検索ここから -->
+          <div class="col-xs-6">
+            <div class="form-group">
+              <%= search_form_for @search, url: camp_sites_path do |f| %>
+                  <%= f.collection_select :prefecture_id_eq, @prefectures,
+                                          :id, :prefecture_name,
+                                          :include_blank => '全国',
+                                          class: "search-collection" %>
+                  <%= f.collection_select :category_id_eq, @categories,
+                                          :id, :category_name,
+                                          :include_blank => 'キャンプ場種類',
+                                          class: "search-collection" %>
+                  <%= f.search_field :name_cont, class: "form-control", placeholder: "キャンプ場検索" %>
+                  <span>検索結果<%= @search_camp_count.count %>件</span>
+                  <%= f.submit "検索", class: "btn btn-default" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- 検索ここまで -->
     </div>
 
       <!-- 閲覧履歴表示 -->
@@ -33,28 +33,47 @@
 
       <!-- キャンプ場一覧 -->
       <div class="camp-index">
-      <div class="camp-sites-index jscroll clearfix">
-          <% @search_camp_sites.each do |camp_site| %>
-            <div class="camp-sites-index-box">
-                <%= link_to camp_site_path(camp_site) do %>
-                  <% if camp_site.camp_images.attached? %>
-                    <p><%= image_tag camp_site.camp_images.first, class: "camp-site-image" %></p>
-                  <% end %>
-                  <p class="camp-site-index-name"><%= link_to camp_site.name, camp_site_path(camp_site), class: "camp-site-index-name" %></p>
-                  <p class="camp-site-index-info"><%= camp_site.category_name %><%= camp_site.prefecture_name %></p>
-                  <div class="col-xs-12">
-                    <div class="col-xs-6">
-                      <div class="camp-index-tab">お気に入り数  <%= camp_site.like_camps.size %></div>
-                    </div>
-                    <div class="col-xs-6">
-                      <div class="camp-index-tab">掲示板数 <%= camp_site.boards.size %></div>
-                    </div>
-                  </div>
-                <% end %>
-            </div>
-            <%= paginate @search_camp_sites %>
-          <% end %>
+        <div class="camp-sites-index jscroll clearfix">
+
+              <% @search_camp_sites.each do |camp_site| %>
+                <div class="camp-sites-index-box">
+
+                    <%= link_to camp_site_path(camp_site) do %>
+
+                        <% if camp_site.camp_images.attached? %>
+                          <p><%= image_tag camp_site.camp_images.first, class: "camp-site-image" %></p>
+                        <% end %>
+
+                          <p class="camp-site-index-name">
+                            <%= link_to camp_site.name, camp_site_path(camp_site), class: "camp-site-index-name" %>
+                          </p>
+                          <p class="camp-site-index-info">
+                            <%= camp_site.category_name %><%= camp_site.prefecture_name %>
+                          </p>
+
+                          <div class="col-xs-12">
+                            <div class="col-xs-6">
+                              <div class="camp-index-tab">
+                                お気に入り数
+                                <%= camp_site.like_camps.size %>
+                              </div>
+                            </div>
+                            <div class="col-xs-6">
+                              <div class="camp-index-tab">
+                                掲示板数
+                                <%= camp_site.boards.size %>
+                              </div>
+                            </div>
+                          </div>
+
+                    <% end %>
+
+                </div>
+                <%= paginate @search_camp_sites %>
+              <% end %>
+            
+        </div>
       </div>
-      </div>
+
     </div>
 </div>

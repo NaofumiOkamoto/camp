@@ -11,10 +11,6 @@ class BoardCommentsController < ApplicationController
     end
   end
 
-  def destroy
-
-  end
-
   private
   def board_comment_params
     params.require(:board_comment).permit(:user_id, :board_id, :comment)

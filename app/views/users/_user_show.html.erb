@@ -17,11 +17,11 @@
 
       <tr>
         <th>都道府県（必須）</th>
-    <% unless user.prefecture_id.nil? %>
-        <th><%= user.prefecture_name %></th>
-      <% else %>
-        <th>未設定</th>
-    <% end %>
+        <% unless user.prefecture_id.nil? %>
+            <th><%= user.prefecture_name %></th>
+          <% else %>
+            <th>未設定</th>
+        <% end %>
       </tr>
 
     <tr>
@@ -35,6 +35,7 @@
     </tr>
 
   </table>
+
   <% if user_signed_in? && current_user.id == user.id %>
     <p class="user-show-edit-button">
       <%= link_to '編集', edit_user_path, class: "btn user-edit-button", remote: true %>

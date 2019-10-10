@@ -35,16 +35,18 @@
       </tr>
       <tr>
         <th>
-        <% if @board.board_images.attached? %>
-          <% @board.board_images.each do |image| %>
-            <%= image_tag image.variant(resize: "200x200") %>
+          <% if @board.board_images.attached? %>
+            <% @board.board_images.each do |image| %>
+              <%= image_tag image.variant(resize: "200x200") %>
+            <% end %>
+          <% else %>
+            <img src="/images/no_image.jpg" alt="" class="board-no-image">
           <% end %>
-        <% else %>
-          <img src="/images/no_image.jpg" alt="" class="board-no-image">
-        <% end %>
       </tr>
       <tr>
-      <td><%= link_to '削除', admin_board_path(@board.id), method: :delete, class: "btn btn-danger" %></td>
+        <td>
+          <%= link_to '削除', admin_board_path(@board.id), method: :delete, class: "btn btn-danger" %>
+        </td>
       </tr>
   </table>
 </div>
