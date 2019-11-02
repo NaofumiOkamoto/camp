@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'homes#about'
   resources :maps, only: [:index]
   get '/map_request', to: 'maps#map', as: 'map_request'
+  get '/ranking', to: 'homes#ranking_history', as: 'ranking'
   resources :admin_users, only: [:index, :show, :destroy]
   resources :camp_sites, only: [:index]
   get 'camp_sites/:camp_site_id', to: 'camp_sites#show', as: 'camp_site'
