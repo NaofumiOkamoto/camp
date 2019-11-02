@@ -1,0 +1,47 @@
+<div class="left-side-history-title-iphone">
+
+  <h2></h2>
+
+    <div class="left-side-history">
+
+      <!-- ランキング -->
+      <div class="left-side-ranking">
+        <h4>キャンプ場<br>お気に入り数ランキング</h4>
+        <% @ranking_camp.each do |camp| %>
+          <p>・<%= link_to camp.name, camp_site_path("#{camp.id}") %>(<%= camp.like_camps.count %>)</p>
+        <% end %>
+      </div>
+
+      <h4>キャンプ場<br>掲示板掲載数ランキング</h4>
+        <% @ranking_board.each do |board| %>
+          <p>・<%= link_to board.name, camp_site_path("#{board.id}") %>(<%= board.boards.count %>)</p>
+        <% end %>
+
+      <!-- 履歴 -->
+      <div class="user-show-history">
+        <h3>キャンプ場<br>閲覧履歴(最新5件)</h3>
+          <% if @recently %>
+            <% @recently[0..4].each do |r| %>
+                <% campsite = CampSite.find_by(id: r) %>
+                  <% if campsite.present? %>
+                    <p>・<%= link_to campsite.name, camp_site_path("#{r}") %></p>
+                  <% end %>
+            <% end %>
+          <% end %>
+
+        <h3>掲示板<br>閲覧履歴(最新5件)</h3>
+          <% if @recently_board %>
+            <% @recently_board[0..4].each do |r| %>
+                <% board = Board.find_by(id: r) %>
+                <% if board.present? %>
+                  <%= link_to board_path("#{r}") do %></p>
+                    <p>・<%= board.date %><%= board.camp_site.name %></p>
+                  <% end %>
+                <% end %>
+            <% end %>
+          <% end %>
+      </div>
+
+    </div>
+
+</div>

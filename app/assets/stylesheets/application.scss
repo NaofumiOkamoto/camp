@@ -147,6 +147,8 @@ a {
   padding-left: 150px;
   border-bottom: 1px solid #bdb76b;
 }
+.sp-menu-p-ranking {
+}
 .sp-menu-p:hover {
   background-color: #bdb76b;
 }
@@ -271,7 +273,6 @@ a {
 .top-page-camp-door,
 .top-page-ikitai,
 .top-page-iru {
-  height: 1000px;
   margin-bottom: 100px;
   text-align: center;
   display: none;
@@ -378,7 +379,8 @@ a {
   font-size: 17px;
   background-color: #dbd76b;
 }
-.left-side-history-title {
+.left-side-history-title,
+.left-side-history-title-iphone {
   position: fixed;
   top: 95px;
   left: 28px;
@@ -819,7 +821,7 @@ margin-top: 38px;
 
 //掲示板作成
 .board-new-table {
-  width:65%;
+  width:80%;
   margin: 0 auto;
 }
 #q_date_gteq,             //掲示板ページ検索日にち
@@ -872,6 +874,7 @@ margin-top: 38px;
   font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,sans-serif;
   font-size: 23px;
   color: #808000;
+  width: 300px;
 }
 .board-new-button {    //更新ボタン
   background-color: #808000; //#556b2f
@@ -967,4 +970,260 @@ input[type="file"] {
   width: 90%;
   margin: 10px auto;
   text-align: center;
+}
+
+  //スマホ用のcssを記述*/
+@media (max-width: 1290px){
+body {
+  margin-top: 109px;
+}
+.container {
+  width: 100%;
+}
+.navbar-form {
+  display: none;
+}
+.form-control {
+  height: 55px;
+  font-size: 16px;
+}
+.top-logo{
+  text-align: center;
+  font-size: 70px;
+  padding-left: 135px;
+}
+.right-nav {
+  font-size: 25px;
+  text-align: center;
+  float: right;
+}
+//ハンバーガーメニュー（スマホ）
+#hm-icon {
+  position: fixed;
+  right: 20px;
+  top: 35px;
+}
+#sp-menu {
+  width: 100%;
+}
+.sp-menu-p {
+  font-size: 65px;
+  padding: 20px 0 20px 250px;
+}
+.left-side-history-title {
+  display: none;
+}
+.left-side-history-title-iphone {
+  width: 100%;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 20px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+.menu-trigger {
+  width: 63px;
+  height: 47px;
+}
+//topページ（スマホ）
+.top-about-under {
+  width: 100%;
+}
+//mapページ（スマホ）
+#map {
+  margin: 0;
+  height: 1000px;
+}
+.map-page {
+  float: none;
+  width: 100%;
+}
+.map-search-button{
+  height: 45px;
+  font-size: 25px;
+}
+.map-local, .map-back {
+  width: 30%;
+  height: 45px;
+  margin: 30px 70px 30px 0;
+  font-size: 25px;
+}
+.map-search-form {
+  width: 67%;
+  height: 55px;
+  margin-bottom: 20px;
+}
+.map-button-area {
+  padding-top: 70px;
+}
+.sp-menu-p-ranking {
+  display: block;
+  font-size: 50px;
+}
+.camp-index {
+  width: 100%;
+  float: none;
+  padding: 30px 0 0 30px;
+}
+element.style {
+}
+//キャンプ場一覧ページ（スマホ）
+.camp-sites-index-box {
+  width: 50%;
+  height: 428px;
+  font-size: 22px;
+}
+.camp-site-image {
+  width: 85%;
+  height: 250px;
+}
+.camp-index-tab {
+  width: 70%;
+  font-size: 20px;
+  margin: 5px auto;
+}
+
+//キャンプ場詳細ページ（スマホ）
+.camp-site-show-page {
+    width: 100%;
+    float: none;
+    margin: 0;
+}
+.camp-site-subtitle {
+  margin: 40px 0;
+}
+//マイページ（スマホ）
+.user-show-page {
+  width: 100%;
+  float: none;
+}
+.user-show-info-box {
+  margin: 0;
+}
+.user-show-subtitle-box {
+  padding: 0;
+}
+//掲示板作成（スマホ）
+.board-new-table {
+  width: 90%;
+  margin: 0 auto;
+}
+#board_camp_site_id,  //キャンプ場入力
+#board_date,         //日にち入力
+#board_purpos_id,    //目的入力
+#board_time,         //時間入力
+.board-new-text-field {  //テキストボックス入力
+  height: 45px;
+  width: 500px;
+  font-size: 16px;
+}
+#board_purpos_id,#board_date{        //目的入力部分
+  width: 300px;
+}
+#board_time{        //時間入力部分
+  width: 200px;
+}
+#board_comment{        //コメント
+  width: 500px;
+}
+.table > tbody > tr > td {
+  width: 250px;
+  padding: 30px 0 30px 0;
+}
+//掲示板一覧ページ（スマホ）
+.board-index-page {
+  width: 90%;
+  float: none;
+  margin: 0 auto;
+}
+.board-index-new-button {
+  display: none;
+}
+#board_search p {
+ text-align: center;
+}
+#q_camp_site_id_eq,
+#q_purpos_id_eq {
+  height: 37px;
+  width: 80%;
+  text-align: center;
+  margin: 10px 0 10px 0;
+  font-size: 25px;
+}
+#q_date_gteq,
+#q_date_lteq {
+  width: 39%;
+  margin: 10px 0 10px 0;
+  font-size: 25px;
+}
+.btn-board-search-button{
+  width: 80%;
+  height: 50px;
+  font-size: 30px;
+}
+.btn-board-search-box{
+  text-align: center;
+  margin: 20px 0 20px 0;
+}
+.camp-site-board-index {
+  height: 160px;
+  margin-top: 35px;
+  font-size: 25px;
+}
+.pagination {
+  font-size: 45px;
+}
+//掲示板一覧ページ（スマホ）
+.board-show-page {
+  width: 100%;
+  margin-right: 0;
+}
+.board-show-board {
+  padding-left: 50px;
+  font-size: 26px;
+}
+.board-comment-box {
+  height: 700px;
+}
+//ユーザー詳細ページ（スマホ）
+.user-show-info-box {
+  height: 800px;
+}
+.user-show-edit-form {
+  margin-top: 50px;
+}
+.user-show-like-camp div, .user-show-follower div, .user-show-follow div {
+  width: 27%;
+  height: 213px;
+}
+.likecamp-img {
+  width: 160px;
+  height: 131px;
+}
+.user-edit-button {
+  width: 100%;
+  height: 70px;
+  font-size: 30px;
+  color: #fff;
+  margin-top: 40px;
+}
+//ログイン画面（スマホ）
+.facebook-button,
+.user-ragistration-info,
+.user-session-new-page,
+.login_btn,
+#user_name,
+#user_nickname,
+#user_prefecture_id,
+#user_introduction,
+#user_password_confirmation,
+#user_password,
+#user_email {
+  font-size: 30px;
+  width: 70%;
+  height: 60px;
+  text-align: center;
+  margin: 40px auto;
+}
 }

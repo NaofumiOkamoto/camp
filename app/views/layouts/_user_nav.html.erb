@@ -4,10 +4,10 @@
 
           <div class="col-xs-12">
 
-            <div class="col-xs-3 col-xs-offset-1">
+            <div class="col-lg-3 col-lg-offset-1">
               <% if user_signed_in? %>
                 <div class="right-nav">
-                  <%= current_user.nickname %>ログイン中<br>
+                  <%= current_user.nickname %><br>ログイン中<br>
                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
                 </div>
               <% else %>
@@ -31,7 +31,7 @@
               <% end %>
             </div>
 
-            <div class="top-logo-li col-xs-4">
+            <div class="top-logo-li col-lg-4">
               <%= link_to root_path do %>
                 <h1 class="top-logo">CAMP DOOR</h1>
               <% end %>
@@ -123,6 +123,15 @@
                       </p>
                     <% end %>
 
+                    <%= link_to ranking_path do %>
+                      <p class="sp-menu-p sp-menu-p-ranking">
+                        <span>
+                          <img src="/images/boy-scout2.png" alt="" class="nav-icon">
+                         ランキング・閲覧履歴
+                        </span>
+                      </p>
+                    <% end %>
+
                 <% else %>
 
                     <%= link_to new_user_registration_path do %>
@@ -142,6 +151,7 @@
                         </span>
                       </p>
                     <% end %>
+
 
                 <% end %>
 

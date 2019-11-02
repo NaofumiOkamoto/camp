@@ -11,13 +11,12 @@ class ApplicationController < ActionController::Base
     @search_camp_sites = @search.result #検索結果
   end
 
-  # acton cable でdevise機能使用試みたが、うまくいかず
-#  def self.render_with_signed_in_user(user, *args)
-#    ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
-#    proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
-#    renderer = self.renderer.new('warden' => proxy)
-#    renderer.render(*args)
-#  end
+  def self.render_with_signed_in_user(user, *args)
+    ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
+    proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
+    renderer = self.renderer.new('warden' => proxy)
+    renderer.render(*args)
+  end
 
 
   def ranking
